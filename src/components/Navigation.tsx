@@ -41,7 +41,7 @@ const Navigation = () => {
       <div className="w-full">
         <div className="flex items-center justify-between h-16 w-full px-[100px]">
           {/* Logo */}
-            <Link href="/" className="flex items-center space-x-4 group">
+            <Link href="/" className="flex items-center group">
               <motion.div
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 className="relative"
@@ -69,7 +69,7 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 group"
+                className="flex items-center text-gray-300 hover:text-white transition-colors duration-200 group"
               >
                 <item.icon className="w-4 h-4 group-hover:text-primary-500 transition-colors" />
                 <span className="font-medium">{item.name}</span>

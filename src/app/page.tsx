@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Image from 'next/image';
+import React, { useState, useRef } from 'react';
 import { 
   Radio, 
   Heart, 
@@ -19,10 +20,15 @@ import {
 import Link from 'next/link';
 
 export default function Home() {
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ marginLeft: '-50px', marginRight: '-50px', width: 'calc(100% + 100px)' }}>
+      <section 
+        className="relative min-h-screen flex items-center justify-center overflow-hidden" 
+        style={{ marginLeft: '-50px', marginRight: '-50px' }}
+      >
         {/* Animated Background */}
         <div className="absolute inset-0 animated-bg"></div>
         
@@ -62,42 +68,53 @@ export default function Home() {
           })}
         </div>
 
-        <div className="relative z-10 w-full text-center">
+        <div className="relative z-10 w-full h-full flex items-center justify-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="space-y-8"
+            className="space-y-8 max-w-4xl mx-auto px-8"
           >
             {/* Logo */}
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              className="mx-auto w-40 h-40 bg-gradient-to-br from-primary-500 to-navy-500 rounded-full flex items-center justify-center shadow-2xl glow-orange p-4"
+              className="w-40 h-40 bg-gradient-to-br from-primary-500 to-navy-500 rounded-full glow-orange p-4"
+              animate={{
+                x: [0, 100, -80, 60, -40, 0],
+                y: [0, -50, 30, -20, 40, 0],
+                rotate: [0, 180, 360, 180, 0],
+                scale: [1, 1.2, 0.8, 1.1, 0.9, 1],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+                times: [0, 0.2, 0.4, 0.6, 0.8, 1]
+              }}
             >
-        <Image
+              <Image
                 src="/RMK.png"
                 alt="102.4 FM RMK Logo"
                 width={120}
                 height={120}
                 className="w-full h-full object-contain"
-          priority
-        />
+                priority
+              />
             </motion.div>
 
             {/* Main Title */}
-            <div className="space-y-4">
+            <div>
               <h1 className="text-6xl md:text-8xl font-bold font-display gradient-text">
-                102.4 FM RMK
-              </h1>
+                The radio that unites us
+              </h1><br/>
               <h2 className="text-2xl md:text-4xl font-semibold text-white">
-                Radio Madagasikara ho an'i Kristy
-              </h2>
-              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-                Broadcasting faith, hope, and love across Madagascar. 
+                RMK 102.4 FM
+              </h2><br/>
+              <p className="text-xl md:text-2xl text-gray-300">
+                Broadcasting faith, hope, and love across Madagascar.<br/> 
                 Join us in spreading the Gospel through inspiring programs, 
                 uplifting music, and spiritual content.
               </p>
-            </div>
+            </div><br/>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -106,19 +123,19 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
               >
-                <Play className="w-6 h-6" />
+                <Play className="w-12 h-12" />
                 <span>Listen Live</span>
               </motion.button>
               
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-white/30 text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-2"
+                  className="px-8 py-6 border-2 border-white/30 text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-5"
               >
-                <Calendar className="w-6 h-6" />
+                <Calendar className="w-10 h-10" />
                 <span>View Programs</span>
               </motion.button>
-            </div>
+            </div><br/>
 
             {/* Live Status */}
             <motion.div
