@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Play, 
   Pause, 
@@ -14,8 +14,7 @@ import {
   Headphones,
   Radio,
   Search,
-  Filter,
-  Volume2
+  Filter
 } from 'lucide-react';
 
 interface Podcast {
@@ -192,7 +191,7 @@ const PodcastsPage = () => {
                 placeholder="Search podcasts..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-dark-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-primary-500 focus:outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-3 bg-dark-800 border border-gray-600 rounded-lg text-gray-950 dark:text-white placeholder-gray-400 focus:border-primary-500 focus:outline-none transition-colors"
               />
             </div>
             <div className="flex items-center space-x-2">
@@ -200,7 +199,7 @@ const PodcastsPage = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 bg-dark-800 border border-gray-600 rounded-lg text-white focus:border-primary-500 focus:outline-none transition-colors"
+                className="px-4 py-3 bg-dark-800 border border-gray-600 rounded-lg text-gray-950 dark:text-white focus:border-primary-500 focus:outline-none transition-colors"
               >
                 {categories.map(category => (
                   <option key={category} value={category} className="capitalize">
@@ -219,15 +218,15 @@ const PodcastsPage = () => {
           transition={{ delay: 0.4 }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-bold text-white mb-4">Live Now</h2>
+          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">Live Now</h2>
           <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 p-6 rounded-xl border border-primary-500/30">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
-                  <Radio className="w-8 h-8 text-white" />
+                  <Radio className="w-8 h-8 text-gray-950 dark:text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">102.4 FM RMK Live</h3>
+                  <h3 className="text-2xl font-bold text-gray-950 dark:text-white">102.4 FM RMK Live</h3>
                   <p className="text-primary-400 font-semibold">Morning Devotion with Pastor Jean</p>
                   <p className="text-gray-300">1,247 listeners online</p>
                 </div>
@@ -238,9 +237,9 @@ const PodcastsPage = () => {
                   className="w-12 h-12 bg-gradient-to-r from-primary-500 to-navy-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   {playingId === 'live' ? (
-                    <Pause className="w-6 h-6 text-white" />
+                    <Pause className="w-6 h-6 text-gray-950 dark:text-white" />
                   ) : (
-                    <Play className="w-6 h-6 text-white ml-1" />
+                    <Play className="w-6 h-6 text-gray-950 dark:text-white ml-1" />
                   )}
                 </button>
               </div>
@@ -254,7 +253,7 @@ const PodcastsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <h2 className="text-2xl font-bold text-white mb-6">Available Podcasts</h2>
+          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">Available Podcasts</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPodcasts.map((podcast, index) => (
               <motion.div
@@ -266,10 +265,10 @@ const PodcastsPage = () => {
               >
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
-                    <Headphones className="w-8 h-8 text-white" />
+                    <Headphones className="w-8 h-8 text-gray-950 dark:text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors mb-1">
+                    <h3 className="text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary-400 transition-colors mb-1">
                       {podcast.title}
                     </h3>
                     <p className="text-gray-400 flex items-center space-x-1">
@@ -305,7 +304,7 @@ const PodcastsPage = () => {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => togglePlay(podcast.id)}
-                    className="flex-1 py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                    className="flex-1 py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
                   >
                     {playingId === podcast.id ? (
                       <Pause className="w-5 h-5" />
@@ -319,7 +318,7 @@ const PodcastsPage = () => {
                     onClick={() => toggleFavorite(podcast.id)}
                     className={`p-3 rounded-lg transition-all duration-300 ${
                       favorites.includes(podcast.id)
-                        ? 'bg-primary-500 text-white'
+                        ? 'bg-primary-500 text-gray-950 dark:text-white'
                         : 'bg-gray-700 text-gray-400 hover:bg-gray-600'
                     }`}
                   >

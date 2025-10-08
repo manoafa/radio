@@ -1,34 +1,26 @@
 'use client';
 
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import React, { useState, useRef } from 'react';
 import { 
-  Radio, 
   Heart, 
   Users, 
   Target, 
   Eye, 
-  Star, 
   Play, 
   Calendar,
   Headphones,
   Globe,
-  Clock,
-  Mic
+  Clock
 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
-  const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
-        className="relative min-h-screen flex items-center justify-center overflow-hidden" 
-        style={{ marginLeft: '-50px', marginRight: '-50px' }}
-      >
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 animated-bg"></div>
         
@@ -91,14 +83,14 @@ export default function Home() {
                 times: [0, 0.2, 0.4, 0.6, 0.8, 1]
               }}
             >
-              <Image
+        <Image
                 src="/RMK.png"
                 alt="102.4 FM RMK Logo"
                 width={120}
                 height={120}
                 className="w-full h-full object-contain"
-                priority
-              />
+          priority
+        />
             </motion.div>
 
             {/* Main Title */}
@@ -106,7 +98,7 @@ export default function Home() {
               <h1 className="text-6xl md:text-8xl font-bold font-display gradient-text">
                 The radio that unites us
               </h1><br/>
-              <h2 className="text-2xl md:text-4xl font-semibold text-white">
+              <h2 className="text-2xl md:text-4xl font-semibold text-gray-950 dark:text-white">
                 RMK 102.4 FM
               </h2><br/>
               <p className="text-xl md:text-2xl text-gray-300">
@@ -121,7 +113,7 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+                className="px-8 py-4 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
               >
                 <Play className="w-12 h-12" />
                 <span>Listen Live</span>
@@ -130,7 +122,7 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                  className="px-8 py-6 border-2 border-white/30 text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-5"
+                  className="px-8 py-6 border-2 border-white/30 text-gray-950 dark:text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-5"
               >
                 <Calendar className="w-10 h-10" />
                 <span>View Programs</span>
@@ -144,15 +136,16 @@ export default function Home() {
               transition={{ delay: 1 }}
               className="flex items-center justify-center space-x-2 text-primary-400"
             >
-              <div className="w-3 h-3 bg-primary-500 rounded-full animate-pulse"></div>
-              <span className="font-semibold">LIVE NOW: Morning Devotion with Pastor Jean</span>
+              <div className="w-3 h-3 bg-primary-500 rounded-full animate-pulse py-6"></div>
+              <span className="font-semibold text-white">LIVE NOW: Morning Devotion with Pastor Jean</span>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* About Us Section */}
-      <section className="py-20 bg-dark-800">
+      {/* <section className="bg-dark-800" style={{ paddingTop: '80px', paddingBottom: '80px' }}> */}
+      <section className="bg-dark-800 py-20">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -165,7 +158,7 @@ export default function Home() {
               About Us
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Radio Madagasikara ho an'i Kristy (RMK) is a Christian radio station 
+              Radio Madagasikara ho an&apos;i Kristy (RMK) is a Christian radio station 
               dedicated to spreading the Gospel and strengthening the faith of 
               believers across Madagascar.
             </p>
@@ -181,7 +174,7 @@ export default function Home() {
               className="bg-gradient-to-br from-navy-500/20 to-primary-500/20 p-8 rounded-2xl border border-navy-500/30 hover:border-primary-500/50 transition-all duration-300"
             >
               <Target className="w-12 h-12 text-primary-500 mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
+              <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">Our Mission</h3>
               <p className="text-gray-300">
                 To proclaim the Gospel of Jesus Christ through radio broadcasting, 
                 providing spiritual nourishment, encouragement, and hope to all 
@@ -198,10 +191,10 @@ export default function Home() {
               className="bg-gradient-to-br from-primary-500/20 to-navy-500/20 p-8 rounded-2xl border border-primary-500/30 hover:border-navy-500/50 transition-all duration-300"
             >
               <Eye className="w-12 h-12 text-navy-500 mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
+              <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">Our Vision</h3>
               <p className="text-gray-300">
                 To be the leading Christian radio station in Madagascar, 
-                transforming lives through the power of God's Word and 
+                transforming lives through the power of God&apos;s Word and 
                 building a strong, united Christian community.
               </p>
             </motion.div>
@@ -215,7 +208,7 @@ export default function Home() {
               className="bg-gradient-to-br from-navy-500/20 to-primary-500/20 p-8 rounded-2xl border border-navy-500/30 hover:border-primary-500/50 transition-all duration-300"
             >
               <Heart className="w-12 h-12 text-primary-500 mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-4">Our Values</h3>
+              <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">Our Values</h3>
               <p className="text-gray-300">
                 Faith, Integrity, Excellence, Love, Unity, and Service. 
                 We are committed to broadcasting content that glorifies God 
@@ -293,7 +286,7 @@ export default function Home() {
                 className="bg-gradient-to-br from-navy-500/10 to-primary-500/10 p-6 rounded-xl border border-navy-500/20 hover:border-primary-500/40 transition-all duration-300 group cursor-pointer"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary-400 transition-colors">
                     {program.title}
                   </h3>
                   <Clock className="w-5 h-5 text-gray-400" />
@@ -308,7 +301,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/programs"
-              className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300"
             >
               <Calendar className="w-6 h-6" />
               <span>View Full Schedule</span>
@@ -367,10 +360,10 @@ export default function Home() {
               >
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
-                    <Headphones className="w-8 h-8 text-white" />
+                    <Headphones className="w-8 h-8 text-gray-950 dark:text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary-400 transition-colors">
                       {podcast.title}
                     </h3>
                     <p className="text-gray-400">by {podcast.speaker}</p>
@@ -380,7 +373,7 @@ export default function Home() {
                   <span>{podcast.duration}</span>
                   <span>{podcast.date}</span>
                 </div>
-                <button className="w-full py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
+                <button className="w-full py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
                   <Play className="w-5 h-5" />
                   <span>Play Now</span>
                 </button>
@@ -391,7 +384,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/podcasts"
-              className="inline-flex items-center space-x-2 px-8 py-4 border-2 border-white/30 text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300"
+              className="inline-flex items-center space-x-2 px-8 py-4 border-2 border-white/30 text-gray-950 dark:text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300"
             >
               <Headphones className="w-6 h-6" />
               <span>Browse All Podcasts</span>
@@ -451,9 +444,9 @@ export default function Home() {
                 className="text-center group"
               >
                 <div className="w-32 h-32 bg-gradient-to-br from-primary-500 to-navy-500 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <Users className="w-16 h-16 text-white" />
+                  <Users className="w-16 h-16 text-gray-950 dark:text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-2">{member.name}</h3>
                 <p className="text-primary-400 font-semibold mb-2">{member.role}</p>
                 <p className="text-gray-400 text-sm">{member.description}</p>
               </motion.div>
@@ -463,7 +456,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/team"
-              className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-navy-500 to-primary-500 text-white rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-navy-500 to-primary-500 text-gray-950 dark:text-white rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300"
             >
               <Users className="w-6 h-6" />
               <span>Meet Full Team</span>
@@ -482,10 +475,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h2 className="text-4xl md:text-6xl font-bold font-display text-white">
+            <h2 className="text-4xl md:text-6xl font-bold font-display text-gray-950 dark:text-white">
               Join Our Mission
             </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-950 dark:text-white/90 max-w-3xl mx-auto">
               Support our ministry and help us reach more people with the Gospel. 
               Your donations help us maintain our equipment and expand our reach.
             </p>
@@ -499,7 +492,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/contact"
-                className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-2"
+                className="px-8 py-4 border-2 border-white text-gray-950 dark:text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-2"
               >
                 <Globe className="w-6 h-6" />
                 <span>Contact Us</span>

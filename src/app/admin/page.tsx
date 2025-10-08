@@ -13,14 +13,11 @@ import {
   Edit,
   Trash2,
   Play,
-  Pause,
   Upload,
   Download,
   Eye,
   Mic,
-  Clock,
-  Heart,
-  Globe
+  Clock
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -78,7 +75,7 @@ const AdminDashboard = () => {
               <stat.icon className={`w-8 h-8 ${stat.color}`} />
               <span className="text-sm text-green-400 font-semibold">{stat.change}</span>
             </div>
-            <h3 className="text-2xl font-bold text-white mb-1">{stat.value}</h3>
+            <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-1">{stat.value}</h3>
             <p className="text-gray-400">{stat.title}</p>
           </motion.div>
         ))}
@@ -87,13 +84,13 @@ const AdminDashboard = () => {
       {/* Live Status */}
       <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 p-6 rounded-xl border border-primary-500/30">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-white">Live Broadcast Status</h3>
+          <h3 className="text-xl font-bold text-gray-950 dark:text-white">Live Broadcast Status</h3>
           <button
             onClick={() => setIsLive(!isLive)}
             className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
               isLive 
-                ? 'bg-red-500 text-white hover:bg-red-600' 
-                : 'bg-green-500 text-white hover:bg-green-600'
+                ? 'bg-red-500 text-gray-950 dark:text-white hover:bg-red-600' 
+                : 'bg-green-500 text-gray-950 dark:text-white hover:bg-green-600'
             }`}
           >
             {isLive ? 'Go Offline' : 'Go Live'}
@@ -101,10 +98,10 @@ const AdminDashboard = () => {
         </div>
         <div className="flex items-center space-x-4">
           <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
-            <Radio className="w-8 h-8 text-white" />
+            <Radio className="w-8 h-8 text-gray-950 dark:text-white" />
           </div>
           <div>
-            <h4 className="text-lg font-semibold text-white">Morning Devotion</h4>
+            <h4 className="text-lg font-semibold text-gray-950 dark:text-white">Morning Devotion</h4>
             <p className="text-primary-400">Host: Pastor Jean</p>
             <p className="text-gray-300">1,247 listeners online</p>
           </div>
@@ -114,12 +111,12 @@ const AdminDashboard = () => {
       {/* Recent Activity */}
       <div className="grid lg:grid-cols-2 gap-8">
         <div className="bg-dark-800 rounded-xl p-6 border border-gray-700">
-          <h3 className="text-xl font-bold text-white mb-4">Recent Programs</h3>
+          <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Recent Programs</h3>
           <div className="space-y-4">
             {recentPrograms.map((program) => (
               <div key={program.id} className="flex items-center justify-between p-4 bg-dark-700 rounded-lg">
                 <div>
-                  <h4 className="font-semibold text-white">{program.title}</h4>
+                  <h4 className="font-semibold text-gray-950 dark:text-white">{program.title}</h4>
                   <p className="text-sm text-gray-400">{program.host} • {program.time}</p>
                 </div>
                 <div className="text-right">
@@ -140,12 +137,12 @@ const AdminDashboard = () => {
         </div>
 
         <div className="bg-dark-800 rounded-xl p-6 border border-gray-700">
-          <h3 className="text-xl font-bold text-white mb-4">Recent Podcasts</h3>
+          <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Recent Podcasts</h3>
           <div className="space-y-4">
             {recentPodcasts.map((podcast) => (
               <div key={podcast.id} className="flex items-center justify-between p-4 bg-dark-700 rounded-lg">
                 <div>
-                  <h4 className="font-semibold text-white">{podcast.title}</h4>
+                  <h4 className="font-semibold text-gray-950 dark:text-white">{podcast.title}</h4>
                   <p className="text-sm text-gray-400">{podcast.speaker} • {podcast.duration}</p>
                 </div>
                 <div className="text-right">
@@ -163,8 +160,8 @@ const AdminDashboard = () => {
   const renderPrograms = () => (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white">Program Management</h2>
-        <button className="px-4 py-2 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2">
+        <h2 className="text-2xl font-bold text-gray-950 dark:text-white">Program Management</h2>
+        <button className="px-4 py-2 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2">
           <Plus className="w-5 h-5" />
           <span>Add Program</span>
         </button>
@@ -188,7 +185,7 @@ const AdminDashboard = () => {
                   <td className="px-6 py-4">
                     <div className="flex items-center space-x-3">
                       <Mic className="w-5 h-5 text-primary-400" />
-                      <span className="font-medium text-white">{program.title}</span>
+                      <span className="font-medium text-gray-950 dark:text-white">{program.title}</span>
                     </div>
                   </td>
                   <td className="px-6 py-4 text-gray-300">{program.host}</td>
@@ -204,10 +201,10 @@ const AdminDashboard = () => {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex space-x-2">
-                      <button className="p-2 text-gray-400 hover:text-white transition-colors">
+                      <button className="p-2 text-gray-400 hover:text-gray-950 dark:text-white transition-colors">
                         <Edit className="w-4 h-4" />
                       </button>
-                      <button className="p-2 text-gray-400 hover:text-white transition-colors">
+                      <button className="p-2 text-gray-400 hover:text-gray-950 dark:text-white transition-colors">
                         <Eye className="w-4 h-4" />
                       </button>
                       <button className="p-2 text-red-400 hover:text-red-300 transition-colors">
@@ -227,8 +224,8 @@ const AdminDashboard = () => {
   const renderPodcasts = () => (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white">Podcast Management</h2>
-        <button className="px-4 py-2 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2">
+        <h2 className="text-2xl font-bold text-gray-950 dark:text-white">Podcast Management</h2>
+        <button className="px-4 py-2 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2">
           <Upload className="w-5 h-5" />
           <span>Upload Podcast</span>
         </button>
@@ -239,10 +236,10 @@ const AdminDashboard = () => {
           <div key={podcast.id} className="bg-dark-800 rounded-xl p-6 border border-gray-700">
             <div className="flex items-center space-x-4 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
-                <Headphones className="w-6 h-6 text-white" />
+                <Headphones className="w-6 h-6 text-gray-950 dark:text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-white">{podcast.title}</h3>
+                <h3 className="font-bold text-gray-950 dark:text-white">{podcast.title}</h3>
                 <p className="text-sm text-gray-400">{podcast.speaker}</p>
               </div>
             </div>
@@ -257,11 +254,11 @@ const AdminDashboard = () => {
               </div>
             </div>
             <div className="flex space-x-2">
-              <button className="flex-1 py-2 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
+              <button className="flex-1 py-2 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
                 <Play className="w-4 h-4" />
                 <span>Play</span>
               </button>
-              <button className="p-2 text-gray-400 hover:text-white transition-colors">
+              <button className="p-2 text-gray-400 hover:text-gray-950 dark:text-white transition-colors">
                 <Edit className="w-4 h-4" />
               </button>
             </div>
@@ -274,8 +271,8 @@ const AdminDashboard = () => {
   const renderTeam = () => (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white">Team Management</h2>
-        <button className="px-4 py-2 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2">
+        <h2 className="text-2xl font-bold text-gray-950 dark:text-white">Team Management</h2>
+        <button className="px-4 py-2 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2">
           <Plus className="w-5 h-5" />
           <span>Add Member</span>
         </button>
@@ -286,10 +283,10 @@ const AdminDashboard = () => {
           <div key={member.id} className="bg-dark-800 rounded-xl p-6 border border-gray-700">
             <div className="flex items-center space-x-4 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-navy-500 rounded-full flex items-center justify-center">
-                <Users className="w-6 h-6 text-white" />
+                <Users className="w-6 h-6 text-gray-950 dark:text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-white">{member.name}</h3>
+                <h3 className="font-bold text-gray-950 dark:text-white">{member.name}</h3>
                 <p className="text-sm text-gray-400">{member.role}</p>
               </div>
             </div>
@@ -304,7 +301,7 @@ const AdminDashboard = () => {
               <span className="text-xs text-gray-500">{member.lastActive}</span>
             </div>
             <div className="flex space-x-2">
-              <button className="flex-1 py-2 bg-gradient-to-r from-navy-500 to-primary-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+              <button className="flex-1 py-2 bg-gradient-to-r from-navy-500 to-primary-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
                 Edit
               </button>
               <button className="p-2 text-red-400 hover:text-red-300 transition-colors">
@@ -319,18 +316,18 @@ const AdminDashboard = () => {
 
   const renderSettings = () => (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white">Settings</h2>
+      <h2 className="text-2xl font-bold text-gray-950 dark:text-white">Settings</h2>
       
       <div className="grid lg:grid-cols-2 gap-8">
         <div className="bg-dark-800 rounded-xl p-6 border border-gray-700">
-          <h3 className="text-xl font-bold text-white mb-4">Broadcast Settings</h3>
+          <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Broadcast Settings</h3>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-semibold text-gray-300 mb-2">Station Name</label>
               <input
                 type="text"
                 defaultValue="Radio Madagasikara ho an'i Kristy"
-                className="w-full p-3 bg-dark-700 border border-gray-600 rounded-lg text-white focus:border-primary-500 focus:outline-none"
+                className="w-full p-3 bg-dark-700 border border-gray-600 rounded-lg text-gray-950 dark:text-white focus:border-primary-500 focus:outline-none"
               />
             </div>
             <div>
@@ -338,7 +335,7 @@ const AdminDashboard = () => {
               <input
                 type="text"
                 defaultValue="102.4 FM"
-                className="w-full p-3 bg-dark-700 border border-gray-600 rounded-lg text-white focus:border-primary-500 focus:outline-none"
+                className="w-full p-3 bg-dark-700 border border-gray-600 rounded-lg text-gray-950 dark:text-white focus:border-primary-500 focus:outline-none"
               />
             </div>
             <div>
@@ -346,14 +343,14 @@ const AdminDashboard = () => {
               <input
                 type="url"
                 defaultValue="https://stream.rmk.mg/live"
-                className="w-full p-3 bg-dark-700 border border-gray-600 rounded-lg text-white focus:border-primary-500 focus:outline-none"
+                className="w-full p-3 bg-dark-700 border border-gray-600 rounded-lg text-gray-950 dark:text-white focus:border-primary-500 focus:outline-none"
               />
             </div>
           </div>
         </div>
 
         <div className="bg-dark-800 rounded-xl p-6 border border-gray-700">
-          <h3 className="text-xl font-bold text-white mb-4">General Settings</h3>
+          <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">General Settings</h3>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-gray-300">Maintenance Mode</span>
@@ -404,8 +401,8 @@ const AdminDashboard = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 flex items-center justify-center space-x-2 px-4 py-3 rounded-md font-semibold transition-all duration-300 ${
                 activeTab === tab.id
-                  ? 'bg-primary-500 text-white'
-                  : 'text-gray-400 hover:text-white hover:bg-dark-700'
+                  ? 'bg-primary-500 text-gray-950 dark:text-white'
+                  : 'text-gray-400 hover:text-gray-950 dark:text-white hover:bg-dark-700'
               }`}
             >
               <tab.icon className="w-5 h-5" />

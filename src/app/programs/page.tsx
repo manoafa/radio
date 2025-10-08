@@ -1,19 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Calendar, 
-  Clock, 
   Play, 
   Pause, 
   Radio, 
-  Users, 
   Mic,
   ChevronLeft,
   ChevronRight,
   Grid3X3,
-  List,
   Clock3
 } from 'lucide-react';
 
@@ -32,7 +29,7 @@ interface Program {
 
 const ProgramsPage = () => {
   const [view, setView] = useState<'month' | 'week' | 'day'>('week');
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate] = useState(new Date());
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -44,7 +41,7 @@ const ProgramsPage = () => {
       host: 'Pastor Jean',
       startTime: '06:00',
       endTime: '07:00',
-      description: 'Start your day with prayer, worship, and God\'s Word. Join us for a time of spiritual reflection and encouragement.',
+      description: 'Start your day with prayer, worship, and God&apos;s Word. Join us for a time of spiritual reflection and encouragement.',
       category: 'Devotion',
       isLive: true,
       listeners: 1247
@@ -88,7 +85,7 @@ const ProgramsPage = () => {
       host: 'Pastor Sarah',
       startTime: '20:00',
       endTime: '21:00',
-      description: 'Building strong Christian families through God\'s Word. Practical advice and biblical wisdom.',
+      description: 'Building strong Christian families through God&apos;s Word. Practical advice and biblical wisdom.',
       category: 'Family',
       isLive: false,
       listeners: 0
@@ -139,7 +136,7 @@ const ProgramsPage = () => {
     return slots;
   };
 
-  const timeSlots = getTimeSlots();
+  // const timeSlots = getTimeSlots();
 
   return (
     <div className="min-h-screen bg-dark-900 pt-20">
@@ -171,7 +168,7 @@ const ProgramsPage = () => {
               onClick={() => setView('month')}
               className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                 view === 'month'
-                  ? 'bg-primary-500 text-white'
+                  ? 'bg-primary-500 text-gray-950 dark:text-white'
                   : 'bg-navy-500/20 text-gray-300 hover:bg-navy-500/40'
               }`}
             >
@@ -182,7 +179,7 @@ const ProgramsPage = () => {
               onClick={() => setView('week')}
               className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                 view === 'week'
-                  ? 'bg-primary-500 text-white'
+                  ? 'bg-primary-500 text-gray-950 dark:text-white'
                   : 'bg-navy-500/20 text-gray-300 hover:bg-navy-500/40'
               }`}
             >
@@ -193,7 +190,7 @@ const ProgramsPage = () => {
               onClick={() => setView('day')}
               className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                 view === 'day'
-                  ? 'bg-primary-500 text-white'
+                  ? 'bg-primary-500 text-gray-950 dark:text-white'
                   : 'bg-navy-500/20 text-gray-300 hover:bg-navy-500/40'
               }`}
             >
@@ -203,16 +200,16 @@ const ProgramsPage = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <button className="p-2 text-gray-400 hover:text-white">
+            <button className="p-2 text-gray-400 hover:text-gray-950 dark:text-white">
               <ChevronLeft className="w-6 h-6" />
             </button>
-            <span className="text-white font-semibold">
+            <span className="text-gray-950 dark:text-white font-semibold">
               {currentDate.toLocaleDateString('en-US', { 
                 month: 'long', 
                 year: 'numeric' 
               })}
             </span>
-            <button className="p-2 text-gray-400 hover:text-white">
+            <button className="p-2 text-gray-400 hover:text-gray-950 dark:text-white">
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
@@ -225,16 +222,16 @@ const ProgramsPage = () => {
           transition={{ delay: 0.4 }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-bold text-white mb-4">Now Playing</h2>
+          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">Now Playing</h2>
           {getCurrentProgram() ? (
             <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 p-6 rounded-xl border border-primary-500/30">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
-                    <Radio className="w-8 h-8 text-white" />
+                    <Radio className="w-8 h-8 text-gray-950 dark:text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">
+                    <h3 className="text-2xl font-bold text-gray-950 dark:text-white">
                       {getCurrentProgram()?.title}
                     </h3>
                     <p className="text-primary-400 font-semibold">
@@ -257,9 +254,9 @@ const ProgramsPage = () => {
                     className="w-12 h-12 bg-gradient-to-r from-primary-500 to-navy-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     {isPlaying ? (
-                      <Pause className="w-6 h-6 text-white" />
+                      <Pause className="w-6 h-6 text-gray-950 dark:text-white" />
                     ) : (
-                      <Play className="w-6 h-6 text-white ml-1" />
+                      <Play className="w-6 h-6 text-gray-950 dark:text-white ml-1" />
                     )}
                   </button>
                 </div>
@@ -279,7 +276,7 @@ const ProgramsPage = () => {
           transition={{ delay: 0.6 }}
           className="bg-dark-800 rounded-xl p-6"
         >
-          <h2 className="text-2xl font-bold text-white mb-6">Today's Schedule</h2>
+          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">Today&apos;s Schedule</h2>
           
           <div className="space-y-4">
             {programs.map((program, index) => (
@@ -294,10 +291,10 @@ const ProgramsPage = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
-                      <Mic className="w-6 h-6 text-white" />
+                      <Mic className="w-6 h-6 text-gray-950 dark:text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors">
+                      <h3 className="text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary-400 transition-colors">
                         {program.title}
                       </h3>
                       <p className="text-gray-400">Host: {program.host}</p>
@@ -340,9 +337,9 @@ const ProgramsPage = () => {
               >
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-navy-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <Radio className="w-10 h-10 text-white" />
+                    <Radio className="w-10 h-10 text-gray-950 dark:text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-2">
                     {selectedProgram.title}
                   </h3>
                   <p className="text-primary-400 font-semibold">
@@ -353,13 +350,13 @@ const ProgramsPage = () => {
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between">
                     <span className="text-gray-400">Time:</span>
-                    <span className="text-white">
+                    <span className="text-gray-950 dark:text-white">
                       {formatTime(selectedProgram.startTime)} - {formatTime(selectedProgram.endTime)}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Category:</span>
-                    <span className="text-white">{selectedProgram.category}</span>
+                    <span className="text-gray-950 dark:text-white">{selectedProgram.category}</span>
                   </div>
                   {selectedProgram.isLive && (
                     <div className="flex justify-between">
@@ -378,7 +375,7 @@ const ProgramsPage = () => {
                 <div className="flex space-x-4">
                   <button
                     onClick={() => setIsPlaying(!isPlaying)}
-                    className="flex-1 py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                    className="flex-1 py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
                   >
                     {isPlaying ? (
                       <Pause className="w-5 h-5" />

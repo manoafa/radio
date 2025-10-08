@@ -9,7 +9,6 @@ import {
   Volume2, 
   VolumeX, 
   Maximize2, 
-  Radio, 
   Heart,
   Share2,
   Download
@@ -22,7 +21,7 @@ const StickyPlayer = () => {
   const [currentTime, setCurrentTime] = useState('00:00');
   const [duration, setDuration] = useState('00:00');
   const [isExpanded, setIsExpanded] = useState(false);
-  const [currentShow, setCurrentShow] = useState({
+  const [currentShow] = useState({
     title: "Morning Devotion",
     host: "Pastor Jean",
     listeners: 1247
@@ -70,7 +69,7 @@ const StickyPlayer = () => {
       <motion.div
         initial={{ y: 100 }}
         animate={{ y: 0 }}
-        className="fixed bottom-0 left-0 right-0 z-40 bg-dark-800/95 backdrop-blur-md border-t border-navy-500/20"
+        className="fixed bottom-0 left-0 right-0 border-cyan-600/30 backdrop-blur-md border-t border-navy-500/20"
       >
         {/* Hidden audio element */}
         <audio
@@ -93,7 +92,7 @@ const StickyPlayer = () => {
           }}
         />
 
-        <div className="w-full mx-[100px] py-3">
+        <div className="w-full">
           <div className="flex items-center justify-between w-full">
             {/* Station Info */}
             <div className="flex items-center space-x-4">
@@ -101,12 +100,12 @@ const StickyPlayer = () => {
                 whileHover={{ scale: 1.05 }}
                 className="relative"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center shadow-lg p-1">
+                <div className="w-40 h-20 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center shadow-lg p-2">
                   <Image
                     src="/RMK.png"
                     alt="102.4 FM RMK Logo"
-                    width={40}
-                    height={40}
+                    width={48}
+                    height={48}
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -116,7 +115,7 @@ const StickyPlayer = () => {
               </motion.div>
               
               <div className="hidden sm:block">
-                <h3 className="font-bold text-white">102.4 FM</h3>
+                <h3 className="font-bold text-gray-950 dark:text-white">102.4 Mhz</h3>
                 <p className="text-sm text-gray-400">
                   {isPlaying ? `Now Playing: ${currentShow.title}` : 'RMK'}
                 </p>
@@ -129,24 +128,24 @@ const StickyPlayer = () => {
             </div>
 
             {/* Controls */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
               {/* Play/Pause Button */}
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={togglePlayPause}
-                className="w-12 h-12 bg-gradient-to-r from-primary-500 to-navy-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-16 h-16 bg-gradient-to-r from-primary-500 to-navy-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {isPlaying ? (
-                  <Pause className="w-6 h-6 text-white" />
+                  <Pause className="w-8 h-8 text-gray-950 dark:text-white" />
                 ) : (
-                  <Play className="w-6 h-6 text-white ml-1" />
+                  <Play className="w-8 h-8 text-gray-950 dark:text-white ml-1" />
                 )}
               </motion.button>
 
               {/* Volume Control */}
               <div className="hidden md:flex items-center space-x-2">
-                <button onClick={toggleMute} className="text-gray-400 hover:text-white">
+                <button onClick={toggleMute} className="text-gray-400 hover:text-gray-950 dark:hover:text-white">
                   {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
                 </button>
                 <input
@@ -160,25 +159,25 @@ const StickyPlayer = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-3">
                 <motion.button
                   whileHover={{ scale: 1.1 }}
-                  className="p-2 text-gray-400 hover:text-primary-500 transition-colors"
+                  className="p-3 text-gray-400 hover:text-primary-500 transition-colors"
                 >
-                  <Heart className="w-5 h-5" />
+                  <Heart className="w-6 h-6" />
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
-                  className="p-2 text-gray-400 hover:text-primary-500 transition-colors"
+                  className="p-3 text-gray-400 hover:text-primary-500 transition-colors"
                 >
-                  <Share2 className="w-5 h-5" />
+                  <Share2 className="w-6 h-6" />
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="p-2 text-gray-400 hover:text-primary-500 transition-colors"
+                  className="p-3 text-gray-400 hover:text-primary-500 transition-colors"
                 >
-                  <Maximize2 className="w-5 h-5" />
+                  <Maximize2 className="w-6 h-6" />
                 </motion.button>
               </div>
             </div>
@@ -191,7 +190,7 @@ const StickyPlayer = () => {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                className="mt-4 pt-4 border-t border-navy-500/20"
+                className="mt-6 pt-6 border-t border-navy-500/20 px-4"
               >
                 <div className="flex items-center justify-between w-full">
                 <div className="flex items-center space-x-4">
@@ -205,7 +204,7 @@ const StickyPlayer = () => {
                     />
                   </div>
                     <div>
-                      <h4 className="font-bold text-white">{currentShow.title}</h4>
+                      <h4 className="font-bold text-gray-950 dark:text-white">{currentShow.title}</h4>
                       <p className="text-sm text-gray-400">Host: {currentShow.host}</p>
                       <p className="text-xs text-primary-400">{currentShow.listeners} listeners online</p>
                     </div>
@@ -214,13 +213,13 @@ const StickyPlayer = () => {
                   <div className="flex items-center space-x-4">
                     <div className="text-center">
                       <p className="text-sm text-gray-400">Time</p>
-                      <p className="text-white font-mono">{currentTime}</p>
+                      <p className="text-gray-950 dark:text-white font-mono">{currentTime}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-sm text-gray-400">Duration</p>
-                      <p className="text-white font-mono">{duration}</p>
+                      <p className="text-gray-950 dark:text-white font-mono">{duration}</p>
                     </div>
-                    <button className="px-4 py-2 bg-navy-500 text-white rounded-lg hover:bg-navy-600 transition-colors">
+                    <button className="px-4 py-2 bg-navy-500 text-gray-950 dark:text-white rounded-lg hover:bg-navy-600 transition-colors">
                       <Download className="w-4 h-4 inline mr-2" />
                       Download
                     </button>

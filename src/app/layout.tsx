@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-dark-900 text-white`}
+        className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-dark-900 text-gray-950 dark:text-white`}
       >
         <Navigation />
         <main className="min-h-screen">

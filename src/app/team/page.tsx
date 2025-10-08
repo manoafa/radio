@@ -6,12 +6,9 @@ import {
   Users, 
   Mail, 
   Phone, 
-  MapPin, 
   Calendar,
   Award,
-  Heart,
   Radio,
-  Mic,
   Music,
   BookOpen,
   Globe
@@ -220,7 +217,7 @@ const TeamPage = () => {
               onClick={() => setSelectedDepartment(dept)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 ${
                 selectedDepartment === dept
-                  ? 'bg-primary-500 text-white'
+                  ? 'bg-primary-500 text-gray-950 dark:text-white'
                   : 'bg-navy-500/20 text-gray-300 hover:bg-navy-500/40'
               }`}
             >
@@ -250,9 +247,9 @@ const TeamPage = () => {
             >
               <div className="text-center mb-4">
                 <div className={`w-24 h-24 bg-gradient-to-br ${getDepartmentColor(member.department)} rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
-                  <Users className="w-12 h-12 text-white" />
+                  <Users className="w-12 h-12 text-gray-950 dark:text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors mb-1">
+                <h3 className="text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary-400 transition-colors mb-1">
                   {member.name}
                 </h3>
                 <p className="text-primary-400 font-semibold mb-2">{member.role}</p>
@@ -301,9 +298,9 @@ const TeamPage = () => {
               >
                 <div className="text-center mb-6">
                   <div className={`w-32 h-32 bg-gradient-to-br ${getDepartmentColor(selectedMember.department)} rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg`}>
-                    <Users className="w-16 h-16 text-white" />
+                    <Users className="w-16 h-16 text-gray-950 dark:text-white" />
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-2">
+                  <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">
                     {selectedMember.name}
                   </h3>
                   <p className="text-primary-400 font-semibold text-lg mb-1">
@@ -317,7 +314,7 @@ const TeamPage = () => {
 
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-xl font-bold text-white mb-3">About</h4>
+                    <h4 className="text-xl font-bold text-gray-950 dark:text-white mb-3">About</h4>
                     <p className="text-gray-300 leading-relaxed">
                       {selectedMember.bio}
                     </p>
@@ -325,7 +322,7 @@ const TeamPage = () => {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h4 className="text-lg font-bold text-white mb-3">Contact Information</h4>
+                      <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Contact Information</h4>
                       <div className="space-y-2">
                         <div className="flex items-center space-x-2 text-gray-300">
                           <Mail className="w-4 h-4 text-primary-400" />
@@ -339,7 +336,7 @@ const TeamPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="text-lg font-bold text-white mb-3">Experience</h4>
+                      <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Experience</h4>
                       <div className="flex items-center space-x-2 text-gray-300">
                         <Calendar className="w-4 h-4 text-primary-400" />
                         <span>{selectedMember.experience}</span>
@@ -348,7 +345,7 @@ const TeamPage = () => {
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-3">Specialties</h4>
+                    <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Specialties</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedMember.specialties.map((specialty, index) => (
                         <span
@@ -363,7 +360,7 @@ const TeamPage = () => {
 
                   {selectedMember.social && (
                     <div>
-                      <h4 className="text-lg font-bold text-white mb-3">Social Media</h4>
+                      <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Social Media</h4>
                       <div className="flex space-x-4">
                         {selectedMember.social.facebook && (
                           <a
@@ -403,7 +400,7 @@ const TeamPage = () => {
                 <div className="mt-8 pt-6 border-t border-gray-700">
                   <button
                     onClick={() => setSelectedMember(null)}
-                    className="w-full py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                    className="w-full py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
                   >
                     Close
                   </button>
