@@ -75,7 +75,7 @@ const DonatePage = () => {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-dark-900 pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-900 pt-20 flex items-center justify-center">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -85,7 +85,7 @@ const DonatePage = () => {
             <CheckCircle className="w-12 h-12 text-gray-950 dark:text-white" />
           </div>
           <h1 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">Thank You!</h1>
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-700 dark:text-gray-300 mb-6">
             Your donation has been received. Thank you for supporting our ministry 
             and helping us spread the Gospel across Madagascar.
           </p>
@@ -105,7 +105,7 @@ const DonatePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-dark-900 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-900 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div
@@ -116,7 +116,7 @@ const DonatePage = () => {
           <h1 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-4">
             Support Our Ministry
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             Your generous donations help us maintain our equipment, create quality 
             programs, and reach more people with the Gospel across Madagascar.
           </p>
@@ -128,7 +128,7 @@ const DonatePage = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-dark-800 rounded-xl p-8 border border-navy-500/30"
+            className="bg-white dark:bg-dark-800 rounded-xl p-8 border border-gray-200 dark:border-navy-500/30 shadow-sm dark:shadow-none"
           >
             <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">Make a Donation</h2>
 
@@ -146,7 +146,7 @@ const DonatePage = () => {
                     className={`p-4 rounded-lg border-2 transition-all duration-300 ${
                       selectedAmount === amount
                         ? 'border-primary-500 bg-primary-500/20 text-primary-400'
-                        : 'border-gray-600 bg-dark-700 text-gray-300 hover:border-primary-500/50'
+                        : 'border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-dark-700 text-gray-800 dark:text-gray-300 hover:border-primary-500/50'
                     }`}
                   >
                     {formatAmount(amount)}
@@ -163,9 +163,9 @@ const DonatePage = () => {
                     setCustomAmount(e.target.value);
                     setSelectedAmount(null);
                   }}
-                  className="w-full p-4 bg-dark-700 border border-gray-600 rounded-lg text-gray-950 dark:text-white placeholder-gray-400 focus:border-primary-500 focus:outline-none"
+                  className="w-full p-4 bg-white dark:bg-dark-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-primary-500 focus:outline-none"
                 />
-                <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400">
                   MGA
                 </span>
               </div>
@@ -182,11 +182,11 @@ const DonatePage = () => {
                     className={`w-full p-4 rounded-lg border-2 transition-all duration-300 flex items-center space-x-4 ${
                       selectedMethod === method.id
                         ? 'border-primary-500 bg-primary-500/20'
-                        : 'border-gray-600 bg-dark-700 hover:border-primary-500/50'
+                        : 'border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-dark-700 hover:border-primary-500/50'
                     }`}
                   >
                     <method.icon className={`w-6 h-6 ${
-                      selectedMethod === method.id ? 'text-primary-400' : 'text-gray-400'
+                      selectedMethod === method.id ? 'text-primary-400' : 'text-gray-600 dark:text-gray-400'
                     }`} />
                     <div className="text-left">
                       <p className={`font-semibold ${
@@ -194,7 +194,7 @@ const DonatePage = () => {
                       }`}>
                         {method.name}
                       </p>
-                      <p className="text-sm text-gray-400">{method.description}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{method.description}</p>
                     </div>
                   </button>
                 ))}
@@ -203,16 +203,16 @@ const DonatePage = () => {
 
             {/* Donation Summary */}
             {(selectedAmount || customAmount) && (
-              <div className="mb-8 p-4 bg-navy-500/20 rounded-lg border border-navy-500/30">
+              <div className="mb-8 p-4 bg-navy-500/10 dark:bg-dark-700 rounded-lg border border-navy-200 dark:border-navy-500/40">
                 <h3 className="text-lg font-semibold text-gray-950 dark:text-white mb-2">Donation Summary</h3>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Amount:</span>
+                  <span className="text-gray-700 dark:text-gray-300">Amount:</span>
                   <span className="text-xl font-bold text-primary-400">
                     {formatAmount(selectedAmount || parseInt(customAmount) || 0)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center mt-2">
-                  <span className="text-gray-300">Payment Method:</span>
+                  <span className="text-gray-700 dark:text-gray-300">Payment Method:</span>
                   <span className="text-gray-950 dark:text-white">
                     {paymentMethods.find(m => m.id === selectedMethod)?.name}
                   </span>
@@ -240,7 +240,7 @@ const DonatePage = () => {
             </button>
 
             {/* Security Notice */}
-            <div className="mt-6 flex items-center space-x-2 text-sm text-gray-400">
+            <div className="mt-6 flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
               <Shield className="w-4 h-4" />
               <span>Your donation is secure and encrypted</span>
             </div>
@@ -262,7 +262,7 @@ const DonatePage = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 + index * 0.1 }}
-                    className="bg-gradient-to-r from-navy-500/10 to-primary-500/10 p-6 rounded-xl border border-navy-500/20 hover:border-primary-500/40 transition-all duration-300"
+                    className="bg-white dark:bg-dark-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary-500/40 dark:hover:border-primary-500/40 transition-all duration-300 shadow-sm dark:shadow-none"
                   >
                     <div className="flex items-start space-x-4">
                       <div className={`w-12 h-12 bg-gradient-to-br ${area.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
@@ -270,7 +270,7 @@ const DonatePage = () => {
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-2">{area.title}</h3>
-                        <p className="text-gray-300">{area.description}</p>
+                        <p className="text-gray-700 dark:text-gray-300">{area.description}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -279,9 +279,9 @@ const DonatePage = () => {
             </div>
 
             {/* Monthly Giving */}
-            <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 p-6 rounded-xl border border-primary-500/30">
+            <div className="bg-orange-50 dark:bg-dark-800 p-6 rounded-xl border border-primary-200 dark:border-primary-500/30">
               <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Consider Monthly Giving</h3>
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
                 Monthly donations provide consistent support for our ministry and help us plan for the future.
               </p>
               <button className="px-6 py-3 bg-gradient-to-r from-navy-500 to-primary-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
@@ -290,9 +290,9 @@ const DonatePage = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="bg-dark-800 p-6 rounded-xl border border-gray-700">
+            <div className="bg-white dark:bg-dark-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
               <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Other Ways to Give</h3>
-              <div className="space-y-3 text-gray-300">
+              <div className="space-y-3 text-gray-700 dark:text-gray-300">
                 <p><strong>Bank Transfer:</strong></p>
                 <p>Account: Radio Madagasikara ho an&apos;i Kristy</p>
                 <p>Bank: Bank of Madagascar</p>

@@ -139,7 +139,7 @@ const ProgramsPage = () => {
   // const timeSlots = getTimeSlots();
 
   return (
-    <div className="min-h-screen bg-dark-900 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-900 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div
@@ -150,7 +150,7 @@ const ProgramsPage = () => {
           <h1 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-4">
             Program Schedule
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             Discover our diverse range of Christian programs designed to inspire, 
             educate, and strengthen your faith.
           </p>
@@ -169,7 +169,7 @@ const ProgramsPage = () => {
               className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                 view === 'month'
                   ? 'bg-primary-500 text-gray-950 dark:text-white'
-                  : 'bg-navy-500/20 text-gray-300 hover:bg-navy-500/40'
+                  : 'bg-navy-500/10 dark:bg-navy-500/20 text-gray-800 dark:text-gray-300 hover:bg-navy-500/30 dark:hover:bg-navy-500/40'
               }`}
             >
               <Calendar className="w-5 h-5" />
@@ -180,7 +180,7 @@ const ProgramsPage = () => {
               className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                 view === 'week'
                   ? 'bg-primary-500 text-gray-950 dark:text-white'
-                  : 'bg-navy-500/20 text-gray-300 hover:bg-navy-500/40'
+                  : 'bg-navy-500/10 dark:bg-navy-500/20 text-gray-800 dark:text-gray-300 hover:bg-navy-500/30 dark:hover:bg-navy-500/40'
               }`}
             >
               <Grid3X3 className="w-5 h-5" />
@@ -191,7 +191,7 @@ const ProgramsPage = () => {
               className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                 view === 'day'
                   ? 'bg-primary-500 text-gray-950 dark:text-white'
-                  : 'bg-navy-500/20 text-gray-300 hover:bg-navy-500/40'
+                  : 'bg-navy-500/10 dark:bg-navy-500/20 text-gray-800 dark:text-gray-300 hover:bg-navy-500/30 dark:hover:bg-navy-500/40'
               }`}
             >
               <Clock3 className="w-5 h-5" />
@@ -200,7 +200,7 @@ const ProgramsPage = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <button className="p-2 text-gray-400 hover:text-gray-950 dark:text-white">
+            <button className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
               <ChevronLeft className="w-6 h-6" />
             </button>
             <span className="text-gray-950 dark:text-white font-semibold">
@@ -209,7 +209,7 @@ const ProgramsPage = () => {
                 year: 'numeric' 
               })}
             </span>
-            <button className="p-2 text-gray-400 hover:text-gray-950 dark:text-white">
+            <button className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
@@ -224,7 +224,7 @@ const ProgramsPage = () => {
         >
           <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">Now Playing</h2>
           {getCurrentProgram() ? (
-            <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 p-6 rounded-xl border border-primary-500/30">
+            <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 dark:from-dark-800 dark:to-dark-900 p-6 rounded-xl border border-primary-200 dark:border-primary-500/30">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
@@ -237,14 +237,14 @@ const ProgramsPage = () => {
                     <p className="text-primary-400 font-semibold">
                       Host: {getCurrentProgram()?.host}
                     </p>
-                    <p className="text-gray-300">
+                    <p className="text-gray-700 dark:text-gray-300">
                       {formatTime(getCurrentProgram()?.startTime || '')} - {formatTime(getCurrentProgram()?.endTime || '')}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="text-center">
-                    <p className="text-sm text-gray-400">Listeners</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Listeners</p>
                     <p className="text-xl font-bold text-primary-400">
                       {getCurrentProgram()?.listeners}
                     </p>
@@ -263,8 +263,8 @@ const ProgramsPage = () => {
               </div>
             </div>
           ) : (
-            <div className="bg-dark-800 p-6 rounded-xl border border-gray-700 text-center">
-              <p className="text-gray-400">No program is currently airing</p>
+            <div className="bg-white dark:bg-dark-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center shadow-sm dark:shadow-none">
+              <p className="text-gray-600 dark:text-gray-400">No program is currently airing</p>
             </div>
           )}
         </motion.div>
@@ -274,7 +274,7 @@ const ProgramsPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="bg-dark-800 rounded-xl p-6"
+          className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none"
         >
           <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">Today&apos;s Schedule</h2>
           
@@ -286,7 +286,7 @@ const ProgramsPage = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
                 onClick={() => setSelectedProgram(program)}
-                className="bg-gradient-to-r from-navy-500/10 to-primary-500/10 p-4 rounded-lg border border-navy-500/20 hover:border-primary-500/40 transition-all duration-300 cursor-pointer group"
+                className="bg-gray-100 dark:bg-dark-700 p-4 rounded-lg border border-gray-200 dark:border-navy-500/40 hover:border-primary-500/50 dark:hover:border-primary-400/50 transition-all duration-300 cursor-pointer group"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
@@ -297,14 +297,14 @@ const ProgramsPage = () => {
                       <h3 className="text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary-400 transition-colors">
                         {program.title}
                       </h3>
-                      <p className="text-gray-400">Host: {program.host}</p>
+                      <p className="text-gray-600 dark:text-gray-400">Host: {program.host}</p>
                     </div>
                   </div>
                   <div className="text-right">
                     <p className="text-primary-400 font-semibold">
                       {formatTime(program.startTime)} - {formatTime(program.endTime)}
                     </p>
-                    <p className="text-sm text-gray-400">{program.category}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{program.category}</p>
                     {program.isLive && (
                       <div className="flex items-center space-x-1 mt-1">
                         <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
@@ -333,7 +333,7 @@ const ProgramsPage = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="bg-dark-800 rounded-xl p-6 max-w-md w-full border border-navy-500/30"
+                className="bg-white dark:bg-dark-800 rounded-xl p-6 max-w-md w-full border border-gray-200 dark:border-navy-500/30"
               >
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-navy-500 rounded-full mx-auto mb-4 flex items-center justify-center">
@@ -368,7 +368,7 @@ const ProgramsPage = () => {
                   )}
                 </div>
 
-                <p className="text-gray-300 mb-6 text-sm leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                   {selectedProgram.description}
                 </p>
 
@@ -386,7 +386,7 @@ const ProgramsPage = () => {
                   </button>
                   <button
                     onClick={() => setSelectedProgram(null)}
-                    className="px-6 py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                    className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
                   >
                     Close
                   </button>

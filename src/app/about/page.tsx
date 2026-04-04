@@ -105,10 +105,10 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-dark-900 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-900 pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 animated-bg"></div>
+      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-orange-100 via-blue-100 to-orange-100 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900">
+        <div className="absolute inset-0 animated-bg opacity-60 dark:opacity-100"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -119,7 +119,7 @@ const AboutPage = () => {
             <h1 className="text-5xl md:text-7xl font-bold font-display gradient-text mb-6">
               About RMK
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
               Radio Madagasikara ho an&apos;i Kristy (RMK) is more than just a radio station. 
               We are a ministry dedicated to spreading the Gospel, strengthening believers, 
               and transforming communities across Madagascar through the power of Christian broadcasting.
@@ -129,7 +129,7 @@ const AboutPage = () => {
       </section>
 
       {/* Mission, Vision, Values */}
-      <section className="py-20 bg-dark-800">
+      <section className="py-20 bg-white dark:bg-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
             {/* Mission */}
@@ -142,7 +142,7 @@ const AboutPage = () => {
             >
               <Target className="w-16 h-16 text-primary-500 mb-6" />
               <h2 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">Our Mission</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 To proclaim the Gospel of Jesus Christ through radio broadcasting, providing 
                 spiritual nourishment, encouragement, and hope to all people across Madagascar. 
                 We are committed to building up the body of Christ and reaching the lost with 
@@ -160,7 +160,7 @@ const AboutPage = () => {
             >
               <Eye className="w-16 h-16 text-navy-500 mb-6" />
               <h2 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">Our Vision</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 To be the leading Christian radio station in Madagascar, transforming lives 
                 through the power of God&apos;s Word and building a strong, united Christian 
                 community. We envision a Madagascar where every person has access to 
@@ -178,7 +178,7 @@ const AboutPage = () => {
             >
               <Heart className="w-16 h-16 text-primary-500 mb-6" />
               <h2 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">Our Values</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 Faith, Integrity, Excellence, Love, Unity, and Service. We are committed 
                 to broadcasting content that glorifies God and edifies His people. Every 
                 program, every song, and every word spoken reflects our dedication to 
@@ -206,11 +206,11 @@ const AboutPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-dark-700 p-6 rounded-xl border border-gray-700 hover:border-primary-500/50 transition-all duration-300"
+                  className="bg-gray-100 dark:bg-dark-700 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary-500/50 transition-all duration-300"
                 >
                   <value.icon className="w-12 h-12 text-primary-500 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-3">{value.title}</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">{value.description}</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{value.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -219,7 +219,7 @@ const AboutPage = () => {
       </section>
 
       {/* Our Story */}
-      <section className="py-20 bg-dark-900">
+      <section className="py-20 bg-gray-50 dark:bg-dark-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -231,7 +231,7 @@ const AboutPage = () => {
             <h2 className="text-4xl font-bold font-display gradient-text mb-6">
               Our Story
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
               From humble beginnings to becoming Madagascar&apos;s premier Christian radio station, 
               discover the journey that has shaped our ministry.
             </p>
@@ -255,7 +255,7 @@ const AboutPage = () => {
                     <div className="bg-gradient-to-br from-navy-500/10 to-primary-500/10 p-6 rounded-xl border border-navy-500/20">
                       <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-2">{milestone.title}</h3>
                       <p className="text-primary-400 font-semibold text-lg mb-3">{milestone.year}</p>
-                      <p className="text-gray-300">{milestone.description}</p>
+                      <p className="text-gray-700 dark:text-gray-300">{milestone.description}</p>
                     </div>
                   </div>
                   
@@ -272,7 +272,7 @@ const AboutPage = () => {
       </section>
 
       {/* Leadership */}
-      <section className="py-20 bg-dark-800">
+      <section className="py-20 bg-white dark:bg-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -284,7 +284,7 @@ const AboutPage = () => {
             <h2 className="text-4xl font-bold font-display gradient-text mb-6">
               Our Leadership
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
               Meet the dedicated leaders who guide our ministry and ensure that every 
               broadcast reflects our commitment to spreading God&apos;s love.
             </p>
@@ -305,7 +305,7 @@ const AboutPage = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-2">{leader.name}</h3>
                 <p className="text-primary-400 font-semibold text-lg mb-4">{leader.role}</p>
-                <p className="text-gray-300 leading-relaxed">{leader.bio}</p>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{leader.bio}</p>
               </motion.div>
             ))}
           </div>
@@ -313,7 +313,7 @@ const AboutPage = () => {
       </section>
 
       {/* Impact */}
-      <section className="py-20 bg-dark-900">
+      <section className="py-20 bg-gray-50 dark:bg-dark-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -325,7 +325,7 @@ const AboutPage = () => {
             <h2 className="text-4xl font-bold font-display gradient-text mb-6">
               Our Impact
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
               Through God&apos;s grace, we have been able to touch countless lives across Madagascar 
               and beyond. Here are some of the ways we&apos;re making a difference.
             </p>
@@ -343,7 +343,7 @@ const AboutPage = () => {
                 <Radio className="w-10 h-10 text-gray-950 dark:text-white" />
               </div>
               <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">50,000+</h3>
-              <p className="text-gray-300">Daily Listeners</p>
+              <p className="text-gray-700 dark:text-gray-300">Daily Listeners</p>
             </motion.div>
 
             <motion.div
@@ -357,7 +357,7 @@ const AboutPage = () => {
                 <Globe className="w-10 h-10 text-gray-950 dark:text-white" />
               </div>
               <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">22</h3>
-              <p className="text-gray-300">Regions Covered</p>
+              <p className="text-gray-700 dark:text-gray-300">Regions Covered</p>
             </motion.div>
 
             <motion.div
@@ -371,7 +371,7 @@ const AboutPage = () => {
                 <Mic className="w-10 h-10 text-gray-950 dark:text-white" />
               </div>
               <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">24/7</h3>
-              <p className="text-gray-300">Broadcasting</p>
+              <p className="text-gray-700 dark:text-gray-300">Broadcasting</p>
             </motion.div>
 
             <motion.div
@@ -385,7 +385,7 @@ const AboutPage = () => {
                 <Heart className="w-10 h-10 text-gray-950 dark:text-white" />
               </div>
               <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">14+</h3>
-              <p className="text-gray-300">Years of Service</p>
+              <p className="text-gray-700 dark:text-gray-300">Years of Service</p>
             </motion.div>
           </div>
         </div>
@@ -401,10 +401,10 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h2 className="text-4xl md:text-6xl font-bold font-display text-gray-950 dark:text-white">
+            <h2 className="text-4xl md:text-6xl font-bold font-display text-white">
               Join Our Mission
             </h2>
-            <p className="text-xl text-gray-950 dark:text-white/90 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Be part of our journey as we continue to spread the Gospel and transform 
               lives across Madagascar. Your support helps us reach more people with 
               the message of hope and salvation.
@@ -414,7 +414,7 @@ const AboutPage = () => {
                 <Heart className="w-6 h-6" />
                 <span>Support Our Ministry</span>
               </button>
-              <button className="px-8 py-4 border-2 border-white text-gray-950 dark:text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-2">
+              <button className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-2">
                 <Radio className="w-6 h-6" />
                 <span>Listen Live</span>
               </button>

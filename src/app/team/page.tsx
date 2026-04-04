@@ -186,7 +186,7 @@ const TeamPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-dark-900 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-900 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div
@@ -197,7 +197,7 @@ const TeamPage = () => {
           <h1 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-4">
             Meet Our Team
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             Dedicated servants of God working together to spread His message 
             across Madagascar. Each team member brings unique gifts and talents 
             to serve our community.
@@ -218,7 +218,7 @@ const TeamPage = () => {
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 ${
                 selectedDepartment === dept
                   ? 'bg-primary-500 text-gray-950 dark:text-white'
-                  : 'bg-navy-500/20 text-gray-300 hover:bg-navy-500/40'
+                  : 'bg-navy-500/10 dark:bg-navy-500/20 text-gray-800 dark:text-gray-300 hover:bg-navy-500/30 dark:hover:bg-navy-500/40'
               }`}
             >
               {getDepartmentIcon(dept)}
@@ -243,7 +243,7 @@ const TeamPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               onClick={() => setSelectedMember(member)}
-              className="bg-gradient-to-br from-navy-500/10 to-primary-500/10 p-6 rounded-xl border border-navy-500/20 hover:border-primary-500/40 transition-all duration-300 cursor-pointer group"
+              className="p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary-500/40 dark:hover:border-primary-500/40 transition-all duration-300 cursor-pointer group shadow-sm dark:shadow-none bg-white dark:bg-dark-800"
             >
               <div className="text-center mb-4">
                 <div className={`w-24 h-24 bg-gradient-to-br ${getDepartmentColor(member.department)} rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
@@ -253,13 +253,13 @@ const TeamPage = () => {
                   {member.name}
                 </h3>
                 <p className="text-primary-400 font-semibold mb-2">{member.role}</p>
-                <div className="flex items-center justify-center space-x-1 text-sm text-gray-400">
+                <div className="flex items-center justify-center space-x-1 text-sm text-gray-600 dark:text-gray-400">
                   {getDepartmentIcon(member.department)}
                   <span className="capitalize">{member.department}</span>
                 </div>
               </div>
 
-              <div className="space-y-2 text-sm text-gray-300">
+              <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                 <div className="flex items-center space-x-2">
                   <Calendar className="w-4 h-4 text-primary-400" />
                   <span>{member.experience} experience</span>
@@ -270,7 +270,7 @@ const TeamPage = () => {
                 </div>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-gray-700">
+              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <p className="text-xs text-gray-400 line-clamp-2">
                   {member.bio}
                 </p>
@@ -294,7 +294,7 @@ const TeamPage = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="bg-dark-800 rounded-xl p-8 max-w-2xl w-full border border-navy-500/30 max-h-[90vh] overflow-y-auto"
+                className="bg-white dark:bg-dark-800 rounded-xl p-8 max-w-2xl w-full border border-gray-200 dark:border-navy-500/30 max-h-[90vh] overflow-y-auto"
               >
                 <div className="text-center mb-6">
                   <div className={`w-32 h-32 bg-gradient-to-br ${getDepartmentColor(selectedMember.department)} rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg`}>
@@ -306,7 +306,7 @@ const TeamPage = () => {
                   <p className="text-primary-400 font-semibold text-lg mb-1">
                     {selectedMember.role}
                   </p>
-                  <div className="flex items-center justify-center space-x-1 text-gray-400">
+                  <div className="flex items-center justify-center space-x-1 text-gray-600 dark:text-gray-400">
                     {getDepartmentIcon(selectedMember.department)}
                     <span className="capitalize">{selectedMember.department}</span>
                   </div>
@@ -315,7 +315,7 @@ const TeamPage = () => {
                 <div className="space-y-6">
                   <div>
                     <h4 className="text-xl font-bold text-gray-950 dark:text-white mb-3">About</h4>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                       {selectedMember.bio}
                     </p>
                   </div>
@@ -324,11 +324,11 @@ const TeamPage = () => {
                     <div>
                       <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Contact Information</h4>
                       <div className="space-y-2">
-                        <div className="flex items-center space-x-2 text-gray-300">
+                        <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
                           <Mail className="w-4 h-4 text-primary-400" />
                           <span>{selectedMember.email}</span>
                         </div>
-                        <div className="flex items-center space-x-2 text-gray-300">
+                        <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
                           <Phone className="w-4 h-4 text-primary-400" />
                           <span>{selectedMember.phone}</span>
                         </div>
@@ -337,7 +337,7 @@ const TeamPage = () => {
 
                     <div>
                       <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Experience</h4>
-                      <div className="flex items-center space-x-2 text-gray-300">
+                      <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
                         <Calendar className="w-4 h-4 text-primary-400" />
                         <span>{selectedMember.experience}</span>
                       </div>
@@ -350,7 +350,7 @@ const TeamPage = () => {
                       {selectedMember.specialties.map((specialty, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-navy-500/20 text-navy-300 rounded-full text-sm"
+                          className="px-3 py-1 bg-navy-500/10 dark:bg-navy-500/20 text-navy-800 dark:text-navy-300 rounded-full text-sm"
                         >
                           {specialty}
                         </span>
@@ -397,7 +397,7 @@ const TeamPage = () => {
                   )}
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-gray-700">
+                <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <button
                     onClick={() => setSelectedMember(null)}
                     className="w-full py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"

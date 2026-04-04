@@ -5,13 +5,24 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Radio, Home, Calendar, Headphones, Users, Heart, Globe, Sun, Moon } from 'lucide-react';
+import { useTheme } from '@/app/context/ThemeContext';
+import { useLanguage, type Language } from '@/app/context/LanguageContext';
+
+const LANG_OPTIONS: { code: Language; flag: string; name: string; label: string }[] = [
+  { code: 'en', flag: '/US.png', name: 'English', label: 'EN' },
+  { code: 'fr', flag: '/FR.png', name: 'Français', label: 'FR' },
+  { code: 'mg', flag: '/MG.png', name: 'Malagasy', label: 'MG' },
+];
 
 const Navigation = () => {
+  const { theme, toggleTheme } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState('EN');
-  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const isDarkMode = theme === 'dark';
+  const langLabel = LANG_OPTIONS.find((l) => l.code === language)?.label ?? 'EN';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,45 +45,14 @@ const Navigation = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isLangOpen]);
 
-  // Initialize theme from localStorage
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = savedTheme === 'dark';
-    setIsDarkMode(prefersDark);
-    if (prefersDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  // Toggle theme
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    if (newTheme) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
-
   const navItems = [
-    { name: 'Home', href: '/', icon: Home },
-    { name: 'About Us', href: '/about', icon: Radio },
-    { name: 'Programs', href: '/programs', icon: Calendar },
-    { name: 'Podcasts', href: '/podcasts', icon: Headphones },
-    { name: 'Team', href: '/team', icon: Users },
-    { name: 'Donate', href: '/donate', icon: Heart },
-  ];
-
-  const languages = [
-    { code: 'EN', flag: '/US.png', name: 'English' },
-    { code: 'FR', flag: '/FR.png', name: 'Français' },
-    { code: 'MG', flag: '/MG.png', name: 'Malagasy' },
-  ];
+    { nameKey: 'nav.home', href: '/', icon: Home },
+    { nameKey: 'nav.about', href: '/about', icon: Radio },
+    { nameKey: 'nav.programs', href: '/programs', icon: Calendar },
+    { nameKey: 'nav.podcasts', href: '/podcasts', icon: Headphones },
+    { nameKey: 'nav.team', href: '/team', icon: Users },
+    { nameKey: 'nav.donate', href: '/donate', icon: Heart },
+  ] as const;
 
   return (
     <motion.nav
@@ -112,12 +92,12 @@ const Navigation = () => {
           <div className="hidden md:flex items-center" style={{ gap: '25px' }}>
             {navItems.map((item) => (
               <Link
-                key={item.name}
+                key={item.nameKey}
                 href={item.href}
                 className="flex items-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 group"
               >
                 <item.icon className="w-8 group-hover:text-primary-500 transition-colors" />
-                <span className="font-medium">{item.name}</span>
+                <span className="font-medium">{t(item.nameKey)}</span>
               </Link>
             ))}
           </div>
@@ -131,7 +111,7 @@ const Navigation = () => {
                 className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-gray-300 rounded-lg hover:border border-gray-300 transition-colors"
               >
                 <Globe className="w-5 h-5" />
-                <span className="text-sm font-medium">{selectedLang}</span>
+                <span className="text-sm font-medium">{langLabel}</span>
               </button>
 
               {/* Language Dropdown */}
@@ -143,15 +123,16 @@ const Navigation = () => {
                     exit={{ opacity: 0, y: -10 }}
                     className="absolute right-0 mt-2 w-48 backdrop-blur-lg border border-gray-300 dark:border-navy-500/30 rounded-lg shadow-2xl overflow-hidden z-50"
                   >
-                    {languages.map((lang) => (
+                    {LANG_OPTIONS.map((lang) => (
                       <button
                         key={lang.code}
+                        type="button"
                         onClick={() => {
-                          setSelectedLang(lang.code);
+                          setLanguage(lang.code);
                           setIsLangOpen(false);
                         }}
                         className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
-                          selectedLang === lang.code
+                          language === lang.code
                             ? 'border border-gray-300 dark:border-navy-500/30 text-gray-900 dark:text-white'
                             : 'text-gray-600 dark:text-gray-300 hover:border border-gray-300 hover:text-gray-900 dark:hover:text-white'
                         }`}
@@ -164,7 +145,7 @@ const Navigation = () => {
                           className="object-contain"
                         />
                         <span className="font-medium">{lang.name}</span>
-                        <span className="text-sm text-gray-400 ml-auto">{lang.code}</span>
+                        <span className="text-sm text-gray-400 ml-auto">{lang.label}</span>
                       </button>
                     ))}
                   </motion.div>
@@ -174,9 +155,10 @@ const Navigation = () => {
 
             {/* Theme Toggle */}
             <button
+              type="button"
               onClick={toggleTheme}
               className="hidden sm:flex items-center justify-center p-2.5 text-gray-700 dark:text-gray-300 rounded-lg hover:border border-gray-300 dark:hover:bg-navy-500/40 transition-colors"
-              aria-label="Toggle theme"
+              aria-label={isDarkMode ? t('ui.lightMode') : t('ui.darkMode')}
             >
               <motion.div
                 initial={{ rotate: 0 }}
@@ -210,7 +192,7 @@ const Navigation = () => {
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
                 <motion.div
-                  key={item.name}
+                  key={item.nameKey}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -221,7 +203,7 @@ const Navigation = () => {
                     className="flex items-center space-x-3 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 group py-2"
                   >
                     <item.icon className="w-5 h-5 group-hover:text-primary-500 transition-colors" />
-                    <span className="font-medium">{item.name}</span>
+                    <span className="font-medium">{t(item.nameKey)}</span>
                   </Link>
                 </motion.div>
               ))}
@@ -230,15 +212,16 @@ const Navigation = () => {
               <div className="pt-4 border-t border-gray-300 dark:border-navy-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <Globe className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                  <span className="text-sm text-gray-600 dark:text-gray-400">Language:</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">{t('ui.language')}:</span>
                 </div>
                 <div className="space-y-2">
-                  {languages.map((lang) => (
+                  {LANG_OPTIONS.map((lang) => (
                     <button
                       key={lang.code}
-                      onClick={() => setSelectedLang(lang.code)}
+                      type="button"
+                      onClick={() => setLanguage(lang.code)}
                       className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
-                        selectedLang === lang.code
+                        language === lang.code
                           ? 'border border-gray-300 dark:border-navy-500/30 text-gray-900 dark:text-white'
                           : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-navy-500/20 hover:text-gray-900 dark:hover:text-white'
                       }`}
@@ -251,7 +234,7 @@ const Navigation = () => {
                         className="object-contain"
                       />
                       <span className="font-medium">{lang.name}</span>
-                      <span className="text-xs text-gray-400 ml-auto">{lang.code}</span>
+                      <span className="text-xs text-gray-400 ml-auto">{lang.label}</span>
                     </button>
                   ))}
                 </div>
@@ -261,9 +244,10 @@ const Navigation = () => {
               <div className="pt-4 border-t border-gray-300 dark:border-navy-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   {isDarkMode ? <Moon className="w-4 h-4 text-gray-500 dark:text-gray-400" /> : <Sun className="w-4 h-4 text-gray-500 dark:text-gray-400" />}
-                  <span className="text-sm text-gray-600 dark:text-gray-400">Theme:</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">{t('ui.theme')}:</span>
                 </div>
                 <button
+                  type="button"
                   onClick={toggleTheme}
                   className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors hover:bg-gray-300 dark:hover:bg-navy-500/30 text-gray-900 dark:text-white"
                 >
@@ -273,7 +257,9 @@ const Navigation = () => {
                   >
                     {isDarkMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
                   </motion.div>
-                  <span className="font-medium">{isDarkMode ? 'Dark Mode' : 'Light Mode'}</span>
+                  <span className="font-medium">
+                    {isDarkMode ? t('ui.darkMode') : t('ui.lightMode')}
+                  </span>
                 </button>
               </div>
             </div>

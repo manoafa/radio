@@ -69,7 +69,7 @@ const AdminDashboard = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-gradient-to-br from-navy-500/10 to-primary-500/10 p-6 rounded-xl border border-navy-500/20"
+            className="bg-white dark:bg-gradient-to-br dark:from-navy-500/10 dark:to-primary-500/10 p-6 rounded-xl border border-gray-200 dark:border-navy-500/20 shadow-sm dark:shadow-none"
           >
             <div className="flex items-center justify-between mb-4">
               <stat.icon className={`w-8 h-8 ${stat.color}`} />
@@ -103,18 +103,18 @@ const AdminDashboard = () => {
           <div>
             <h4 className="text-lg font-semibold text-gray-950 dark:text-white">Morning Devotion</h4>
             <p className="text-primary-400">Host: Pastor Jean</p>
-            <p className="text-gray-300">1,247 listeners online</p>
+            <p className="text-gray-700 dark:text-gray-300">1,247 listeners online</p>
           </div>
         </div>
       </div>
 
       {/* Recent Activity */}
       <div className="grid lg:grid-cols-2 gap-8">
-        <div className="bg-dark-800 rounded-xl p-6 border border-gray-700">
+        <div className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
           <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Recent Programs</h3>
           <div className="space-y-4">
             {recentPrograms.map((program) => (
-              <div key={program.id} className="flex items-center justify-between p-4 bg-dark-700 rounded-lg">
+              <div key={program.id} className="flex items-center justify-between p-4 bg-gray-100 dark:bg-dark-700 rounded-lg">
                 <div>
                   <h4 className="font-semibold text-gray-950 dark:text-white">{program.title}</h4>
                   <p className="text-sm text-gray-400">{program.host} • {program.time}</p>
@@ -136,11 +136,11 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="bg-dark-800 rounded-xl p-6 border border-gray-700">
+        <div className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
           <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Recent Podcasts</h3>
           <div className="space-y-4">
             {recentPodcasts.map((podcast) => (
-              <div key={podcast.id} className="flex items-center justify-between p-4 bg-dark-700 rounded-lg">
+              <div key={podcast.id} className="flex items-center justify-between p-4 bg-gray-100 dark:bg-dark-700 rounded-lg">
                 <div>
                   <h4 className="font-semibold text-gray-950 dark:text-white">{podcast.title}</h4>
                   <p className="text-sm text-gray-400">{podcast.speaker} • {podcast.duration}</p>
@@ -167,29 +167,29 @@ const AdminDashboard = () => {
         </button>
       </div>
 
-      <div className="bg-dark-800 rounded-xl border border-gray-700 overflow-hidden">
+      <div className="bg-white dark:bg-dark-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm dark:shadow-none">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-dark-700">
+            <thead className="bg-gray-100 dark:bg-dark-700">
               <tr>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Program</th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Host</th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Time</th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Status</th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Actions</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Program</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Host</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Time</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Status</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-700">
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               {recentPrograms.map((program) => (
-                <tr key={program.id} className="hover:bg-dark-700/50">
+                <tr key={program.id} className="hover:bg-gray-50 dark:hover:bg-dark-700/50">
                   <td className="px-6 py-4">
                     <div className="flex items-center space-x-3">
                       <Mic className="w-5 h-5 text-primary-400" />
                       <span className="font-medium text-gray-950 dark:text-white">{program.title}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-gray-300">{program.host}</td>
-                  <td className="px-6 py-4 text-gray-300">{program.time}</td>
+                  <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{program.host}</td>
+                  <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{program.time}</td>
                   <td className="px-6 py-4">
                     <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                       program.status === 'live' 
@@ -233,7 +233,7 @@ const AdminDashboard = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {recentPodcasts.map((podcast) => (
-          <div key={podcast.id} className="bg-dark-800 rounded-xl p-6 border border-gray-700">
+          <div key={podcast.id} className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
             <div className="flex items-center space-x-4 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
                 <Headphones className="w-6 h-6 text-gray-950 dark:text-white" />
@@ -243,7 +243,7 @@ const AdminDashboard = () => {
                 <p className="text-sm text-gray-400">{podcast.speaker}</p>
               </div>
             </div>
-            <div className="space-y-2 text-sm text-gray-300 mb-4">
+            <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300 mb-4">
               <div className="flex items-center space-x-2">
                 <Clock className="w-4 h-4" />
                 <span>{podcast.duration}</span>
@@ -280,7 +280,7 @@ const AdminDashboard = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {teamMembers.map((member) => (
-          <div key={member.id} className="bg-dark-800 rounded-xl p-6 border border-gray-700">
+          <div key={member.id} className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
             <div className="flex items-center space-x-4 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-navy-500 rounded-full flex items-center justify-center">
                 <Users className="w-6 h-6 text-gray-950 dark:text-white" />
@@ -319,53 +319,53 @@ const AdminDashboard = () => {
       <h2 className="text-2xl font-bold text-gray-950 dark:text-white">Settings</h2>
       
       <div className="grid lg:grid-cols-2 gap-8">
-        <div className="bg-dark-800 rounded-xl p-6 border border-gray-700">
+        <div className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
           <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Broadcast Settings</h3>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-2">Station Name</label>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Station Name</label>
               <input
                 type="text"
                 defaultValue="Radio Madagasikara ho an'i Kristy"
-                className="w-full p-3 bg-dark-700 border border-gray-600 rounded-lg text-gray-950 dark:text-white focus:border-primary-500 focus:outline-none"
+                className="w-full p-3 bg-white dark:bg-dark-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-2">Frequency</label>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Frequency</label>
               <input
                 type="text"
                 defaultValue="102.4 FM"
-                className="w-full p-3 bg-dark-700 border border-gray-600 rounded-lg text-gray-950 dark:text-white focus:border-primary-500 focus:outline-none"
+                className="w-full p-3 bg-white dark:bg-dark-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-2">Stream URL</label>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Stream URL</label>
               <input
                 type="url"
                 defaultValue="https://stream.rmk.mg/live"
-                className="w-full p-3 bg-dark-700 border border-gray-600 rounded-lg text-gray-950 dark:text-white focus:border-primary-500 focus:outline-none"
+                className="w-full p-3 bg-white dark:bg-dark-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:outline-none"
               />
             </div>
           </div>
         </div>
 
-        <div className="bg-dark-800 rounded-xl p-6 border border-gray-700">
+        <div className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
           <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">General Settings</h3>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-gray-300">Maintenance Mode</span>
+              <span className="text-gray-700 dark:text-gray-300">Maintenance Mode</span>
               <button className="w-12 h-6 bg-gray-600 rounded-full relative">
                 <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5 transition-transform"></div>
               </button>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-gray-300">Auto-Play</span>
+              <span className="text-gray-700 dark:text-gray-300">Auto-Play</span>
               <button className="w-12 h-6 bg-primary-500 rounded-full relative">
                 <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 transition-transform"></div>
               </button>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-gray-300">Email Notifications</span>
+              <span className="text-gray-700 dark:text-gray-300">Email Notifications</span>
               <button className="w-12 h-6 bg-primary-500 rounded-full relative">
                 <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 transition-transform"></div>
               </button>
@@ -377,7 +377,7 @@ const AdminDashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-dark-900 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-900 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div
@@ -388,13 +388,13 @@ const AdminDashboard = () => {
           <h1 className="text-4xl font-bold font-display gradient-text mb-2">
             Admin Dashboard
           </h1>
-          <p className="text-gray-300">
+          <p className="text-gray-700 dark:text-gray-300">
             Manage your radio station content, programs, and team members
           </p>
         </motion.div>
 
         {/* Tabs */}
-        <div className="flex space-x-1 mb-8 bg-dark-800 p-1 rounded-lg">
+        <div className="flex space-x-1 mb-8 bg-white dark:bg-dark-800 p-1 rounded-lg border border-gray-200 dark:border-transparent shadow-sm dark:shadow-none">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -402,7 +402,7 @@ const AdminDashboard = () => {
               className={`flex-1 flex items-center justify-center space-x-2 px-4 py-3 rounded-md font-semibold transition-all duration-300 ${
                 activeTab === tab.id
                   ? 'bg-primary-500 text-gray-950 dark:text-white'
-                  : 'text-gray-400 hover:text-gray-950 dark:text-white hover:bg-dark-700'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-dark-700'
               }`}
             >
               <tab.icon className="w-5 h-5" />

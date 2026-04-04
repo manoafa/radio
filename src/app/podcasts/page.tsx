@@ -159,7 +159,7 @@ const PodcastsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-dark-900 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-900 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div
@@ -170,7 +170,7 @@ const PodcastsPage = () => {
           <h1 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-4">
             Podcasts & Replays
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             Listen to our latest sermons, teachings, and inspirational content 
             anytime, anywhere.
           </p>
@@ -185,21 +185,21 @@ const PodcastsPage = () => {
         >
           <div className="flex flex-col md:flex-row gap-4 mb-6">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search podcasts..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-dark-800 border border-gray-600 rounded-lg text-gray-950 dark:text-white placeholder-gray-400 focus:border-primary-500 focus:outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-3 bg-white dark:bg-dark-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-primary-500 focus:outline-none transition-colors"
               />
             </div>
             <div className="flex items-center space-x-2">
-              <Filter className="w-5 h-5 text-gray-400" />
+              <Filter className="w-5 h-5 text-gray-500 dark:text-gray-400" />
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 bg-dark-800 border border-gray-600 rounded-lg text-gray-950 dark:text-white focus:border-primary-500 focus:outline-none transition-colors"
+                className="px-4 py-3 bg-white dark:bg-dark-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:outline-none transition-colors"
               >
                 {categories.map(category => (
                   <option key={category} value={category} className="capitalize">
@@ -219,7 +219,7 @@ const PodcastsPage = () => {
           className="mb-8"
         >
           <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">Live Now</h2>
-          <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 p-6 rounded-xl border border-primary-500/30">
+          <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 dark:from-dark-800 dark:to-dark-900 p-6 rounded-xl border border-primary-200 dark:border-primary-500/30">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
@@ -228,7 +228,7 @@ const PodcastsPage = () => {
                 <div>
                   <h3 className="text-2xl font-bold text-gray-950 dark:text-white">102.4 FM RMK Live</h3>
                   <p className="text-primary-400 font-semibold">Morning Devotion with Pastor Jean</p>
-                  <p className="text-gray-300">1,247 listeners online</p>
+                  <p className="text-gray-700 dark:text-gray-300">1,247 listeners online</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
@@ -261,7 +261,7 @@ const PodcastsPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-navy-500/10 to-primary-500/10 p-6 rounded-xl border border-navy-500/20 hover:border-primary-500/40 transition-all duration-300 group"
+                className="bg-white dark:bg-dark-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary-500/40 dark:hover:border-primary-500/40 transition-all duration-300 group shadow-sm dark:shadow-none"
               >
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-navy-500 rounded-lg flex items-center justify-center">
@@ -271,18 +271,18 @@ const PodcastsPage = () => {
                     <h3 className="text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary-400 transition-colors mb-1">
                       {podcast.title}
                     </h3>
-                    <p className="text-gray-400 flex items-center space-x-1">
+                    <p className="text-gray-600 dark:text-gray-400 flex items-center space-x-1">
                       <User className="w-4 h-4" />
                       <span>{podcast.speaker}</span>
                     </p>
                   </div>
                 </div>
 
-                <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+                <p className="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-2">
                   {podcast.description}
                 </p>
 
-                <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
+                <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
                   <div className="flex items-center space-x-4">
                     <span className="flex items-center space-x-1">
                       <Clock className="w-4 h-4" />
@@ -319,17 +319,17 @@ const PodcastsPage = () => {
                     className={`p-3 rounded-lg transition-all duration-300 ${
                       favorites.includes(podcast.id)
                         ? 'bg-primary-500 text-gray-950 dark:text-white'
-                        : 'bg-gray-700 text-gray-400 hover:bg-gray-600'
+                        : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
                     }`}
                   >
                     <Heart className={`w-5 h-5 ${favorites.includes(podcast.id) ? 'fill-current' : ''}`} />
                   </button>
                   
-                  <button className="p-3 bg-gray-700 text-gray-400 rounded-lg hover:bg-gray-600 transition-all duration-300">
+                  <button className="p-3 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300">
                     <Share2 className="w-5 h-5" />
                   </button>
                   
-                  <button className="p-3 bg-gray-700 text-gray-400 rounded-lg hover:bg-gray-600 transition-all duration-300">
+                  <button className="p-3 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300">
                     <Download className="w-5 h-5" />
                   </button>
                 </div>
@@ -339,9 +339,9 @@ const PodcastsPage = () => {
 
           {filteredPodcasts.length === 0 && (
             <div className="text-center py-12">
-              <Headphones className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-400 mb-2">No podcasts found</h3>
-              <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+              <Headphones className="w-16 h-16 text-gray-500 dark:text-gray-400 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-400 mb-2">No podcasts found</h3>
+              <p className="text-gray-600 dark:text-gray-500">Try adjusting your search or filter criteria</p>
             </div>
           )}
         </motion.div>

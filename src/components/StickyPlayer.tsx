@@ -69,7 +69,7 @@ const StickyPlayer = () => {
       <motion.div
         initial={{ y: 100 }}
         animate={{ y: 0 }}
-        className="fixed bottom-0 left-0 right-0 border-cyan-600/30 backdrop-blur-md border-t border-navy-500/20"
+        className="fixed bottom-0 left-0 right-0 z-40 bg-white/90 dark:bg-dark-900/95 backdrop-blur-md border-t border-gray-200 dark:border-navy-500/20 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_-4px_20px_rgba(0,0,0,0.3)]"
       >
         {/* Hidden audio element */}
         <audio
@@ -92,7 +92,7 @@ const StickyPlayer = () => {
           }}
         />
 
-        <div className="w-full">
+        <div className="w-full px-4 py-3">
           <div className="flex items-center justify-between w-full">
             {/* Station Info */}
             <div className="flex items-center space-x-4">
@@ -116,7 +116,7 @@ const StickyPlayer = () => {
               
               <div className="hidden sm:block">
                 <h3 className="font-bold text-gray-950 dark:text-white">102.4 Mhz</h3>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   {isPlaying ? `Now Playing: ${currentShow.title}` : 'RMK'}
                 </p>
                 {isPlaying && (
@@ -145,7 +145,7 @@ const StickyPlayer = () => {
 
               {/* Volume Control */}
               <div className="hidden md:flex items-center space-x-2">
-                <button onClick={toggleMute} className="text-gray-400 hover:text-gray-950 dark:hover:text-white">
+                <button onClick={toggleMute} className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
                   {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
                 </button>
                 <input
@@ -154,7 +154,7 @@ const StickyPlayer = () => {
                   max="100"
                   value={volume}
                   onChange={handleVolumeChange}
-                  className="w-20 h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
+                  className="w-20 h-1 bg-gray-300 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
                 />
               </div>
 
@@ -162,20 +162,20 @@ const StickyPlayer = () => {
               <div className="flex items-center space-x-3">
                 <motion.button
                   whileHover={{ scale: 1.1 }}
-                  className="p-3 text-gray-400 hover:text-primary-500 transition-colors"
+                  className="p-3 text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors"
                 >
                   <Heart className="w-6 h-6" />
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
-                  className="p-3 text-gray-400 hover:text-primary-500 transition-colors"
+                  className="p-3 text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors"
                 >
                   <Share2 className="w-6 h-6" />
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="p-3 text-gray-400 hover:text-primary-500 transition-colors"
+                  className="p-3 text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors"
                 >
                   <Maximize2 className="w-6 h-6" />
                 </motion.button>
@@ -190,7 +190,7 @@ const StickyPlayer = () => {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                className="mt-6 pt-6 border-t border-navy-500/20 px-4"
+                className="mt-6 pt-6 border-t border-gray-200 dark:border-navy-500/20 px-4"
               >
                 <div className="flex items-center justify-between w-full">
                 <div className="flex items-center space-x-4">
@@ -205,18 +205,18 @@ const StickyPlayer = () => {
                   </div>
                     <div>
                       <h4 className="font-bold text-gray-950 dark:text-white">{currentShow.title}</h4>
-                      <p className="text-sm text-gray-400">Host: {currentShow.host}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Host: {currentShow.host}</p>
                       <p className="text-xs text-primary-400">{currentShow.listeners} listeners online</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center space-x-4">
                     <div className="text-center">
-                      <p className="text-sm text-gray-400">Time</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Time</p>
                       <p className="text-gray-950 dark:text-white font-mono">{currentTime}</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-sm text-gray-400">Duration</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Duration</p>
                       <p className="text-gray-950 dark:text-white font-mono">{duration}</p>
                     </div>
                     <button className="px-4 py-2 bg-navy-500 text-gray-950 dark:text-white rounded-lg hover:bg-navy-600 transition-colors">

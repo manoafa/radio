@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import StickyPlayer from "@/components/StickyPlayer";
+import { AppProviders } from "@/app/context/AppProviders";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,15 +35,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-dark-900 text-gray-950 dark:text-white`}
+        className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-gray-50 dark:bg-dark-900 text-gray-900 dark:text-white`}
       >
-        <Navigation />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <StickyPlayer />
+        <AppProviders>
+          <Navigation />
+          <main className="min-h-screen bg-gray-50 dark:bg-dark-900">
+            {children}
+          </main>
+          <StickyPlayer />
+        </AppProviders>
       </body>
     </html>
   );
