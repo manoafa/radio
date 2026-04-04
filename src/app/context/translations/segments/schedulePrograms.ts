@@ -1,0 +1,118 @@
+import type { Language } from '../types';
+
+/** Shared program lineup: home carousel + programs schedule page */
+export const schedulePrograms: Record<Language, Record<string, string>> = {
+  en: {
+    'prog.1.title': 'Morning Devotion',
+    'prog.1.time': '6:00 AM - 7:00 AM',
+    'prog.1.host': 'Pastor Jean',
+    'prog.1.desc':
+      "Start your day with prayer, worship, and God's Word. Join us for a time of spiritual reflection and encouragement.",
+    'prog.1.cat': 'Devotion',
+    'prog.2.title': 'Women of Faith',
+    'prog.2.time': '10:00 AM - 11:00 AM',
+    'prog.2.host': 'Sister Marie',
+    'prog.2.desc':
+      'Encouraging and empowering women in their Christian journey. Topics include faith, family, and personal growth.',
+    'prog.2.cat': 'Women',
+    'prog.3.title': 'Youth Alive',
+    'prog.3.time': '4:00 PM - 5:00 PM',
+    'prog.3.host': 'Pastor David',
+    'prog.3.desc':
+      'Dynamic programs for young people seeking God. Contemporary music, relevant topics, and spiritual guidance.',
+    'prog.3.cat': 'Youth',
+    'prog.4.title': 'Evening Prayer',
+    'prog.4.time': '7:00 PM - 8:00 PM',
+    'prog.4.host': 'Pastor Paul',
+    'prog.4.desc': 'End your day in prayer and reflection. A time of peace and spiritual renewal.',
+    'prog.4.cat': 'Prayer',
+    'prog.5.title': 'Family Hour',
+    'prog.5.time': '8:00 PM - 9:00 PM',
+    'prog.5.host': 'Pastor Sarah',
+    'prog.5.desc':
+      "Building strong Christian families through God's Word. Practical advice and biblical wisdom.",
+    'prog.5.cat': 'Family',
+    'prog.6.title': 'Night Worship',
+    'prog.6.time': '9:00 PM - 10:00 PM',
+    'prog.6.host': 'Worship Team',
+    'prog.6.desc': 'End the day with praise and worship music. Uplifting songs and spiritual encouragement.',
+    'prog.6.cat': 'Worship',
+    'prog.worshipTeam': 'Worship Team',
+  },
+  fr: {
+    'prog.1.title': 'Dévotion du matin',
+    'prog.1.time': '06h00 - 07h00',
+    'prog.1.host': 'Pasteur Jean',
+    'prog.1.desc':
+      'Commencez la journée avec prière, louange et Parole de Dieu. Un temps de réflexion spirituelle et d\'encouragement.',
+    'prog.1.cat': 'Dévotion',
+    'prog.2.title': 'Femmes de foi',
+    'prog.2.time': '10h00 - 11h00',
+    'prog.2.host': 'Sœur Marie',
+    'prog.2.desc':
+      'Encourager et fortifier les femmes dans leur cheminement chrétien : foi, famille et épanouissement.',
+    'prog.2.cat': 'Femmes',
+    'prog.3.title': 'Jeunesse en vie',
+    'prog.3.time': '16h00 - 17h00',
+    'prog.3.host': 'Pasteur David',
+    'prog.3.desc':
+      'Des programmes dynamiques pour les jeunes en quête de Dieu : musique actuelle, sujets pertinents et accompagnement spirituel.',
+    'prog.3.cat': 'Jeunesse',
+    'prog.4.title': 'Prière du soir',
+    'prog.4.time': '19h00 - 20h00',
+    'prog.4.host': 'Pasteur Paul',
+    'prog.4.desc': 'Terminez la journée dans la prière et la méditation. Un moment de paix et de renouveau spirituel.',
+    'prog.4.cat': 'Prière',
+    'prog.5.title': 'Heure en famille',
+    'prog.5.time': '20h00 - 21h00',
+    'prog.5.host': 'Pasteur Sarah',
+    'prog.5.desc':
+      'Des familles chrétiennes solides grâce à la Parole de Dieu. Conseils pratiques et sagesse biblique.',
+    'prog.5.cat': 'Famille',
+    'prog.6.title': 'Louange de la nuit',
+    'prog.6.time': '21h00 - 22h00',
+    'prog.6.host': 'Équipe de louange',
+    'prog.6.desc':
+      'Terminez la journée avec des chants de louange. Des mélodies édifiantes et un encouragement spirituel.',
+    'prog.6.cat': 'Louange',
+    'prog.worshipTeam': 'Équipe de louange',
+  },
+  mg: {
+    'prog.1.title': 'Fivavahana maraina',
+    'prog.1.time': '6:00 AM - 7:00 AM',
+    'prog.1.host': 'Mpitora Jean',
+    'prog.1.desc':
+      'Atombohy ny andro amin\'ny vavaka, fiderana ary Tenin\'Andriamanitra. Fotoana ho an\'ny fisaintsaina ara-panahy sy fanohanana.',
+    'prog.1.cat': 'Fivavahana',
+    'prog.2.title': 'Vehivavy finoana',
+    'prog.2.time': '10:00 AM - 11:00 AM',
+    'prog.2.host': 'Ramatoa Marie',
+    'prog.2.desc':
+      'Manome fanohanana ny vehivavy amin\'ny diany kristianina. Lohahevitra momba ny finoana, ny fianakaviana ary ny fandrosoana.',
+    'prog.2.cat': 'Vehivavy',
+    'prog.3.title': 'Tanora velona',
+    'prog.3.time': '4:00 PM - 5:00 PM',
+    'prog.3.host': 'Mpitora David',
+    'prog.3.desc':
+      'Fandaharana mahery ho an\'ny tanora mitady an\'Andriamanitra. Hira ankehitriny, lohahevitra mifandraika ary fanampiana ara-panahy.',
+    'prog.3.cat': 'Tanora',
+    'prog.4.title': 'Vavaka hariva',
+    'prog.4.time': '7:00 PM - 8:00 PM',
+    'prog.4.host': 'Mpitora Paul',
+    'prog.4.desc': 'Akhio ny andro amin\'ny vavaka sy fisainana. Fahafinaretana sy fanavaozana ara-panahy.',
+    'prog.4.cat': 'Vavaka',
+    'prog.5.title': 'Ora ho an\'ny fianakaviana',
+    'prog.5.time': '8:00 PM - 9:00 PM',
+    'prog.5.host': 'Mpitora Sarah',
+    'prog.5.desc':
+      'Fampahatanjahan\'ny fianakaviana kristianina amin\'ny Tenin\'Andriamanitra. Torohevitra azo atao sy fahendrena avy amin\'ny Baiboly.',
+    'prog.5.cat': 'Fianakaviana',
+    'prog.6.title': 'Fiderana alina',
+    'prog.6.time': '9:00 PM - 10:00 PM',
+    'prog.6.host': 'Ekipa fiderana',
+    'prog.6.desc':
+      'Akhio ny andro amin\'ny hira fiderana. Hira manome fanohanana sy fanandramana ara-panahy.',
+    'prog.6.cat': 'Fiderana',
+    'prog.worshipTeam': 'Ekipa fiderana',
+  },
+};

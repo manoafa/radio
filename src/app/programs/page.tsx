@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { useLanguage } from '@/app/context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Calendar, 
@@ -28,80 +29,83 @@ interface Program {
 }
 
 const ProgramsPage = () => {
+  const { t, language } = useLanguage();
   const [view, setView] = useState<'month' | 'week' | 'day'>('week');
   const [currentDate] = useState(new Date());
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Mock program data
-  const programs: Program[] = [
-    {
-      id: '1',
-      title: 'Morning Devotion',
-      host: 'Pastor Jean',
-      startTime: '06:00',
-      endTime: '07:00',
-      description: 'Start your day with prayer, worship, and God&apos;s Word. Join us for a time of spiritual reflection and encouragement.',
-      category: 'Devotion',
-      isLive: true,
-      listeners: 1247
-    },
-    {
-      id: '2',
-      title: 'Women of Faith',
-      host: 'Sister Marie',
-      startTime: '10:00',
-      endTime: '11:00',
-      description: 'Encouraging and empowering women in their Christian journey. Topics include faith, family, and personal growth.',
-      category: 'Women',
-      isLive: false,
-      listeners: 0
-    },
-    {
-      id: '3',
-      title: 'Youth Alive',
-      host: 'Pastor David',
-      startTime: '16:00',
-      endTime: '17:00',
-      description: 'Dynamic programs for young people seeking God. Contemporary music, relevant topics, and spiritual guidance.',
-      category: 'Youth',
-      isLive: false,
-      listeners: 0
-    },
-    {
-      id: '4',
-      title: 'Evening Prayer',
-      host: 'Pastor Paul',
-      startTime: '19:00',
-      endTime: '20:00',
-      description: 'End your day in prayer and reflection. A time of peace and spiritual renewal.',
-      category: 'Prayer',
-      isLive: false,
-      listeners: 0
-    },
-    {
-      id: '5',
-      title: 'Family Hour',
-      host: 'Pastor Sarah',
-      startTime: '20:00',
-      endTime: '21:00',
-      description: 'Building strong Christian families through God&apos;s Word. Practical advice and biblical wisdom.',
-      category: 'Family',
-      isLive: false,
-      listeners: 0
-    },
-    {
-      id: '6',
-      title: 'Night Worship',
-      host: 'Worship Team',
-      startTime: '21:00',
-      endTime: '22:00',
-      description: 'End the day with praise and worship music. Uplifting songs and spiritual encouragement.',
-      category: 'Worship',
-      isLive: false,
-      listeners: 0
-    }
-  ];
+  const programs: Program[] = useMemo(
+    () => [
+      {
+        id: '1',
+        title: t('prog.1.title'),
+        host: t('prog.1.host'),
+        startTime: '06:00',
+        endTime: '07:00',
+        description: t('prog.1.desc'),
+        category: t('prog.1.cat'),
+        isLive: true,
+        listeners: 1247,
+      },
+      {
+        id: '2',
+        title: t('prog.2.title'),
+        host: t('prog.2.host'),
+        startTime: '10:00',
+        endTime: '11:00',
+        description: t('prog.2.desc'),
+        category: t('prog.2.cat'),
+        isLive: false,
+        listeners: 0,
+      },
+      {
+        id: '3',
+        title: t('prog.3.title'),
+        host: t('prog.3.host'),
+        startTime: '16:00',
+        endTime: '17:00',
+        description: t('prog.3.desc'),
+        category: t('prog.3.cat'),
+        isLive: false,
+        listeners: 0,
+      },
+      {
+        id: '4',
+        title: t('prog.4.title'),
+        host: t('prog.4.host'),
+        startTime: '19:00',
+        endTime: '20:00',
+        description: t('prog.4.desc'),
+        category: t('prog.4.cat'),
+        isLive: false,
+        listeners: 0,
+      },
+      {
+        id: '5',
+        title: t('prog.5.title'),
+        host: t('prog.5.host'),
+        startTime: '20:00',
+        endTime: '21:00',
+        description: t('prog.5.desc'),
+        category: t('prog.5.cat'),
+        isLive: false,
+        listeners: 0,
+      },
+      {
+        id: '6',
+        title: t('prog.6.title'),
+        host: t('prog.worshipTeam'),
+        startTime: '21:00',
+        endTime: '22:00',
+        description: t('prog.6.desc'),
+        category: t('prog.6.cat'),
+        isLive: false,
+        listeners: 0,
+      },
+    ],
+    [t],
+  );
 
   const getCurrentProgram = () => {
     const now = new Date();
@@ -125,18 +129,7 @@ const ProgramsPage = () => {
     return `${displayHour}:${minutes} ${ampm}`;
   };
 
-  const getTimeSlots = () => {
-    const slots = [];
-    for (let hour = 0; hour < 24; hour++) {
-      slots.push({
-        time: `${hour.toString().padStart(2, '0')}:00`,
-        display: formatTime(`${hour.toString().padStart(2, '0')}:00`)
-      });
-    }
-    return slots;
-  };
-
-  // const timeSlots = getTimeSlots();
+  const localeTag = language === 'fr' ? 'fr-FR' : language === 'mg' ? 'mg-MG' : 'en-US';
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-900 pt-20">
@@ -148,11 +141,10 @@ const ProgramsPage = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-4">
-            Program Schedule
+            {t('programs.schedule.mainTitle')}
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Discover our diverse range of Christian programs designed to inspire, 
-            educate, and strengthen your faith.
+            {t('programs.schedule.subtitle')}
           </p>
         </motion.div>
 
@@ -173,7 +165,7 @@ const ProgramsPage = () => {
               }`}
             >
               <Calendar className="w-5 h-5" />
-              <span>Month</span>
+              <span>{t('programs.schedule.month')}</span>
             </button>
             <button
               onClick={() => setView('week')}
@@ -184,7 +176,7 @@ const ProgramsPage = () => {
               }`}
             >
               <Grid3X3 className="w-5 h-5" />
-              <span>Week</span>
+              <span>{t('programs.schedule.week')}</span>
             </button>
             <button
               onClick={() => setView('day')}
@@ -195,7 +187,7 @@ const ProgramsPage = () => {
               }`}
             >
               <Clock3 className="w-5 h-5" />
-              <span>Day</span>
+              <span>{t('programs.schedule.day')}</span>
             </button>
           </div>
 
@@ -204,9 +196,9 @@ const ProgramsPage = () => {
               <ChevronLeft className="w-6 h-6" />
             </button>
             <span className="text-gray-950 dark:text-white font-semibold">
-              {currentDate.toLocaleDateString('en-US', { 
-                month: 'long', 
-                year: 'numeric' 
+              {currentDate.toLocaleDateString(localeTag, {
+                month: 'long',
+                year: 'numeric',
               })}
             </span>
             <button className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
@@ -222,7 +214,7 @@ const ProgramsPage = () => {
           transition={{ delay: 0.4 }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">Now Playing</h2>
+          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">{t('programs.schedule.nowPlaying')}</h2>
           {getCurrentProgram() ? (
             <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 dark:from-dark-800 dark:to-dark-900 p-6 rounded-xl border border-primary-200 dark:border-primary-500/30">
               <div className="flex items-center justify-between">
@@ -235,7 +227,7 @@ const ProgramsPage = () => {
                       {getCurrentProgram()?.title}
                     </h3>
                     <p className="text-primary-400 font-semibold">
-                      Host: {getCurrentProgram()?.host}
+                      {t('common.host')} {getCurrentProgram()?.host}
                     </p>
                     <p className="text-gray-700 dark:text-gray-300">
                       {formatTime(getCurrentProgram()?.startTime || '')} - {formatTime(getCurrentProgram()?.endTime || '')}
@@ -244,7 +236,7 @@ const ProgramsPage = () => {
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="text-center">
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Listeners</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{t('common.listeners')}</p>
                     <p className="text-xl font-bold text-primary-400">
                       {getCurrentProgram()?.listeners}
                     </p>
@@ -264,7 +256,7 @@ const ProgramsPage = () => {
             </div>
           ) : (
             <div className="bg-white dark:bg-dark-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center shadow-sm dark:shadow-none">
-              <p className="text-gray-600 dark:text-gray-400">No program is currently airing</p>
+              <p className="text-gray-600 dark:text-gray-400">{t('programs.schedule.noAiring')}</p>
             </div>
           )}
         </motion.div>
@@ -276,7 +268,7 @@ const ProgramsPage = () => {
           transition={{ delay: 0.6 }}
           className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none"
         >
-          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">Today&apos;s Schedule</h2>
+          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">{t('programs.schedule.todayTitle')}</h2>
           
           <div className="space-y-4">
             {programs.map((program, index) => (
@@ -297,7 +289,7 @@ const ProgramsPage = () => {
                       <h3 className="text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary-400 transition-colors">
                         {program.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400">Host: {program.host}</p>
+                      <p className="text-gray-600 dark:text-gray-400">{t('common.host')} {program.host}</p>
                     </div>
                   </div>
                   <div className="text-right">
@@ -308,7 +300,7 @@ const ProgramsPage = () => {
                     {program.isLive && (
                       <div className="flex items-center space-x-1 mt-1">
                         <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
-                        <span className="text-xs text-primary-400">LIVE</span>
+                        <span className="text-xs text-primary-400">{t('common.live')}</span>
                       </div>
                     )}
                   </div>
@@ -343,24 +335,24 @@ const ProgramsPage = () => {
                     {selectedProgram.title}
                   </h3>
                   <p className="text-primary-400 font-semibold">
-                    Host: {selectedProgram.host}
+                    {t('common.host')} {selectedProgram.host}
                   </p>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Time:</span>
+                    <span className="text-gray-400">{t('common.time')}:</span>
                     <span className="text-gray-950 dark:text-white">
                       {formatTime(selectedProgram.startTime)} - {formatTime(selectedProgram.endTime)}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Category:</span>
+                    <span className="text-gray-400">{t('common.category')}:</span>
                     <span className="text-gray-950 dark:text-white">{selectedProgram.category}</span>
                   </div>
                   {selectedProgram.isLive && (
                     <div className="flex justify-between">
-                      <span className="text-gray-400">Listeners:</span>
+                      <span className="text-gray-400">{t('common.listeners')}:</span>
                       <span className="text-primary-400 font-semibold">
                         {selectedProgram.listeners}
                       </span>
@@ -382,13 +374,13 @@ const ProgramsPage = () => {
                     ) : (
                       <Play className="w-5 h-5" />
                     )}
-                    <span>{isPlaying ? 'Pause' : 'Play'}</span>
+                    <span>{isPlaying ? t('common.pause') : t('common.play')}</span>
                   </button>
                   <button
                     onClick={() => setSelectedProgram(null)}
                     className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
                   >
-                    Close
+                    {t('common.close')}
                   </button>
                 </div>
               </motion.div>

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { useLanguage } from '@/app/context/LanguageContext';
 import { motion } from 'framer-motion';
 import { 
   Play, 
@@ -32,104 +33,108 @@ interface Podcast {
 }
 
 const PodcastsPage = () => {
+  const { t, language } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [playingId, setPlayingId] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<string[]>([]);
 
-  const categories = ['all', 'sermons', 'devotionals', 'music', 'interviews', 'youth', 'family'];
+  const categoryIds = ['all', 'sermons', 'devotionals', 'music', 'interviews', 'youth', 'family'] as const;
 
-  const podcasts: Podcast[] = [
-    {
-      id: '1',
-      title: 'The Power of Prayer',
-      speaker: 'Pastor Jean',
-      duration: '45:30',
-      date: '2024-01-15',
-      description: 'Discover the transformative power of prayer in this inspiring message about building a deeper relationship with God through communication.',
-      category: 'sermons',
-      audioUrl: '/audio/prayer-sermon.mp3',
-      isLive: false
-    },
-    {
-      id: '2',
-      title: 'Walking in Faith',
-      speaker: 'Sister Marie',
-      duration: '38:15',
-      date: '2024-01-14',
-      description: 'Learn how to walk in faith daily and trust God in every situation. Practical advice for Christian living.',
-      category: 'devotionals',
-      audioUrl: '/audio/faith-devotional.mp3',
-      isLive: false
-    },
-    {
-      id: '3',
-      title: 'God\'s Love for You',
-      speaker: 'Pastor David',
-      duration: '52:20',
-      date: '2024-01-13',
-      description: 'Understanding the depth and breadth of God\'s unconditional love for each of us.',
-      category: 'sermons',
-      audioUrl: '/audio/gods-love.mp3',
-      isLive: false
-    },
-    {
-      id: '4',
-      title: 'Youth Revival Night',
-      speaker: 'Pastor David',
-      duration: '1:25:30',
-      date: '2024-01-12',
-      description: 'A powerful night of worship and ministry for young people seeking God.',
-      category: 'youth',
-      audioUrl: '/audio/youth-revival.mp3',
-      isLive: false
-    },
-    {
-      id: '5',
-      title: 'Building Strong Families',
-      speaker: 'Pastor Sarah',
-      duration: '41:45',
-      date: '2024-01-11',
-      description: 'Biblical principles for building strong, God-centered families in today\'s world.',
-      category: 'family',
-      audioUrl: '/audio/strong-families.mp3',
-      isLive: false
-    },
-    {
-      id: '6',
-      title: 'Worship Music Collection',
-      speaker: 'Worship Team',
-      duration: '1:15:20',
-      date: '2024-01-10',
-      description: 'A beautiful collection of worship songs to lift your spirit and draw you closer to God.',
-      category: 'music',
-      audioUrl: '/audio/worship-collection.mp3',
-      isLive: false
-    },
-    {
-      id: '7',
-      title: 'Interview with Missionary John',
-      speaker: 'Pastor Jean',
-      duration: '55:10',
-      date: '2024-01-09',
-      description: 'An inspiring interview with missionary John about his work in remote areas of Madagascar.',
-      category: 'interviews',
-      audioUrl: '/audio/missionary-interview.mp3',
-      isLive: false
-    },
-    {
-      id: '8',
-      title: 'Morning Devotion - Live',
-      speaker: 'Pastor Jean',
-      duration: 'LIVE',
-      date: '2024-01-15',
-      description: 'Join us for live morning devotion and prayer. Currently airing.',
-      category: 'devotionals',
-      audioUrl: '/stream/live',
-      isLive: true,
-      listeners: 1247
-    }
-  ];
+  const podcasts: Podcast[] = useMemo(
+    () => [
+      {
+        id: '1',
+        title: t('podcasts.row.1.title'),
+        speaker: t('podcasts.row.1.speaker'),
+        duration: '45:30',
+        date: '2024-01-15',
+        description: t('podcasts.row.1.desc'),
+        category: 'sermons',
+        audioUrl: '/audio/prayer-sermon.mp3',
+        isLive: false,
+      },
+      {
+        id: '2',
+        title: t('podcasts.row.2.title'),
+        speaker: t('podcasts.row.2.speaker'),
+        duration: '38:15',
+        date: '2024-01-14',
+        description: t('podcasts.row.2.desc'),
+        category: 'devotionals',
+        audioUrl: '/audio/faith-devotional.mp3',
+        isLive: false,
+      },
+      {
+        id: '3',
+        title: t('podcasts.row.3.title'),
+        speaker: t('podcasts.row.3.speaker'),
+        duration: '52:20',
+        date: '2024-01-13',
+        description: t('podcasts.row.3.desc'),
+        category: 'sermons',
+        audioUrl: '/audio/gods-love.mp3',
+        isLive: false,
+      },
+      {
+        id: '4',
+        title: t('podcasts.row.4.title'),
+        speaker: t('podcasts.row.4.speaker'),
+        duration: '1:25:30',
+        date: '2024-01-12',
+        description: t('podcasts.row.4.desc'),
+        category: 'youth',
+        audioUrl: '/audio/youth-revival.mp3',
+        isLive: false,
+      },
+      {
+        id: '5',
+        title: t('podcasts.row.5.title'),
+        speaker: t('podcasts.row.5.speaker'),
+        duration: '41:45',
+        date: '2024-01-11',
+        description: t('podcasts.row.5.desc'),
+        category: 'family',
+        audioUrl: '/audio/strong-families.mp3',
+        isLive: false,
+      },
+      {
+        id: '6',
+        title: t('podcasts.row.6.title'),
+        speaker: t('podcasts.row.6.speaker'),
+        duration: '1:15:20',
+        date: '2024-01-10',
+        description: t('podcasts.row.6.desc'),
+        category: 'music',
+        audioUrl: '/audio/worship-collection.mp3',
+        isLive: false,
+      },
+      {
+        id: '7',
+        title: t('podcasts.row.7.title'),
+        speaker: t('podcasts.row.7.speaker'),
+        duration: '55:10',
+        date: '2024-01-09',
+        description: t('podcasts.row.7.desc'),
+        category: 'interviews',
+        audioUrl: '/audio/missionary-interview.mp3',
+        isLive: false,
+      },
+      {
+        id: '8',
+        title: t('podcasts.row.8.title'),
+        speaker: t('podcasts.row.8.speaker'),
+        duration: t('podcasts.view.durationLive'),
+        date: '2024-01-15',
+        description: t('podcasts.row.8.desc'),
+        category: 'devotionals',
+        audioUrl: '/stream/live',
+        isLive: true,
+        listeners: 1247,
+      },
+    ],
+    [t],
+  );
 
   const filteredPodcasts = podcasts.filter(podcast => {
     const matchesSearch = podcast.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -150,11 +155,13 @@ const PodcastsPage = () => {
     );
   };
 
+  const localeTag = language === 'fr' ? 'fr-FR' : language === 'mg' ? 'mg-MG' : 'en-US';
+
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString(localeTag, {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
@@ -168,11 +175,10 @@ const PodcastsPage = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-4">
-            Podcasts & Replays
+            {t('podcasts.view.pageTitle')}
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Listen to our latest sermons, teachings, and inspirational content 
-            anytime, anywhere.
+            {t('podcasts.view.pageSubtitle')}
           </p>
         </motion.div>
 
@@ -188,7 +194,7 @@ const PodcastsPage = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search podcasts..."
+                placeholder={t('podcasts.view.searchPlaceholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 bg-white dark:bg-dark-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-primary-500 focus:outline-none transition-colors"
@@ -201,9 +207,9 @@ const PodcastsPage = () => {
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="px-4 py-3 bg-white dark:bg-dark-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:border-primary-500 focus:outline-none transition-colors"
               >
-                {categories.map(category => (
+                {categoryIds.map((category) => (
                   <option key={category} value={category} className="capitalize">
-                    {category === 'all' ? 'All Categories' : category}
+                    {t(`podcasts.cat.${category}`)}
                   </option>
                 ))}
               </select>
@@ -218,7 +224,7 @@ const PodcastsPage = () => {
           transition={{ delay: 0.4 }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">Live Now</h2>
+          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-4">{t('podcasts.view.liveNow')}</h2>
           <div className="bg-gradient-to-r from-primary-500/20 to-navy-500/20 dark:from-dark-800 dark:to-dark-900 p-6 rounded-xl border border-primary-200 dark:border-primary-500/30">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
@@ -226,9 +232,9 @@ const PodcastsPage = () => {
                   <Radio className="w-8 h-8 text-gray-950 dark:text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-950 dark:text-white">102.4 FM RMK Live</h3>
-                  <p className="text-primary-400 font-semibold">Morning Devotion with Pastor Jean</p>
-                  <p className="text-gray-700 dark:text-gray-300">1,247 listeners online</p>
+                  <h3 className="text-2xl font-bold text-gray-950 dark:text-white">{t('podcasts.view.liveStation')}</h3>
+                  <p className="text-primary-400 font-semibold">{t('podcasts.view.liveSubtitle')}</p>
+                  <p className="text-gray-700 dark:text-gray-300">{t('podcasts.view.listenersCount')}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
@@ -253,7 +259,7 @@ const PodcastsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">Available Podcasts</h2>
+          <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">{t('podcasts.view.gridTitle')}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPodcasts.map((podcast, index) => (
               <motion.div
@@ -296,7 +302,7 @@ const PodcastsPage = () => {
                   {podcast.isLive && (
                     <div className="flex items-center space-x-1 text-primary-400">
                       <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs">LIVE</span>
+                      <span className="text-xs">{t('common.live')}</span>
                     </div>
                   )}
                 </div>
@@ -311,7 +317,7 @@ const PodcastsPage = () => {
                     ) : (
                       <Play className="w-5 h-5" />
                     )}
-                    <span>{playingId === podcast.id ? 'Pause' : 'Play'}</span>
+                    <span>{playingId === podcast.id ? t('common.pause') : t('common.play')}</span>
                   </button>
                   
                   <button
@@ -340,8 +346,8 @@ const PodcastsPage = () => {
           {filteredPodcasts.length === 0 && (
             <div className="text-center py-12">
               <Headphones className="w-16 h-16 text-gray-500 dark:text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-400 mb-2">No podcasts found</h3>
-              <p className="text-gray-600 dark:text-gray-500">Try adjusting your search or filter criteria</p>
+              <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-400 mb-2">{t('podcasts.view.emptyTitle')}</h3>
+              <p className="text-gray-600 dark:text-gray-500">{t('podcasts.view.emptyHint')}</p>
             </div>
           )}
         </motion.div>

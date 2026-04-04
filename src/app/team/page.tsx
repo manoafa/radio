@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { useLanguage } from '@/app/context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Users, 
@@ -33,131 +34,117 @@ interface TeamMember {
 }
 
 const TeamPage = () => {
+  const { t, language } = useLanguage();
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [selectedDepartment, setSelectedDepartment] = useState('all');
 
-  const departments = ['all', 'leadership', 'programming', 'technical', 'music', 'ministry'];
+  const departments = ['all', 'leadership', 'programming', 'technical', 'music', 'ministry'] as const;
 
-  const teamMembers: TeamMember[] = [
-    {
-      id: '1',
-      name: 'Pastor Jean Rakotoarimanana',
-      role: 'Station Director',
-      department: 'leadership',
-      bio: 'Pastor Jean has been serving in ministry for over 20 years. He founded Radio Madagasikara ho an\'i Kristy with a vision to reach every corner of Madagascar with the Gospel. His passion for evangelism and discipleship drives the station\'s mission.',
-      email: 'jean@rmk.mg',
-      phone: '+261 34 12 345 67',
-      experience: '20+ years',
-      specialties: ['Leadership', 'Evangelism', 'Discipleship', 'Vision Casting'],
-      social: {
-        facebook: 'pastor.jean.rmk',
-        twitter: '@pastorjeanrmk'
-      }
-    },
-    {
-      id: '2',
-      name: 'Sister Marie Andriamalala',
-      role: 'Program Coordinator',
-      department: 'programming',
-      bio: 'Sister Marie oversees all program content and ensures that every broadcast aligns with our Christian values. She has a gift for creating engaging content that speaks to people\'s hearts.',
-      email: 'marie@rmk.mg',
-      phone: '+261 34 12 345 68',
-      experience: '15 years',
-      specialties: ['Content Creation', 'Program Planning', 'Women\'s Ministry', 'Community Outreach'],
-      social: {
-        facebook: 'marie.andriamalala',
-        instagram: '@marie_rmk'
-      }
-    },
-    {
-      id: '3',
-      name: 'Pastor David Randrianarivelo',
-      role: 'Youth Minister',
-      department: 'ministry',
-      bio: 'Pastor David has a heart for young people and leads our youth programs. His dynamic preaching style and contemporary approach help connect with the next generation of believers.',
-      email: 'david@rmk.mg',
-      phone: '+261 34 12 345 69',
-      experience: '12 years',
-      specialties: ['Youth Ministry', 'Contemporary Worship', 'Social Media', 'Event Planning'],
-      social: {
-        facebook: 'david.randrianarivelo',
-        twitter: '@davidrmk',
-        instagram: '@david_rmk'
-      }
-    },
-    {
-      id: '4',
-      name: 'Pastor Sarah Rasoanaivo',
-      role: 'Family Counselor',
-      department: 'ministry',
-      bio: 'Pastor Sarah specializes in family ministry and counseling. She hosts our family programs and provides biblical guidance for building strong Christian families.',
-      email: 'sarah@rmk.mg',
-      phone: '+261 34 12 345 70',
-      experience: '18 years',
-      specialties: ['Family Counseling', 'Marriage Ministry', 'Children\'s Programs', 'Biblical Counseling'],
-      social: {
-        facebook: 'sarah.rasoanaivo'
-      }
-    },
-    {
-      id: '5',
-      name: 'Brother Paul Rakotondrabe',
-      role: 'Technical Director',
-      department: 'technical',
-      bio: 'Brother Paul ensures our technical operations run smoothly. He manages our broadcasting equipment and keeps us connected to listeners across Madagascar.',
-      email: 'paul@rmk.mg',
-      phone: '+261 34 12 345 71',
-      experience: '10 years',
-      specialties: ['Broadcasting Technology', 'Equipment Maintenance', 'Signal Management', 'IT Support'],
-      social: {
-        facebook: 'paul.rakotondrabe'
-      }
-    },
-    {
-      id: '6',
-      name: 'Sister Esther Ravelojaona',
-      role: 'Music Director',
-      department: 'music',
-      bio: 'Sister Esther leads our worship team and music programs. Her beautiful voice and musical talent help create an atmosphere of worship and praise.',
-      email: 'esther@rmk.mg',
-      phone: '+261 34 12 345 72',
-      experience: '8 years',
-      specialties: ['Worship Leading', 'Music Production', 'Choir Direction', 'Song Writing'],
-      social: {
-        facebook: 'esther.ravelojaona',
-        instagram: '@esther_rmk'
-      }
-    },
-    {
-      id: '7',
-      name: 'Brother Thomas Andriamanjato',
-      role: 'Prayer Coordinator',
-      department: 'ministry',
-      bio: 'Brother Thomas leads our prayer ministry and intercessory programs. He believes in the power of prayer and helps coordinate prayer requests from listeners.',
-      email: 'thomas@rmk.mg',
-      phone: '+261 34 12 345 73',
-      experience: '14 years',
-      specialties: ['Prayer Ministry', 'Intercession', 'Spiritual Warfare', 'Discipleship'],
-      social: {
-        facebook: 'thomas.andriamanjato'
-      }
-    },
-    {
-      id: '8',
-      name: 'Sister Grace Ranaivo',
-      role: 'Community Outreach Coordinator',
-      department: 'programming',
-      bio: 'Sister Grace coordinates our community outreach programs and partnerships with local churches. She helps us stay connected with our listeners and their needs.',
-      email: 'grace@rmk.mg',
-      phone: '+261 34 12 345 74',
-      experience: '6 years',
-      specialties: ['Community Outreach', 'Church Partnerships', 'Event Coordination', 'Volunteer Management'],
-      social: {
-        facebook: 'grace.ranaivo',
-        instagram: '@grace_rmk'
-      }
-    }
-  ];
+  const teamMembers: TeamMember[] = useMemo(
+    () => [
+      {
+        id: '1',
+        name: 'Pastor Jean Rakotoarimanana',
+        role: t('team.m1.role'),
+        department: 'leadership',
+        bio: t('team.m1.bio'),
+        email: 'jean@rmk.mg',
+        phone: '+261 34 12 345 67',
+        experience: t('team.m1.exp'),
+        specialties: [1, 2, 3, 4].map((s) => t(`team.m1.sp${s}`)),
+        social: { facebook: 'pastor.jean.rmk', twitter: '@pastorjeanrmk' },
+      },
+      {
+        id: '2',
+        name: 'Sister Marie Andriamalala',
+        role: t('team.m2.role'),
+        department: 'programming',
+        bio: t('team.m2.bio'),
+        email: 'marie@rmk.mg',
+        phone: '+261 34 12 345 68',
+        experience: t('team.m2.exp'),
+        specialties: [1, 2, 3, 4].map((s) => t(`team.m2.sp${s}`)),
+        social: { facebook: 'marie.andriamalala', instagram: '@marie_rmk' },
+      },
+      {
+        id: '3',
+        name: 'Pastor David Randrianarivelo',
+        role: t('team.m3.role'),
+        department: 'ministry',
+        bio: t('team.m3.bio'),
+        email: 'david@rmk.mg',
+        phone: '+261 34 12 345 69',
+        experience: t('team.m3.exp'),
+        specialties: [1, 2, 3, 4].map((s) => t(`team.m3.sp${s}`)),
+        social: {
+          facebook: 'david.randrianarivelo',
+          twitter: '@davidrmk',
+          instagram: '@david_rmk',
+        },
+      },
+      {
+        id: '4',
+        name: 'Pastor Sarah Rasoanaivo',
+        role: t('team.m4.role'),
+        department: 'ministry',
+        bio: t('team.m4.bio'),
+        email: 'sarah@rmk.mg',
+        phone: '+261 34 12 345 70',
+        experience: t('team.m4.exp'),
+        specialties: [1, 2, 3, 4].map((s) => t(`team.m4.sp${s}`)),
+        social: { facebook: 'sarah.rasoanaivo' },
+      },
+      {
+        id: '5',
+        name: 'Brother Paul Rakotondrabe',
+        role: t('team.m5.role'),
+        department: 'technical',
+        bio: t('team.m5.bio'),
+        email: 'paul@rmk.mg',
+        phone: '+261 34 12 345 71',
+        experience: t('team.m5.exp'),
+        specialties: [1, 2, 3, 4].map((s) => t(`team.m5.sp${s}`)),
+        social: { facebook: 'paul.rakotondrabe' },
+      },
+      {
+        id: '6',
+        name: 'Sister Esther Ravelojaona',
+        role: t('team.m6.role'),
+        department: 'music',
+        bio: t('team.m6.bio'),
+        email: 'esther@rmk.mg',
+        phone: '+261 34 12 345 72',
+        experience: t('team.m6.exp'),
+        specialties: [1, 2, 3, 4].map((s) => t(`team.m6.sp${s}`)),
+        social: { facebook: 'esther.ravelojaona', instagram: '@esther_rmk' },
+      },
+      {
+        id: '7',
+        name: 'Brother Thomas Andriamanjato',
+        role: t('team.m7.role'),
+        department: 'ministry',
+        bio: t('team.m7.bio'),
+        email: 'thomas@rmk.mg',
+        phone: '+261 34 12 345 73',
+        experience: t('team.m7.exp'),
+        specialties: [1, 2, 3, 4].map((s) => t(`team.m7.sp${s}`)),
+        social: { facebook: 'thomas.andriamanjato' },
+      },
+      {
+        id: '8',
+        name: 'Sister Grace Ranaivo',
+        role: t('team.m8.role'),
+        department: 'programming',
+        bio: t('team.m8.bio'),
+        email: 'grace@rmk.mg',
+        phone: '+261 34 12 345 74',
+        experience: t('team.m8.exp'),
+        specialties: [1, 2, 3, 4].map((s) => t(`team.m8.sp${s}`)),
+        social: { facebook: 'grace.ranaivo', instagram: '@grace_rmk' },
+      },
+    ],
+    [t],
+  );
 
   const filteredMembers = teamMembers.filter(member => 
     selectedDepartment === 'all' || member.department === selectedDepartment
@@ -195,12 +182,10 @@ const TeamPage = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-4">
-            Meet Our Team
+            {t('team.hero.title')}
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Dedicated servants of God working together to spread His message 
-            across Madagascar. Each team member brings unique gifts and talents 
-            to serve our community.
+            {t('team.hero.subtitle')}
           </p>
         </motion.div>
 
@@ -223,7 +208,7 @@ const TeamPage = () => {
             >
               {getDepartmentIcon(dept)}
               <span className="capitalize">
-                {dept === 'all' ? 'All Departments' : dept}
+                {t(`team.dept.${dept}`)}
               </span>
             </button>
           ))}
@@ -255,18 +240,23 @@ const TeamPage = () => {
                 <p className="text-primary-400 font-semibold mb-2">{member.role}</p>
                 <div className="flex items-center justify-center space-x-1 text-sm text-gray-600 dark:text-gray-400">
                   {getDepartmentIcon(member.department)}
-                  <span className="capitalize">{member.department}</span>
+                  <span className="capitalize">{t(`team.dept.${member.department}`)}</span>
                 </div>
               </div>
 
               <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                 <div className="flex items-center space-x-2">
                   <Calendar className="w-4 h-4 text-primary-400" />
-                  <span>{member.experience} experience</span>
+                  <span>
+                    {member.experience}
+                    {language === 'mg' ? '' : ` ${t('common.experience')}`}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Award className="w-4 h-4 text-primary-400" />
-                  <span>{member.specialties.length} specialties</span>
+                  <span>
+                    {member.specialties.length} {t('common.specialtiesCount')}
+                  </span>
                 </div>
               </div>
 
@@ -308,13 +298,13 @@ const TeamPage = () => {
                   </p>
                   <div className="flex items-center justify-center space-x-1 text-gray-600 dark:text-gray-400">
                     {getDepartmentIcon(selectedMember.department)}
-                    <span className="capitalize">{selectedMember.department}</span>
+                    <span className="capitalize">{t(`team.dept.${selectedMember.department}`)}</span>
                   </div>
                 </div>
 
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-950 dark:text-white mb-3">About</h4>
+                    <h4 className="text-xl font-bold text-gray-950 dark:text-white mb-3">{t('common.aboutSection')}</h4>
                     <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                       {selectedMember.bio}
                     </p>
@@ -322,7 +312,7 @@ const TeamPage = () => {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Contact Information</h4>
+                      <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">{t('common.contactInfo')}</h4>
                       <div className="space-y-2">
                         <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
                           <Mail className="w-4 h-4 text-primary-400" />
@@ -336,7 +326,7 @@ const TeamPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Experience</h4>
+                      <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">{t('common.experienceLabel')}</h4>
                       <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
                         <Calendar className="w-4 h-4 text-primary-400" />
                         <span>{selectedMember.experience}</span>
@@ -345,7 +335,7 @@ const TeamPage = () => {
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Specialties</h4>
+                    <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">{t('common.specialties')}</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedMember.specialties.map((specialty, index) => (
                         <span
@@ -360,7 +350,7 @@ const TeamPage = () => {
 
                   {selectedMember.social && (
                     <div>
-                      <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">Social Media</h4>
+                      <h4 className="text-lg font-bold text-gray-950 dark:text-white mb-3">{t('common.socialMedia')}</h4>
                       <div className="flex space-x-4">
                         {selectedMember.social.facebook && (
                           <a
@@ -402,7 +392,7 @@ const TeamPage = () => {
                     onClick={() => setSelectedMember(null)}
                     className="w-full py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
                   >
-                    Close
+                    {t('common.close')}
                   </button>
                 </div>
               </motion.div>

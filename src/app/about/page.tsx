@@ -1,108 +1,97 @@
 'use client';
 
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Target, 
-  Eye, 
-  Heart, 
-  Users, 
-  Radio, 
+import {
+  Target,
+  Eye,
+  Heart,
+  Users,
+  Radio,
   Globe,
   Award,
   Calendar,
   Mic,
   BookOpen,
   Shield,
-  Lightbulb
+  Lightbulb,
 } from 'lucide-react';
+import { useLanguage } from '@/app/context/LanguageContext';
 
 const AboutPage = () => {
-  const values = [
+  const { t } = useLanguage();
+
+  const values = useMemo(
+    () => [
     {
       icon: Heart,
-      title: 'Love',
-      description: 'We demonstrate God\'s love through our programs and community outreach, showing compassion to all people regardless of their background or circumstances.'
+      titleKey: 'aboutPage.v1.title',
+      descKey: 'aboutPage.v1.desc',
     },
     {
       icon: Shield,
-      title: 'Integrity',
-      description: 'We maintain the highest standards of honesty and transparency in all our operations, ensuring that our content reflects biblical truth and Christian values.'
+      titleKey: 'aboutPage.v2.title',
+      descKey: 'aboutPage.v2.desc',
     },
     {
       icon: Award,
-      title: 'Excellence',
-      description: 'We strive for excellence in everything we do, from program quality to technical operations, always giving our best to serve God and our community.'
+      titleKey: 'aboutPage.v3.title',
+      descKey: 'aboutPage.v3.desc',
     },
     {
       icon: Users,
-      title: 'Unity',
-      description: 'We promote unity within the body of Christ, bringing together believers from different denominations and backgrounds in worship and fellowship.'
+      titleKey: 'aboutPage.v4.title',
+      descKey: 'aboutPage.v4.desc',
     },
     {
       icon: BookOpen,
-      title: 'Service',
-      description: 'We are committed to serving our community through practical ministry, supporting local churches, and meeting the spiritual needs of our listeners.'
+      titleKey: 'aboutPage.v5.title',
+      descKey: 'aboutPage.v5.desc',
     },
     {
       icon: Lightbulb,
-      title: 'Innovation',
-      description: 'We embrace new technologies and creative approaches to reach more people with the Gospel while maintaining our core Christian values.'
-    }
-  ];
+      titleKey: 'aboutPage.v6.title',
+      descKey: 'aboutPage.v6.desc',
+    },
+    ],
+    [],
+  );
 
-  const milestones = [
-    {
-      year: '2010',
-      title: 'Foundation',
-      description: 'Radio Madagasikara ho an\'i Kristy was founded with a vision to reach every corner of Madagascar with the Gospel.'
-    },
-    {
-      year: '2012',
-      title: 'First Broadcast',
-      description: 'Our first live broadcast reached listeners in Antananarivo and surrounding areas, marking the beginning of our ministry.'
-    },
-    {
-      year: '2015',
-      title: 'Expansion',
-      description: 'We expanded our reach to cover major cities across Madagascar, increasing our listener base significantly.'
-    },
-    {
-      year: '2018',
-      title: 'Digital Platform',
-      description: 'Launched our online streaming platform, allowing listeners worldwide to tune in to our programs.'
-    },
-    {
-      year: '2020',
-      title: 'Community Impact',
-      description: 'During the pandemic, we provided spiritual support and practical help to thousands of families across Madagascar.'
-    },
-    {
-      year: '2024',
-      title: 'Modern Technology',
-      description: 'Upgraded to state-of-the-art broadcasting equipment and launched our comprehensive website and mobile app.'
-    }
-  ];
+  const milestones = useMemo(
+    () => [
+      { year: '2010', titleKey: 'aboutPage.ms2010.title', descKey: 'aboutPage.ms2010.desc' },
+      { year: '2012', titleKey: 'aboutPage.ms2012.title', descKey: 'aboutPage.ms2012.desc' },
+      { year: '2015', titleKey: 'aboutPage.ms2015.title', descKey: 'aboutPage.ms2015.desc' },
+      { year: '2018', titleKey: 'aboutPage.ms2018.title', descKey: 'aboutPage.ms2018.desc' },
+      { year: '2020', titleKey: 'aboutPage.ms2020.title', descKey: 'aboutPage.ms2020.desc' },
+      { year: '2024', titleKey: 'aboutPage.ms2024.title', descKey: 'aboutPage.ms2024.desc' },
+    ],
+    [],
+  );
 
-  const leadership = [
-    {
-      name: 'Pastor Jean Rakotoarimanana',
-      role: 'Founder & Station Director',
-      bio: 'Pastor Jean founded RMK with a vision to transform Madagascar through the power of radio ministry. With over 20 years of pastoral experience, he leads our team with wisdom and compassion.',
-      image: '/images/pastor-jean.jpg'
-    },
-    {
-      name: 'Sister Marie Andriamalala',
-      role: 'Program Director',
-      bio: 'Sister Marie oversees all program content and ensures that every broadcast aligns with our Christian values. Her creative vision has shaped our most popular programs.',
-      image: '/images/sister-marie.jpg'
-    },
-    {
-      name: 'Pastor David Randrianarivelo',
-      role: 'Youth Ministry Director',
-      bio: 'Pastor David leads our youth programs and contemporary worship initiatives. His dynamic approach helps connect young people with God\'s love.',
-      image: '/images/pastor-david.jpg'
-    }
-  ];
+  const leadership = useMemo(
+    () => [
+      {
+        nameKey: 'aboutPage.l1.name',
+        roleKey: 'aboutPage.l1.role',
+        bioKey: 'aboutPage.l1.bio',
+        image: '/images/pastor-jean.jpg',
+      },
+      {
+        nameKey: 'aboutPage.l2.name',
+        roleKey: 'aboutPage.l2.role',
+        bioKey: 'aboutPage.l2.bio',
+        image: '/images/sister-marie.jpg',
+      },
+      {
+        nameKey: 'aboutPage.l3.name',
+        roleKey: 'aboutPage.l3.role',
+        bioKey: 'aboutPage.l3.bio',
+        image: '/images/pastor-david.jpg',
+      },
+    ],
+    [],
+  );
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-900 pt-20">
@@ -117,12 +106,10 @@ const AboutPage = () => {
             className="space-y-8"
           >
             <h1 className="text-5xl md:text-7xl font-bold font-display gradient-text mb-6">
-              About RMK
+              {t('aboutPage.heroTitle')}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Radio Madagasikara ho an&apos;i Kristy (RMK) is more than just a radio station. 
-              We are a ministry dedicated to spreading the Gospel, strengthening believers, 
-              and transforming communities across Madagascar through the power of Christian broadcasting.
+              {t('aboutPage.heroLead')}
             </p>
           </motion.div>
         </div>
@@ -141,12 +128,9 @@ const AboutPage = () => {
               className="bg-gradient-to-br from-navy-500/20 to-primary-500/20 p-8 rounded-2xl border border-navy-500/30 hover:border-primary-500/50 transition-all duration-300"
             >
               <Target className="w-16 h-16 text-primary-500 mb-6" />
-              <h2 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">Our Mission</h2>
+              <h2 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">{t('aboutPage.missionTitle')}</h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                To proclaim the Gospel of Jesus Christ through radio broadcasting, providing 
-                spiritual nourishment, encouragement, and hope to all people across Madagascar. 
-                We are committed to building up the body of Christ and reaching the lost with 
-                the message of salvation.
+                {t('aboutPage.missionBody')}
               </p>
             </motion.div>
 
@@ -159,12 +143,9 @@ const AboutPage = () => {
               className="bg-gradient-to-br from-primary-500/20 to-navy-500/20 p-8 rounded-2xl border border-primary-500/30 hover:border-navy-500/50 transition-all duration-300"
             >
               <Eye className="w-16 h-16 text-navy-500 mb-6" />
-              <h2 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">Our Vision</h2>
+              <h2 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">{t('aboutPage.visionTitle')}</h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                To be the leading Christian radio station in Madagascar, transforming lives 
-                through the power of God&apos;s Word and building a strong, united Christian 
-                community. We envision a Madagascar where every person has access to 
-                biblical truth and spiritual encouragement.
+                {t('aboutPage.visionBody')}
               </p>
             </motion.div>
 
@@ -177,12 +158,9 @@ const AboutPage = () => {
               className="bg-gradient-to-br from-navy-500/20 to-primary-500/20 p-8 rounded-2xl border border-navy-500/30 hover:border-primary-500/50 transition-all duration-300"
             >
               <Heart className="w-16 h-16 text-primary-500 mb-6" />
-              <h2 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">Our Values</h2>
+              <h2 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">{t('aboutPage.valuesColumnTitle')}</h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Faith, Integrity, Excellence, Love, Unity, and Service. We are committed 
-                to broadcasting content that glorifies God and edifies His people. Every 
-                program, every song, and every word spoken reflects our dedication to 
-                biblical truth and Christian values.
+                {t('aboutPage.valuesColumnBody')}
               </p>
             </motion.div>
           </div>
@@ -196,12 +174,12 @@ const AboutPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold font-display gradient-text mb-8">
-              Our Core Values
+              {t('aboutPage.coreValuesTitle')}
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {values.map((value, index) => (
                 <motion.div
-                  key={value.title}
+                  key={value.titleKey}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
@@ -209,8 +187,8 @@ const AboutPage = () => {
                   className="bg-gray-100 dark:bg-dark-700 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary-500/50 transition-all duration-300"
                 >
                   <value.icon className="w-12 h-12 text-primary-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-3">{value.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{value.description}</p>
+                  <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-3">{t(value.titleKey)}</h3>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{t(value.descKey)}</p>
                 </motion.div>
               ))}
             </div>
@@ -229,11 +207,10 @@ const AboutPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold font-display gradient-text mb-6">
-              Our Story
+              {t('aboutPage.storyTitle')}
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-              From humble beginnings to becoming Madagascar&apos;s premier Christian radio station, 
-              discover the journey that has shaped our ministry.
+              {t('aboutPage.storyLead')}
             </p>
           </motion.div>
 
@@ -253,9 +230,9 @@ const AboutPage = () => {
                 >
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                     <div className="bg-gradient-to-br from-navy-500/10 to-primary-500/10 p-6 rounded-xl border border-navy-500/20">
-                      <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-2">{milestone.title}</h3>
+                      <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-2">{t(milestone.titleKey)}</h3>
                       <p className="text-primary-400 font-semibold text-lg mb-3">{milestone.year}</p>
-                      <p className="text-gray-700 dark:text-gray-300">{milestone.description}</p>
+                      <p className="text-gray-700 dark:text-gray-300">{t(milestone.descKey)}</p>
                     </div>
                   </div>
                   
@@ -282,18 +259,17 @@ const AboutPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold font-display gradient-text mb-6">
-              Our Leadership
+              {t('aboutPage.leadershipTitle')}
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-              Meet the dedicated leaders who guide our ministry and ensure that every 
-              broadcast reflects our commitment to spreading God&apos;s love.
+              {t('aboutPage.leadershipLead')}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {leadership.map((leader, index) => (
               <motion.div
-                key={leader.name}
+                key={leader.nameKey}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -303,9 +279,9 @@ const AboutPage = () => {
                 <div className="w-32 h-32 bg-gradient-to-br from-primary-500 to-navy-500 rounded-full mx-auto mb-6 flex items-center justify-center">
                   <Users className="w-16 h-16 text-gray-950 dark:text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-2">{leader.name}</h3>
-                <p className="text-primary-400 font-semibold text-lg mb-4">{leader.role}</p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{leader.bio}</p>
+                <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-2">{t(leader.nameKey)}</h3>
+                <p className="text-primary-400 font-semibold text-lg mb-4">{t(leader.roleKey)}</p>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{t(leader.bioKey)}</p>
               </motion.div>
             ))}
           </div>
@@ -323,11 +299,10 @@ const AboutPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold font-display gradient-text mb-6">
-              Our Impact
+              {t('aboutPage.impactTitle')}
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-              Through God&apos;s grace, we have been able to touch countless lives across Madagascar 
-              and beyond. Here are some of the ways we&apos;re making a difference.
+              {t('aboutPage.impactLead')}
             </p>
           </motion.div>
 
@@ -343,7 +318,7 @@ const AboutPage = () => {
                 <Radio className="w-10 h-10 text-gray-950 dark:text-white" />
               </div>
               <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">50,000+</h3>
-              <p className="text-gray-700 dark:text-gray-300">Daily Listeners</p>
+              <p className="text-gray-700 dark:text-gray-300">{t('aboutPage.impactStat1')}</p>
             </motion.div>
 
             <motion.div
@@ -357,7 +332,7 @@ const AboutPage = () => {
                 <Globe className="w-10 h-10 text-gray-950 dark:text-white" />
               </div>
               <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">22</h3>
-              <p className="text-gray-700 dark:text-gray-300">Regions Covered</p>
+              <p className="text-gray-700 dark:text-gray-300">{t('aboutPage.impactStat2')}</p>
             </motion.div>
 
             <motion.div
@@ -371,7 +346,7 @@ const AboutPage = () => {
                 <Mic className="w-10 h-10 text-gray-950 dark:text-white" />
               </div>
               <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">24/7</h3>
-              <p className="text-gray-700 dark:text-gray-300">Broadcasting</p>
+              <p className="text-gray-700 dark:text-gray-300">{t('aboutPage.impactStat3')}</p>
             </motion.div>
 
             <motion.div
@@ -385,7 +360,7 @@ const AboutPage = () => {
                 <Heart className="w-10 h-10 text-gray-950 dark:text-white" />
               </div>
               <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">14+</h3>
-              <p className="text-gray-700 dark:text-gray-300">Years of Service</p>
+              <p className="text-gray-700 dark:text-gray-300">{t('aboutPage.impactStat4')}</p>
             </motion.div>
           </div>
         </div>
@@ -402,21 +377,19 @@ const AboutPage = () => {
             className="space-y-8"
           >
             <h2 className="text-4xl md:text-6xl font-bold font-display text-white">
-              Join Our Mission
+              {t('aboutPage.ctaTitle')}
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Be part of our journey as we continue to spread the Gospel and transform 
-              lives across Madagascar. Your support helps us reach more people with 
-              the message of hope and salvation.
+              {t('aboutPage.ctaLead')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button className="px-8 py-4 bg-white text-navy-500 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2">
                 <Heart className="w-6 h-6" />
-                <span>Support Our Ministry</span>
+                <span>{t('aboutPage.ctaDonate')}</span>
               </button>
               <button className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-2">
                 <Radio className="w-6 h-6" />
-                <span>Listen Live</span>
+                <span>{t('aboutPage.ctaListen')}</span>
               </button>
             </div>
           </motion.div>

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { useLanguage } from '@/app/context/LanguageContext';
 import { motion } from 'framer-motion';
 import { 
   Heart, 
@@ -16,6 +17,7 @@ import {
 } from 'lucide-react';
 
 const DonatePage = () => {
+  const { t, language } = useLanguage();
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState('');
   const [selectedMethod, setSelectedMethod] = useState('mobile');
@@ -23,38 +25,63 @@ const DonatePage = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const presetAmounts = [5000, 10000, 25000, 50000, 100000, 250000];
-  const paymentMethods = [
-    { id: 'mobile', name: 'Mobile Money', icon: Smartphone, description: 'Airtel Money, Orange Money, MVola' },
-    { id: 'card', name: 'Credit/Debit Card', icon: CreditCard, description: 'Visa, Mastercard, American Express' },
-    { id: 'bank', name: 'Bank Transfer', icon: Banknote, description: 'Direct bank transfer' }
-  ];
+  const paymentMethods = useMemo(
+    () => [
+      {
+        id: 'mobile' as const,
+        icon: Smartphone,
+        nameKey: 'donate.method.mobile.name',
+        descKey: 'donate.method.mobile.desc',
+      },
+      {
+        id: 'card' as const,
+        icon: CreditCard,
+        nameKey: 'donate.method.card.name',
+        descKey: 'donate.method.card.desc',
+      },
+      {
+        id: 'bank' as const,
+        icon: Banknote,
+        nameKey: 'donate.method.bank.name',
+        descKey: 'donate.method.bank.desc',
+      },
+    ],
+    [],
+  );
 
-  const impactAreas = [
-    {
-      title: 'Equipment & Technology',
-      description: 'Maintain and upgrade our broadcasting equipment',
-      icon: Radio,
-      color: 'from-primary-500 to-navy-500'
-    },
-    {
-      title: 'Program Production',
-      description: 'Create high-quality Christian content and programs',
-      icon: Globe,
-      color: 'from-navy-500 to-primary-500'
-    },
-    {
-      title: 'Community Outreach',
-      description: 'Support local churches and community programs',
-      icon: Users,
-      color: 'from-primary-500 to-navy-500'
-    },
-    {
-      title: 'Youth Ministry',
-      description: 'Develop programs for young people',
-      icon: Target,
-      color: 'from-navy-500 to-primary-500'
-    }
-  ];
+  const impactAreas = useMemo(
+    () => [
+      {
+        key: 'equipment',
+        titleKey: 'donate.impact.equipment.title',
+        descKey: 'donate.impact.equipment.desc',
+        icon: Radio,
+        color: 'from-primary-500 to-navy-500',
+      },
+      {
+        key: 'production',
+        titleKey: 'donate.impact.production.title',
+        descKey: 'donate.impact.production.desc',
+        icon: Globe,
+        color: 'from-navy-500 to-primary-500',
+      },
+      {
+        key: 'outreach',
+        titleKey: 'donate.impact.outreach.title',
+        descKey: 'donate.impact.outreach.desc',
+        icon: Users,
+        color: 'from-primary-500 to-navy-500',
+      },
+      {
+        key: 'youth',
+        titleKey: 'donate.impact.youth.title',
+        descKey: 'donate.impact.youth.desc',
+        icon: Target,
+        color: 'from-navy-500 to-primary-500',
+      },
+    ],
+    [],
+  );
 
   const handleDonate = async () => {
     setIsProcessing(true);
@@ -66,10 +93,11 @@ const DonatePage = () => {
   };
 
   const formatAmount = (amount: number) => {
-    return new Intl.NumberFormat('mg-MG', {
+    const locale = language === 'fr' ? 'fr-FR' : language === 'mg' ? 'mg-MG' : 'en-US';
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: 'MGA',
-      minimumFractionDigits: 0
+      minimumFractionDigits: 0,
     }).format(amount);
   };
 
@@ -84,10 +112,9 @@ const DonatePage = () => {
           <div className="w-24 h-24 bg-green-500 rounded-full mx-auto mb-6 flex items-center justify-center">
             <CheckCircle className="w-12 h-12 text-gray-950 dark:text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">Thank You!</h1>
+          <h1 className="text-3xl font-bold text-gray-950 dark:text-white mb-4">{t('donate.success.title')}</h1>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
-            Your donation has been received. Thank you for supporting our ministry 
-            and helping us spread the Gospel across Madagascar.
+            {t('donate.success.message')}
           </p>
           <button
             onClick={() => {
@@ -97,7 +124,7 @@ const DonatePage = () => {
             }}
             className="px-8 py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
           >
-            Make Another Donation
+            {t('donate.success.another')}
           </button>
         </motion.div>
       </div>
@@ -114,11 +141,10 @@ const DonatePage = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-4">
-            Support Our Ministry
+            {t('donate.hero.title')}
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Your generous donations help us maintain our equipment, create quality 
-            programs, and reach more people with the Gospel across Madagascar.
+            {t('donate.hero.subtitle')}
           </p>
         </motion.div>
 
@@ -130,11 +156,11 @@ const DonatePage = () => {
             transition={{ delay: 0.2 }}
             className="bg-white dark:bg-dark-800 rounded-xl p-8 border border-gray-200 dark:border-navy-500/30 shadow-sm dark:shadow-none"
           >
-            <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">Make a Donation</h2>
+            <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">{t('donate.form.title')}</h2>
 
             {/* Amount Selection */}
             <div className="mb-8">
-              <h3 className="text-lg font-semibold text-gray-950 dark:text-white mb-4">Select Amount (MGA)</h3>
+              <h3 className="text-lg font-semibold text-gray-950 dark:text-white mb-4">{t('donate.form.amountLabel')}</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
                 {presetAmounts.map((amount) => (
                   <button
@@ -157,7 +183,7 @@ const DonatePage = () => {
               <div className="relative">
                 <input
                   type="number"
-                  placeholder="Enter custom amount"
+                  placeholder={t('donate.form.customPlaceholder')}
                   value={customAmount}
                   onChange={(e) => {
                     setCustomAmount(e.target.value);
@@ -173,7 +199,7 @@ const DonatePage = () => {
 
             {/* Payment Method */}
             <div className="mb-8">
-              <h3 className="text-lg font-semibold text-gray-950 dark:text-white mb-4">Payment Method</h3>
+              <h3 className="text-lg font-semibold text-gray-950 dark:text-white mb-4">{t('donate.form.paymentMethod')}</h3>
               <div className="space-y-3">
                 {paymentMethods.map((method) => (
                   <button
@@ -192,9 +218,9 @@ const DonatePage = () => {
                       <p className={`font-semibold ${
                         selectedMethod === method.id ? 'text-primary-400' : 'text-gray-950 dark:text-white'
                       }`}>
-                        {method.name}
+                        {t(method.nameKey)}
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{method.description}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{t(method.descKey)}</p>
                     </div>
                   </button>
                 ))}
@@ -204,17 +230,17 @@ const DonatePage = () => {
             {/* Donation Summary */}
             {(selectedAmount || customAmount) && (
               <div className="mb-8 p-4 bg-navy-500/10 dark:bg-dark-700 rounded-lg border border-navy-200 dark:border-navy-500/40">
-                <h3 className="text-lg font-semibold text-gray-950 dark:text-white mb-2">Donation Summary</h3>
+                <h3 className="text-lg font-semibold text-gray-950 dark:text-white mb-2">{t('donate.summary.title')}</h3>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700 dark:text-gray-300">Amount:</span>
+                  <span className="text-gray-700 dark:text-gray-300">{t('donate.summary.amount')}</span>
                   <span className="text-xl font-bold text-primary-400">
                     {formatAmount(selectedAmount || parseInt(customAmount) || 0)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center mt-2">
-                  <span className="text-gray-700 dark:text-gray-300">Payment Method:</span>
+                  <span className="text-gray-700 dark:text-gray-300">{t('donate.summary.method')}</span>
                   <span className="text-gray-950 dark:text-white">
-                    {paymentMethods.find(m => m.id === selectedMethod)?.name}
+                    {t(paymentMethods.find((m) => m.id === selectedMethod)?.nameKey ?? 'donate.method.mobile.name')}
                   </span>
                 </div>
               </div>
@@ -229,12 +255,12 @@ const DonatePage = () => {
               {isProcessing ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                  <span>Processing...</span>
+                  <span>{t('common.processing')}</span>
                 </>
               ) : (
                 <>
                   <Heart className="w-6 h-6" />
-                  <span>Donate Now</span>
+                  <span>{t('donate.button.now')}</span>
                 </>
               )}
             </button>
@@ -242,7 +268,7 @@ const DonatePage = () => {
             {/* Security Notice */}
             <div className="mt-6 flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
               <Shield className="w-4 h-4" />
-              <span>Your donation is secure and encrypted</span>
+              <span>{t('donate.security')}</span>
             </div>
           </motion.div>
 
@@ -254,11 +280,11 @@ const DonatePage = () => {
             className="space-y-8"
           >
             <div>
-              <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">How Your Donation Helps</h2>
+              <h2 className="text-2xl font-bold text-gray-950 dark:text-white mb-6">{t('donate.impact.title')}</h2>
               <div className="space-y-4">
                 {impactAreas.map((area, index) => (
                   <motion.div
-                    key={area.title}
+                    key={area.key}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 + index * 0.1 }}
@@ -269,8 +295,8 @@ const DonatePage = () => {
                         <area.icon className="w-6 h-6 text-gray-950 dark:text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-2">{area.title}</h3>
-                        <p className="text-gray-700 dark:text-gray-300">{area.description}</p>
+                        <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-2">{t(area.titleKey)}</h3>
+                        <p className="text-gray-700 dark:text-gray-300">{t(area.descKey)}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -280,27 +306,27 @@ const DonatePage = () => {
 
             {/* Monthly Giving */}
             <div className="bg-orange-50 dark:bg-dark-800 p-6 rounded-xl border border-primary-200 dark:border-primary-500/30">
-              <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Consider Monthly Giving</h3>
+              <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">{t('donate.monthly.title')}</h3>
               <p className="text-gray-700 dark:text-gray-300 mb-4">
-                Monthly donations provide consistent support for our ministry and help us plan for the future.
+                {t('donate.monthly.body')}
               </p>
               <button className="px-6 py-3 bg-gradient-to-r from-navy-500 to-primary-500 text-gray-950 dark:text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
-                Set Up Monthly Giving
+                {t('donate.monthly.cta')}
               </button>
             </div>
 
             {/* Contact Information */}
             <div className="bg-white dark:bg-dark-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
-              <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">Other Ways to Give</h3>
+              <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">{t('donate.other.title')}</h3>
               <div className="space-y-3 text-gray-700 dark:text-gray-300">
-                <p><strong>Bank Transfer:</strong></p>
-                <p>Account: Radio Madagasikara ho an&apos;i Kristy</p>
-                <p>Bank: Bank of Madagascar</p>
-                <p>Account Number: 1234567890</p>
-                <p className="mt-4"><strong>Mobile Money:</strong></p>
-                <p>Airtel Money: +261 34 12 345 67</p>
-                <p>Orange Money: +261 34 12 345 68</p>
-                <p>MVola: +261 34 12 345 69</p>
+                <p><strong>{t('donate.other.bankHeading')}</strong></p>
+                <p>{t('donate.other.accountName')}</p>
+                <p>{t('donate.other.bankName')}</p>
+                <p>{t('donate.other.accountNumber')}</p>
+                <p className="mt-4"><strong>{t('donate.other.mobileHeading')}</strong></p>
+                <p>{t('donate.other.airtel')}</p>
+                <p>{t('donate.other.orange')}</p>
+                <p>{t('donate.other.mvola')}</p>
               </div>
             </div>
           </motion.div>

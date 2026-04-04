@@ -2,7 +2,8 @@
 
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
+import { useLanguage } from '@/app/context/LanguageContext';
 import { 
   Heart, 
   Users, 
@@ -16,16 +17,86 @@ import {
   ChevronLeft,
   ChevronRight,
   Radio,
-  Mic,
   Sparkles
 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
+  const { t } = useLanguage();
   const [currentProgramIndex, setCurrentProgramIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const dragX = useMotionValue(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  const popularPrograms = useMemo(
+    () =>
+      [1, 2, 3, 4, 5, 6].map((n, i) => {
+        const icons = [Radio, Heart, Users, Heart, Users, Radio] as const;
+        const colors = [
+          'from-primary-500 to-navy-500',
+          'from-navy-500 to-primary-500',
+          'from-primary-500 to-navy-500',
+          'from-navy-500 to-primary-500',
+          'from-primary-500 to-navy-500',
+          'from-navy-500 to-primary-500',
+        ] as const;
+        return {
+          title: t(`prog.${n}.title`),
+          time: t(`prog.${n}.time`),
+          host: t(`prog.${n}.host`),
+          description: t(`prog.${n}.desc`),
+          icon: icons[i],
+          color: colors[i],
+        };
+      }),
+    [t],
+  );
+
+  const homePodcasts = useMemo(
+    () => [
+      {
+        title: t('home.podfeat.1.title'),
+        speaker: t('home.podfeat.1.speaker'),
+        duration: t('home.ui.homePod1Dur'),
+        date: t('common.yesterday'),
+        gradient: 'from-primary-500 to-primary-600',
+      },
+      {
+        title: t('home.podfeat.2.title'),
+        speaker: t('home.podfeat.2.speaker'),
+        duration: t('home.ui.homePod2Dur'),
+        date: t('common.daysAgo2'),
+        gradient: 'from-navy-500 to-navy-600',
+      },
+      {
+        title: t('home.podfeat.3.title'),
+        speaker: t('home.podfeat.3.speaker'),
+        duration: t('home.ui.homePod3Dur'),
+        date: t('common.daysAgo3'),
+        gradient: 'from-primary-500 to-navy-500',
+      },
+    ],
+    [t],
+  );
+
+  const homeTeamPreview = useMemo(
+    () =>
+      [1, 2, 3, 4].map((n, i) => {
+        const gradients = [
+          'from-primary-500 to-primary-600',
+          'from-navy-500 to-navy-600',
+          'from-primary-500 to-navy-500',
+          'from-navy-500 to-primary-500',
+        ] as const;
+        return {
+          name: t(`home.preview.t${n}.name`),
+          role: t(`home.preview.t${n}.role`),
+          description: t(`home.preview.t${n}.desc`),
+          gradient: gradients[i],
+        };
+      }),
+    [t],
+  );
   
   const carouselX = useTransform(dragX, (latest) => {
     const baseOffset = -currentProgramIndex * 100;
@@ -33,57 +104,6 @@ export default function Home() {
     const dragOffset = (latest / width) * 100;
     return `${baseOffset + dragOffset}%`;
   });
-
-  const popularPrograms = [
-    {
-      title: "Morning Devotion",
-      time: "6:00 AM - 7:00 AM",
-      host: "Pastor Jean",
-      description: "Start your day with prayer, worship, and God's Word.",
-      icon: Radio,
-      color: "from-primary-500 to-navy-500"
-    },
-    {
-      title: "Women of Faith",
-      time: "10:00 AM - 11:00 AM",
-      host: "Sister Marie",
-      description: "Encouraging and empowering women in their Christian journey.",
-      icon: Heart,
-      color: "from-navy-500 to-primary-500"
-    },
-    {
-      title: "Youth Alive",
-      time: "4:00 PM - 5:00 PM",
-      host: "Pastor David",
-      description: "Dynamic programs for young people seeking God.",
-      icon: Users,
-      color: "from-primary-500 to-navy-500"
-    },
-    {
-      title: "Evening Prayer",
-      time: "7:00 PM - 8:00 PM",
-      host: "Pastor Paul",
-      description: "End your day in prayer and reflection.",
-      icon: Heart,
-      color: "from-navy-500 to-primary-500"
-    },
-    {
-      title: "Family Hour",
-      time: "8:00 PM - 9:00 PM",
-      host: "Pastor Sarah",
-      description: "Building strong Christian families through God's Word.",
-      icon: Users,
-      color: "from-primary-500 to-navy-500"
-    },
-    {
-      title: "Night Worship",
-      time: "9:00 PM - 10:00 PM",
-      host: "Worship Team",
-      description: "End the day with praise and worship music.",
-      icon: Radio,
-      color: "from-navy-500 to-primary-500"
-    }
-  ];
 
   const handleDragStart = () => {
     setIsDragging(true);
@@ -111,8 +131,6 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(interval);
   }, [isDragging, popularPrograms.length]);
-
-  const x = useTransform(dragX, [-300, 300], [-300, 300]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-900">
@@ -189,17 +207,15 @@ export default function Home() {
             {/* Main Title */}
             <div>
               <h1 className="text-6xl md:text-8xl font-bold font-display gradient-text">
-                The radio that unites us
+                {t('home.ui.headline')}
               </h1>
               <br/>
               <h2 className="text-2xl md:text-4xl font-semibold text-gray-900 dark:text-white">
-                RMK 102.4 FM
+                {t('home.ui.fm')}
               </h2>
               <br/>
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300">
-                Broadcasting faith, hope, and love across Madagascar.<br/> 
-                Join us in spreading the Gospel through inspiring programs, 
-                uplifting music, and spiritual content.
+                {t('home.ui.intro')}
               </p>
             </div>
             <br/>
@@ -212,7 +228,7 @@ export default function Home() {
                 className="px-8 py-4 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
               >
                 <Play className="w-6 h-6" />
-                <span>Listen Live</span>
+                <span>{t('home.hero.listenLive')}</span>
               </motion.button>
               
               <motion.button
@@ -221,7 +237,7 @@ export default function Home() {
                 className="px-8 py-4 border-2 border-primary-500 text-primary-600 dark:text-primary-400 rounded-full font-semibold text-lg hover:bg-primary-50 dark:hover:bg-primary-500/10 transition-all duration-300 flex items-center space-x-2"
               >
                 <Calendar className="w-6 h-6" />
-                <span>View Programs</span>
+                <span>{t('home.hero.viewPrograms')}</span>
               </motion.button>
             </div>
             <br/>
@@ -234,7 +250,7 @@ export default function Home() {
               className="flex items-center justify-center space-x-2"
             >
               <div className="w-3 h-3 bg-primary-500 rounded-full animate-pulse"></div>
-              <span className="font-semibold text-gray-900 dark:text-white">LIVE NOW: Morning Devotion with Pastor Jean</span>
+              <span className="font-semibold text-gray-900 dark:text-white">{t('home.ui.liveLine')}</span>
             </motion.div>
           </motion.div>
         </div>
@@ -288,12 +304,10 @@ export default function Home() {
               <Sparkles className="w-16 h-16 text-primary-500 mx-auto" />
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-6">
-              About Us
+              {t('home.ui.aboutTitle')}
             </h2>
             <p className="text-xl text-navy-700 dark:text-gray-300 max-w-3xl mx-auto">
-              Radio Madagasikara ho an&apos;i Kristy (RMK) is a Christian radio station 
-              dedicated to spreading the Gospel and strengthening the faith of 
-              believers across Madagascar.
+              {t('home.ui.aboutLead')}
             </p>
           </motion.div>
 
@@ -318,11 +332,9 @@ export default function Home() {
                     <Target className="w-8 h-8 text-white" />
                   </div>
                 </motion.div>
-                <h3 className="text-2xl font-bold text-navy-800 dark:text-white mb-4 text-center">Our Mission</h3>
+                <h3 className="text-2xl font-bold text-navy-800 dark:text-white mb-4 text-center">{t('home.ui.missionTitle')}</h3>
                 <p className="text-navy-700 dark:text-gray-300 leading-relaxed">
-                  To proclaim the Gospel of Jesus Christ through radio broadcasting, 
-                  providing spiritual nourishment, encouragement, and hope to all 
-                  people across Madagascar.
+                  {t('home.ui.missionText')}
                 </p>
               </div>
             </motion.div>
@@ -347,11 +359,9 @@ export default function Home() {
                     <Eye className="w-8 h-8 text-white" />
                   </div>
                 </motion.div>
-                <h3 className="text-2xl font-bold text-navy-800 dark:text-white mb-4 text-center">Our Vision</h3>
+                <h3 className="text-2xl font-bold text-navy-800 dark:text-white mb-4 text-center">{t('home.ui.visionTitle')}</h3>
                 <p className="text-navy-700 dark:text-gray-300 leading-relaxed">
-                  To be the leading Christian radio station in Madagascar, 
-                  transforming lives through the power of God&apos;s Word and 
-                  building a strong, united Christian community.
+                  {t('home.ui.visionText')}
                 </p>
               </div>
             </motion.div>
@@ -376,11 +386,9 @@ export default function Home() {
                     <Heart className="w-8 h-8 text-white" />
                   </div>
                 </motion.div>
-                <h3 className="text-2xl font-bold text-navy-800 dark:text-white mb-4 text-center">Our Values</h3>
+                <h3 className="text-2xl font-bold text-navy-800 dark:text-white mb-4 text-center">{t('home.ui.valuesTitle')}</h3>
                 <p className="text-navy-700 dark:text-gray-300 leading-relaxed">
-                  Faith, Integrity, Excellence, Love, Unity, and Service. 
-                  We are committed to broadcasting content that glorifies God 
-                  and edifies His people.
+                  {t('home.ui.valuesText')}
                 </p>
               </div>
             </motion.div>
@@ -400,11 +408,10 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-6">
-              Our Programs
+              {t('home.ui.programsTitle')}
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-              Discover our diverse range of Christian programs designed to 
-              inspire, educate, and strengthen your faith.
+              {t('home.ui.programsSubtitle')}
             </p>
           </motion.div>
 
@@ -493,7 +500,7 @@ export default function Home() {
                               {program.title}
                             </h3>
                             <p className="text-white font-semibold mb-3 text-lg">{program.time}</p>
-                            <p className="text-white mb-4">Host: {program.host}</p>
+                            <p className="text-white mb-4">{t('common.host')} {program.host}</p>
                             <p className="text-white/95 text-sm flex-grow">{program.description}</p>
                             {isActive && (
                               <motion.div
@@ -503,7 +510,7 @@ export default function Home() {
                               >
                                 <button className="w-full py-3 bg-white text-primary-600 dark:text-primary-600 rounded-xl font-semibold hover:bg-primary-50 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg">
                                   <Play className="w-5 h-5" />
-                                  <span>Listen Now</span>
+                                  <span>{t('home.ui.listenNow')}</span>
                                 </button>
                               </motion.div>
                             )}
@@ -523,7 +530,7 @@ export default function Home() {
               className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300 shadow-lg"
             >
               <Calendar className="w-6 h-6" />
-              <span>View Full Schedule</span>
+              <span>{t('home.schedule.viewAll')}</span>
             </Link>
           </div>
         </div>
@@ -549,38 +556,15 @@ export default function Home() {
               <Headphones className="w-16 h-16 text-primary-500" />
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-6">
-              Latest Podcasts
+              {t('home.ui.podcastsTitle')}
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-              Listen to our latest sermons, teachings, and inspirational content 
-              anytime, anywhere.
+              {t('home.ui.podcastsSubtitle')}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {[
-              {
-                title: "The Power of Prayer",
-                speaker: "Pastor Jean",
-                duration: "45 min",
-                date: "Yesterday",
-                gradient: "from-primary-500 to-primary-600"
-              },
-              {
-                title: "Walking in Faith",
-                speaker: "Sister Marie",
-                duration: "38 min",
-                date: "2 days ago",
-                gradient: "from-navy-500 to-navy-600"
-              },
-              {
-                title: "God's Love for You",
-                speaker: "Pastor David",
-                duration: "52 min",
-                date: "3 days ago",
-                gradient: "from-primary-500 to-navy-500"
-              }
-            ].map((podcast, index) => (
+            {homePodcasts.map((podcast, index) => (
               <motion.div
                 key={podcast.title}
                 initial={{ opacity: 0, y: 50, rotateX: -15 }}
@@ -611,13 +595,13 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                     {podcast.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">by {podcast.speaker}</p>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">{t('common.by')} {podcast.speaker}</p>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm text-gray-500 dark:text-gray-400">{podcast.date}</span>
                   </div>
                   <button className="w-full py-3 bg-gradient-to-r from-primary-500 to-navy-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 group-hover:scale-105">
                     <Play className="w-5 h-5" />
-                    <span>Play Now</span>
+                    <span>{t('home.ui.playNow')}</span>
                   </button>
                 </div>
               </motion.div>
@@ -630,7 +614,7 @@ export default function Home() {
               className="inline-flex items-center space-x-2 px-8 py-4 border-2 border-primary-500 text-primary-600 dark:text-primary-400 rounded-full font-semibold text-lg hover:bg-primary-50 dark:hover:bg-primary-500/10 transition-all duration-300 shadow-lg"
             >
               <Headphones className="w-6 h-6" />
-              <span>Browse All Podcasts</span>
+              <span>{t('home.ui.browsePodcasts')}</span>
             </Link>
           </div>
         </div>
@@ -660,41 +644,15 @@ export default function Home() {
               <Users className="w-16 h-16 text-primary-500" />
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-bold font-display gradient-text mb-6">
-              Meet Our Team
+              {t('team.hero.title')}
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-              Dedicated servants of God working together to spread His message 
-              across Madagascar.
+              {t('home.ui.teamSubtitle')}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {[
-              {
-                name: "Pastor Jean",
-                role: "Station Director",
-                description: "Leading the station with vision and faith.",
-                gradient: "from-primary-500 to-primary-600"
-              },
-              {
-                name: "Sister Marie",
-                role: "Program Coordinator",
-                description: "Ensuring quality Christian content.",
-                gradient: "from-navy-500 to-navy-600"
-              },
-              {
-                name: "Pastor David",
-                role: "Youth Minister",
-                description: "Connecting with young believers.",
-                gradient: "from-primary-500 to-navy-500"
-              },
-              {
-                name: "Pastor Sarah",
-                role: "Family Counselor",
-                description: "Strengthening Christian families.",
-                gradient: "from-navy-500 to-primary-500"
-              }
-            ].map((member, index) => (
+            {homeTeamPreview.map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -737,7 +695,7 @@ export default function Home() {
               className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-navy-500 to-primary-500 text-white rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300 shadow-lg"
             >
               <Users className="w-6 h-6" />
-              <span>Meet Full Team</span>
+              <span>{t('home.ui.meetFullTeam')}</span>
             </Link>
           </div>
         </div>
@@ -755,11 +713,10 @@ export default function Home() {
             className="space-y-8"
           >
             <h2 className="text-4xl md:text-6xl font-bold font-display text-white">
-              Join Our Mission
+              {t('home.ui.joinTitle')}
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Support our ministry and help us reach more people with the Gospel. 
-              Your donations help us maintain our equipment and expand our reach.
+              {t('home.ui.joinSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
@@ -767,14 +724,14 @@ export default function Home() {
                 className="px-8 py-4 bg-white text-primary-600 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 shadow-xl hover:shadow-2xl"
               >
                 <Heart className="w-6 h-6" />
-                <span>Donate Now</span>
+                <span>{t('donate.button.now')}</span>
               </Link>
               <Link
                 href="/contact"
                 className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center space-x-2"
               >
                 <Globe className="w-6 h-6" />
-                <span>Contact Us</span>
+                <span>{t('home.ui.contactUs')}</span>
               </Link>
             </div>
           </motion.div>
