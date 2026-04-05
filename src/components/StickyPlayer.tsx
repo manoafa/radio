@@ -29,8 +29,8 @@ const StickyPlayer = () => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Mock live radio stream URL - replace with actual stream
-  const streamUrl = "https://stream.example.com/radio"; // Replace with actual stream
+  const streamUrl =
+    'https://rmk.jireh.ovh/;?type=http&nocache=107';
 
   useEffect(() => {
     if (audioRef.current) {
@@ -38,14 +38,29 @@ const StickyPlayer = () => {
     }
   }, [volume]);
 
-  const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
+  // Autoplay when the player mounts (may be blocked by the browser until user gesture)
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const tryAutoplay = async () => {
+      try {
+        await audio.play();
+      } catch {
+        setIsPlaying(false);
       }
-      setIsPlaying(!isPlaying);
+    };
+
+    void tryAutoplay();
+  }, []);
+
+  const togglePlayPause = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      void audio.play().catch(() => setIsPlaying(false));
+    } else {
+      audio.pause();
     }
   };
 
@@ -75,7 +90,10 @@ const StickyPlayer = () => {
         <audio
           ref={audioRef}
           src={streamUrl}
-          preload="none"
+          preload="auto"
+          playsInline
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
           onTimeUpdate={() => {
             if (audioRef.current) {
               const minutes = Math.floor(audioRef.current.currentTime / 60);
@@ -85,9 +103,14 @@ const StickyPlayer = () => {
           }}
           onLoadedMetadata={() => {
             if (audioRef.current) {
-              const minutes = Math.floor(audioRef.current.duration / 60);
-              const seconds = Math.floor(audioRef.current.duration % 60);
-              setDuration(`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
+              const d = audioRef.current.duration;
+              if (!Number.isFinite(d)) {
+                setDuration('LIVE');
+              } else {
+                const minutes = Math.floor(d / 60);
+                const seconds = Math.floor(d % 60);
+                setDuration(`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
+              }
             }
           }}
         />
