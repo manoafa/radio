@@ -116,7 +116,7 @@ export const about: Record<Language, Record<string, string>> = {
     'about.mission.title': 'Ny iraka antsika',
     'about.mission.p1': 'Ny Radio Madagasikara ho an\'i Kristy dia mipetraka hanambara ny vaovao mahafaly momba an\'i Jesosy Kristy eto Madagasikara sy amin\'ny fiaraha-monina malagasy manerana izao tontolo izao. Mino izahay fa manova fiainana ny haino aman-jery, manamafy ny finoana ary mampiray ny mino amin\'ny fiderana sy ny fanompoana.',
     'about.mission.p2': 'Amin\'ny fandaharana kalitao mampifangitra fampianarana Baiboly, hira manome fanohanana ary votoatin\'ny fiaraha-mientana, maniry izahay ho namana azo itokiana ao amin\'ny trano rehetra—fivavahana maraina, fanohanana antoandro ary fisainana hariva.',
-    'about.vision.title': 'Ny fahitana antsika',
+    'about.vision.title': 'Ny Vina',
     'about.vision.p1': 'Marihina izahay Madagasikara izay ny fianakaviana rehetra manana fampianarana kristianina marina, ny tanora mahita modely tsara amin\'ny onjam-peo, ary ny any ivelany mbola mifandray amin\'ny fototra ara-panahy.',
     'about.vision.p2': 'Ny tanjona lavitra dia ny hanitatra ny fahombiazana ara-digitaly, hanofana mpampianatra kristianina eo an-toerana ary hiara-miasa amin\'ny fiangonana manerana ny nosy hanamafy ny hafatra momba ny Filazantsara.',
     'about.values.title': 'Ny soatoavina antsika',

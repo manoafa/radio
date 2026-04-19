@@ -50,12 +50,12 @@ export const programsPage: Record<Language, Record<string, string>> = {
     'programs.modal.share': 'Zarao ny fandaharana',
     'programs.schedule.mainTitle': 'Fandaharana',
     'programs.schedule.subtitle':
-      'Fantaro ny fandaharana kristianina hahafainganana, hampianatra ary hanamafy ny finoanao.',
+      'Fantaro ny fandaharana kristianina isan-karazany natao hanentanana, hanabeazana ary hampatanjaka ny finoanao',
     'programs.schedule.month': 'Volana',
     'programs.schedule.week': 'Herinandro',
     'programs.schedule.day': 'Andro',
     'programs.schedule.nowPlaying': 'Mikorana izao',
-    'programs.schedule.noAiring': 'Tsy misy fandaharana velona amin\'izao fotoana izao',
+    'programs.schedule.noAiring': 'Tsy misy fandaharana mivantana amin\'izao fotoana izao',
     'programs.schedule.todayTitle': 'Fandaharana androany',
   },
 };

@@ -8,7 +8,7 @@ export const aboutRmkPage: Record<Language, Record<string, string>> = {
       "Radio Madagasikara ho an'i Kristy (RMK) is more than just a radio station. We are a ministry dedicated to spreading the Gospel, strengthening believers, and transforming communities across Madagascar through the power of Christian broadcasting.",
     'aboutPage.missionTitle': 'Our Mission',
     'aboutPage.missionBody':
-      'To proclaim the Gospel of Jesus Christ through radio broadcasting, providing spiritual nourishment, encouragement, and hope to all people across Madagascar. We are committed to building up the body of Christ and reaching the lost with the message of salvation.',
+      'Proclaiming the Gospel of Jesus Christ through radio, increasing spiritual nourishment, encouraging and giving hope to all listeners in Madagascar. Building up the body of Christ and preaching salvation to the lost.',
     'aboutPage.visionTitle': 'Our Vision',
     'aboutPage.visionBody':
       "To be the leading Christian radio station in Madagascar, transforming lives through the power of God's Word and building a strong, united Christian community. We envision a Madagascar where every person has access to biblical truth and spiritual encouragement.",
@@ -89,7 +89,7 @@ export const aboutRmkPage: Record<Language, Record<string, string>> = {
       "Radio Madagasikara ho an'i Kristy (RMK) est bien plus qu'une radio : un ministère qui proclame l'Évangile, fortifie les croyants et transforme les communautés à Madagascar par la diffusion chrétienne.",
     'aboutPage.missionTitle': 'Notre mission',
     'aboutPage.missionBody':
-      'Proclamer l\'Évangile de Jésus-Christ par la radio, offrant nourriture spirituelle, encouragement et espoir à tous à Madagascar. Nous bâtissons le corps du Christ et annonçons le salut aux perdus.',
+      'Proclamer l\'Évangile de Jésus-Christ par la radio, nourrir spirituellement, encourager et donner de l\'espoir à tous les auditeurs de Madagascar. Contribuer à l\'édification du corps du Christ et annoncer le salut aux perdus.',
     'aboutPage.visionTitle': 'Notre vision',
     'aboutPage.visionBody':
       'Être la radio chrétienne de référence à Madagascar, transformer des vies par la Parole de Dieu et bâtir une communauté chrétienne forte et unie. Nous voulons un Madagascar où chacun accède à la vérité biblique et à l\'encouragement spirituel.',
@@ -167,16 +167,16 @@ export const aboutRmkPage: Record<Language, Record<string, string>> = {
   mg: {
     'aboutPage.heroTitle': 'Momba ny RMK',
     'aboutPage.heroLead':
-      'Ny Radio Madagasikara ho an\'i Kristy (RMK) dia mihoatra noho ny onjam-peo fotsiny: fanompoana mikendry ny hielatra ny Filazantsara, hanamafy ny mino ary hanova ny fiaraha-monina eto Madagasikara amin\'ny fampielezam-peo kristianina.',
-    'aboutPage.missionTitle': 'Ny iraka antsika',
+      'Ny Radio Madagasikara ho an\'i Kristy (RMK) dia tsy mijanona amin\'ny maha onjam-peo fotsiny ihany, fanompoana mikendry ny hampiely ny Filazantsara, hanamafy ny mino ary hanova ny fiaraha-monina eto Madagasikara.',
+    'aboutPage.missionTitle': 'Ny iraka',
     'aboutPage.missionBody':
-      'Hanambara ny Filazantsara momba an\'i Jesosy Kristy amin\'ny fampielezam-peo, manome fanahana ara-panahy, fanohanana ary fanantenana ho an\'ny olona rehetra eto Madagasikara. Manangana ny vatana Kristy sy mitory ny famonjena ho an\'izay very.',
-    'aboutPage.visionTitle': 'Ny fahitana antsika',
+      'Manambara ny Filazantsara momba an\'i Jesosy Kristy amin\'ny alalan\'ny onjam-peo, mampitombo ny harena ara-panahy, mampahery ary manome fanantenana ho an\'ny mpihaino rehetra eto Madagasikara. Manangana ny vatana Kristy sy mitory ny famonjena ho an\'izay very.',
+    'aboutPage.visionTitle': 'Ny Vina',
     'aboutPage.visionBody':
-      'Ho onjam-peo kristianina voalohany eto Madagasikara, manova fiainana amin\'ny Tenin\'Andriamanitra ary manangana fiaraha-monina kristianina matanjaka sy iray. Mari-potoana Madagasikara izay olona rehetra mahazo fahamarinana baiboly sy fanohanana ara-panahy.',
-    'aboutPage.valuesColumnTitle': 'Ny soatoavina antsika',
+      'Ho onjam-peo kristiana mpitarika eto Madagasikara, manova ny fiainan\'ny olona amin\'ny alalan\'ny herin\'ny Tenin\'Andriamanitra ary manorina vondrom-piarahamonina kristiana matanjaka sy miray hina.',
+    'aboutPage.valuesColumnTitle': 'Ny soatoavina',
     'aboutPage.valuesColumnBody':
-      'Finoana, fahamarinana, kalitao, fitiavana, firaisana ary fanompoana. Mampieleza votoatin mankalaza an\'Andriamanitra sy manamafy ny olony isika. Ny fandaharana sy ny teny rehetra dia mampiseho ny fanoloran-tena amin\'ny fahamarinana baiboly.',
+      'Finoana, Fahamarinana, Fahombiazana, Fitiavana, Firaisankina ary Fanompoana. Mampieleza votoatin mankalaza an\'Andriamanitra sy manamafy ny olony isika. Ny fandaharana sy ny teny rehetra dia mampiseho ny fanoloran-tena amin\'ny fahamarinana baiboly.',
     'aboutPage.coreValuesTitle': 'Soatoavina fototra',
     'aboutPage.v1.title': 'Fitiavana',
     'aboutPage.v1.desc':
@@ -193,9 +193,9 @@ export const aboutRmkPage: Record<Language, Record<string, string>> = {
     'aboutPage.v5.title': 'Fanompoana',
     'aboutPage.v5.desc':
       'Manompo ny fiaraha-monina amin\'ny asa mivantana, manohana fiangonana eo an-toerana ary manatrika ny filana ara-panahy ny mpihaino.',
-    'aboutPage.v6.title': 'Fahatsiarovana vaovao',
+    'aboutPage.v6.title': 'Zava-baovao',
     'aboutPage.v6.desc':
-      'Manaiky teknolojia sy fomba vaovao hahatratra olona bebe kokoa amin\'ny Filazantsara, tsy mihemotra amin\'ny soatoavina kristianina.',
+      'Mampiasa teknolojia sy fomba vaovao hahatratra olona bebe kokoa amin\'ny Filazantsara, tsy mihemotra amin\'ny soatoavina kristianina.',
     'aboutPage.storyTitle': 'Ny tantarantsika',
     'aboutPage.storyLead':
       'Hatramin\'ny fanombohana modesta ka hatramin\'ny onjam-peo kristianina voalohany eto Madagasikara: ny dian\'ny fanompoana.',
@@ -243,6 +243,6 @@ export const aboutRmkPage: Record<Language, Record<string, string>> = {
     'aboutPage.ctaLead':
       'Miara-mandeha aminay hielatra ny Filazantsara sy hanova fiainana eto Madagasikara. Ny fanohanana dia manampy hahatratra olona bebe kokoa amin\'ny hafatra momba ny fanantenana sy ny famonjena.',
     'aboutPage.ctaDonate': 'Fanohanana ny fanompoana',
-    'aboutPage.ctaListen': 'Mihaino velona',
+    'aboutPage.ctaListen': 'Mihaino mivantana',
   },
 };

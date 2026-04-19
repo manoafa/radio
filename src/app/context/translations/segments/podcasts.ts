@@ -233,7 +233,7 @@ export const podcasts: Record<Language, Record<string, string>> = {
     'podcasts.modal.download': 'Alaivo MP3',
     'podcasts.view.pageTitle': 'Podcast sy averina',
     'podcasts.view.pageSubtitle':
-      'Renio ny fitoriana, fampianarana ary votoatin manome fanantenana na oviana na oviana.',
+      'Henoy ireo toriteny, fampianarana ary fandaharana manentana farany indrindra atolotray amin\'ny fotoana rehetra, na aiza na aiza.',
     'podcasts.view.searchPlaceholder': 'Karohy ny podcast...',
     'podcasts.view.liveNow': 'Velona izao',
     'podcasts.view.liveStation': '102.4 FM RMK velona',
@@ -249,7 +249,7 @@ export const podcasts: Record<Language, Record<string, string>> = {
     'podcasts.cat.music': 'Hira',
     'podcasts.cat.interviews': 'Fanontaniana',
     'podcasts.row.1.title': 'Ny herin\'ny vavaka',
-    'podcasts.row.1.speaker': 'Mpitora Jean',
+    'podcasts.row.1.speaker': 'Pastora Lioka RANARISON',
     'podcasts.row.1.desc':
       'Fantaro ny herin\'ny vavaka amin\'ity hafatra manome fanantenana momba ny fifandraisana lalina amin\'Andriamanitra.',
     'podcasts.row.2.title': 'Miara-mandeha amin\'ny finoana',

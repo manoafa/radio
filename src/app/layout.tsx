@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import StickyPlayer from "@/components/StickyPlayer";
 import { AppProviders } from "@/app/context/AppProviders";
+import { NoscriptShell } from "@/components/NoscriptShell";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,11 +40,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-gray-50 dark:bg-dark-900 text-gray-900 dark:text-white`}
       >
+        <NoscriptShell />
         <AppProviders>
           <Navigation />
-          <main className="min-h-screen bg-gray-50 dark:bg-dark-900">
-            {children}
-          </main>
+          <main className="min-h-screen bg-gray-50 dark:bg-dark-900">{children}</main>
           <StickyPlayer />
         </AppProviders>
       </body>

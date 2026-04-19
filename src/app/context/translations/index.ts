@@ -3,6 +3,7 @@ import { about } from './segments/about';
 import { aboutRmkPage } from './segments/aboutRmkPage';
 import { admin } from './segments/admin';
 import { base } from './segments/base';
+import { contact } from './segments/contact';
 import { donate } from './segments/donate';
 import { home } from './segments/home';
 import { podcasts } from './segments/podcasts';
@@ -25,6 +26,7 @@ function mergeLang(lang: Language): Record<string, string> {
     ...podcasts[lang],
     ...team[lang],
     ...donate[lang],
+    ...contact[lang],
     ...admin[lang],
   };
 }
