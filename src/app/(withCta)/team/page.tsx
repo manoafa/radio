@@ -225,7 +225,7 @@ const TeamPage = () => {
           en: 'News and a strong start for the day.',
         },
         experience: { mg: 'Traikefa amin’ny fanolorana vaovao', fr: 'Expérience en présentation', en: 'Broadcast presentation experience' },
-        phone: '+261345829321',
+        phone: '+261 34 58 293 21',
       },
       {
         id: 'MF024',
@@ -238,7 +238,7 @@ const TeamPage = () => {
           en: 'Supporting and uplifting people in need.',
         },
         experience: { mg: '19 taona', fr: '19 ans', en: '19 years' },
-        phone: '+261344643400',
+        phone: '+261 34 46 434 00',
       },
       {
         id: 'MF029',
@@ -264,7 +264,7 @@ const TeamPage = () => {
           en: 'Building a strong and peaceful home.',
         },
         experience: { mg: '13 taona', fr: '13 ans', en: '13 years' },
-        phone: '+261 34 50 092 11 | +261338261565',
+        phone: '+261 34 50 092 11 | +261 33 82 615 65',
       },
       {
         id: 'MF037',
@@ -333,7 +333,7 @@ const TeamPage = () => {
           en: 'Connects listeners through interactive discussions.',
         },
         experience: { mg: '13 taona', fr: '13 ans', en: '13 years' },
-        phone: '+261380873433',
+        phone: '+261 38 08 734 33',
       },
     ],
     [],
