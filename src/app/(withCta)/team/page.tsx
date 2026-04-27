@@ -199,7 +199,7 @@ const TeamPage = () => {
           en: 'A space for youth and children to grow their talents.',
         },
         experience: { mg: '21 taona', fr: '21 ans', en: '21 years' },
-        phone: '346327663',
+        phone: '+261 34 63 276 63',
       },
       {
         id: 'MF020',
@@ -212,7 +212,7 @@ const TeamPage = () => {
           en: 'Jesus as the firm foundation of life.',
         },
         experience: { mg: 'Traikefa amin’ny fanompoana', fr: 'Expérience en ministère', en: 'Ministry experience' },
-        phone: '348539145',
+        phone: '+261 348539145',
       },
       {
         id: 'MF023',
@@ -225,7 +225,7 @@ const TeamPage = () => {
           en: 'News and a strong start for the day.',
         },
         experience: { mg: 'Traikefa amin’ny fanolorana vaovao', fr: 'Expérience en présentation', en: 'Broadcast presentation experience' },
-        phone: '345829321',
+        phone: '+261345829321',
       },
       {
         id: 'MF024',
@@ -238,7 +238,7 @@ const TeamPage = () => {
           en: 'Supporting and uplifting people in need.',
         },
         experience: { mg: '19 taona', fr: '19 ans', en: '19 years' },
-        phone: '344643400',
+        phone: '+261344643400',
       },
       {
         id: 'MF029',
@@ -264,7 +264,7 @@ const TeamPage = () => {
           en: 'Building a strong and peaceful home.',
         },
         experience: { mg: '13 taona', fr: '13 ans', en: '13 years' },
-        phone: '0345009211/0338261565',
+        phone: '+261 34 50 092 11 | +261338261565',
       },
       {
         id: 'MF037',
@@ -277,7 +277,7 @@ const TeamPage = () => {
           en: "Trusting God's provision in life.",
         },
         experience: { mg: '2 taona', fr: '2 ans', en: '2 years' },
-        phone: '344145529',
+        phone: '+261 34 41 455 29',
       },
       {
         id: 'MF038',
@@ -290,7 +290,7 @@ const TeamPage = () => {
           en: "Prayer for the nation's future.",
         },
         experience: { mg: '23 taona', fr: '23 ans', en: '23 years' },
-        phone: '034 03 317 90',
+        phone: '+261 34 03 317 90',
       },
       {
         id: 'MF039',
@@ -320,7 +320,7 @@ const TeamPage = () => {
           en: 'A dynamic mix of stories, talks, and talents for young listeners.',
         },
         experience: { mg: '23 taona', fr: '23 ans', en: '23 years' },
-        phone: '034 19 577 41',
+        phone: '+261 34 19 577 41',
       },
       {
         id: 'T004',
@@ -333,7 +333,7 @@ const TeamPage = () => {
           en: 'Connects listeners through interactive discussions.',
         },
         experience: { mg: '13 taona', fr: '13 ans', en: '13 years' },
-        phone: '380873433',
+        phone: '+261380873433',
       },
     ],
     [],
