@@ -21,7 +21,7 @@ export const team: Record<Language, Record<string, string>> = {
     'team.m1.sp4': 'Community representation',
     'team.m2.role': 'Administrative and Financial Director',
     'team.m2.bio':
-      'Pastor Nathalie Razafindrakoto serves as Administrative and Financial Director, stewarding resources with integrity so RMK can operate sustainably. She coordinates budgets, compliance, and day-to-day administration that keep our ministry running smoothly.',
+      'Nathalie Razafindrakoto serves as Administrative and Financial Director, stewarding resources with integrity so RMK can operate sustainably. She coordinates budgets, compliance, and day-to-day administration that keep our ministry running smoothly.',
     'team.m2.exp': '12+ years',
     'team.m2.sp1': 'Finance & budgeting',
     'team.m2.sp2': 'Administration',
