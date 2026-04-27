@@ -40,7 +40,7 @@ const AdminDashboard = () => {
   const stats = useMemo(
     () => [
       { titleKey: 'admin.stat.liveListeners', value: '1,247', change: '+12%', icon: Radio, color: 'text-primary-400' },
-      { titleKey: 'admin.stat.totalPrograms', value: '24', change: '+2', icon: Calendar, color: 'text-navy-400' },
+      { titleKey: 'admin.stat.totalPrograms', value: '41', change: '+17', icon: Calendar, color: 'text-navy-400' },
       { titleKey: 'admin.stat.podcasts', value: '156', change: '+8', icon: Headphones, color: 'text-primary-400' },
       { titleKey: 'admin.stat.teamMembers', value: '8', change: '0', icon: Users, color: 'text-navy-400' },
     ],
@@ -49,10 +49,47 @@ const AdminDashboard = () => {
 
   const recentPrograms = useMemo(
     () => [
-      { id: 1, titleKey: 'admin.mock.prog1.title', hostKey: 'admin.mock.prog1.host', time: '06:00-07:00', status: 'live' as const, listeners: 1247 },
-      { id: 2, titleKey: 'admin.mock.prog2.title', hostKey: 'admin.mock.prog2.host', time: '10:00-11:00', status: 'upcoming' as const, listeners: 0 },
-      { id: 3, titleKey: 'admin.mock.prog3.title', hostKey: 'admin.mock.prog3.host', time: '16:00-17:00', status: 'upcoming' as const, listeners: 0 },
-      { id: 4, titleKey: 'admin.mock.prog4.title', hostKey: 'admin.mock.prog4.host', time: '19:00-20:00', status: 'upcoming' as const, listeners: 0 },
+      { id: 1, title: "AFON'NY FANAHY", host: 'RMK', time: '-', status: 'live' as const, listeners: 1247 },
+      { id: 2, title: "AFON'NY VONINAHITRA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 3, title: 'AGAPE VOICE', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 4, title: "AMBOARAN-TONONKALO RMK", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 5, title: 'ANTSO SY FILAZANA + SPOT', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 6, title: "ANTSOM-PAMONJENA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 7, title: "ATAOVY MPIANATRA NY FIRENENA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 8, title: 'BAIBOLY AINA', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 9, title: 'BAIBOLY TENY VELONA', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 10, title: "EMISSION SPECIAL / CHAINE D'HONNETETE", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 11, title: 'FANILO SY FANAZAVANA', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 12, title: "FEON'NY FANASITRANANA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 13, title: 'FINOANA SY FAHALALANA', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 14, title: "FIRE'S REVIVAL", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 15, title: 'FITSAHARANA', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 16, title: 'FLASH INFO RMK', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 17, title: 'HARENA MIAFINA', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 18, title: 'ILAY TALENTAKO 13H35', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 19, title: 'IZANY KA LEHILAHY', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 20, title: "JESOSY VATOLAMPY FAMONJENA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 21, title: "MADAGASIKARA FANJAKANA HOAN'I KRISTY", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 22, title: "MANA ISAN'ANDRO", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 23, title: "MARAIM-BAOVAO", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 24, title: "MIARA-MISANDRATRA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 25, title: "MIHAINOA RY ISRAELY", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 26, title: 'NIGHT LIGHT', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 27, title: "RAKOFAN'NY VONINAHITRA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 28, title: "RAPSODIAN'NY FAHAMARINANA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 29, title: "SAHAM-PIARIAKO", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 30, title: "SAMBATRA IZAY NANTSOINA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 31, title: 'SERASERA AN-TAROBY R M K', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 32, title: 'SOMBIN-TANTARA RMK', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 33, title: 'TALENTA ANATY', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 34, title: 'TATM TOKAN-TRANO AHAZOANA TOKAN-TRANO MIADANA', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 35, title: 'TTB MALAGASY', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 36, title: 'VATSIN-DALANA', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 37, title: "VAVAKA HO AN'NY FIRENENA", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 38, title: "VEHIVAVIN'NY ANJARA VOATENDRY", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 39, title: 'VEHIVAVY MPANDRESY', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 40, title: "ZAY MANAN-TSIRA / NY FAHASALAMAKO", host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
+      { id: 41, title: 'SOMBIN-TANTARA / SERASERA AN-TAROBIA / TALENTA ANATY /', host: 'RMK', time: '-', status: 'upcoming' as const, listeners: 0 },
     ],
     [],
   );
@@ -62,6 +99,8 @@ const AdminDashboard = () => {
       { id: 1, titleKey: 'admin.mock.pod1.title', speakerKey: 'admin.mock.pod1.speaker', duration: '45:30', uploadDate: '2024-01-15', downloads: 234 },
       { id: 2, titleKey: 'admin.mock.pod2.title', speakerKey: 'admin.mock.pod2.speaker', duration: '38:15', uploadDate: '2024-01-14', downloads: 189 },
       { id: 3, titleKey: 'admin.mock.pod3.title', speakerKey: 'admin.mock.pod3.speaker', duration: '52:20', uploadDate: '2024-01-13', downloads: 312 },
+      { id: 4, titleKey: 'admin.mock.pod1.title', speakerKey: 'admin.mock.pod2.speaker', duration: '41:05', uploadDate: '2024-01-12', downloads: 141 },
+      { id: 5, titleKey: 'admin.mock.pod2.title', speakerKey: 'admin.mock.pod3.speaker', duration: '29:40', uploadDate: '2024-01-11', downloads: 98 },
     ],
     [],
   );
@@ -130,11 +169,11 @@ const AdminDashboard = () => {
         <div className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
           <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">{t('admin.section.recentPrograms')}</h3>
           <div className="space-y-4">
-            {recentPrograms.map((program) => (
+            {recentPrograms.slice(0, 5).map((program) => (
               <div key={program.id} className="flex items-center justify-between p-4 bg-gray-100 dark:bg-dark-700 rounded-lg">
                 <div>
-                  <h4 className="font-semibold text-gray-950 dark:text-white">{t(program.titleKey)}</h4>
-                  <p className="text-sm text-gray-400">{t(program.hostKey)} • {program.time}</p>
+                  <h4 className="font-semibold text-gray-950 dark:text-white">{program.title}</h4>
+                  <p className="text-sm text-gray-400">{program.host} • {program.time}</p>
                 </div>
                 <div className="text-right">
                   <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
@@ -151,12 +190,21 @@ const AdminDashboard = () => {
               </div>
             ))}
           </div>
+          <div className="mt-4 flex justify-center">
+            <button
+              onClick={() => setActiveTab('programs')}
+              className="rounded-md bg-gradient-to-r from-primary-500 to-navy-500 px-3 py-2 text-sm font-semibold text-gray-950 dark:text-white hover:shadow-lg transition-all duration-300"
+              aria-label="Go to programs tab"
+            >
+              More +
+            </button>
+          </div>
         </div>
 
         <div className="bg-white dark:bg-dark-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none">
           <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">{t('admin.section.recentPodcasts')}</h3>
           <div className="space-y-4">
-            {recentPodcasts.map((podcast) => (
+            {recentPodcasts.slice(0, 5).map((podcast) => (
               <div key={podcast.id} className="flex items-center justify-between p-4 bg-gray-100 dark:bg-dark-700 rounded-lg">
                 <div>
                   <h4 className="font-semibold text-gray-950 dark:text-white">{t(podcast.titleKey)}</h4>
@@ -168,6 +216,15 @@ const AdminDashboard = () => {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="mt-4 flex justify-center items-center">
+            <button
+              onClick={() => setActiveTab('podcasts')}
+              className="rounded-md bg-gradient-to-r from-primary-500 to-navy-500 px-3 py-2 text-sm font-semibold text-gray-950 dark:text-white hover:shadow-lg transition-all duration-300"
+              aria-label="Go to podcasts tab"
+            >
+              More +
+            </button>
           </div>
         </div>
       </div>
@@ -202,10 +259,10 @@ const AdminDashboard = () => {
                   <td className="px-6 py-4">
                     <div className="flex items-center space-x-3">
                       <Mic className="w-5 h-5 text-primary-400" />
-                      <span className="font-medium text-gray-950 dark:text-white">{t(program.titleKey)}</span>
+                      <span className="font-medium text-gray-950 dark:text-white">{program.title}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{t(program.hostKey)}</td>
+                  <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{program.host}</td>
                   <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{program.time}</td>
                   <td className="px-6 py-4">
                     <span className={`px-2 py-1 rounded-full text-xs font-semibold ${

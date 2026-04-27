@@ -75,6 +75,8 @@ export const team: Record<Language, Record<string, string>> = {
     'team.m8.sp2': 'Church Partnerships',
     'team.m8.sp3': 'Event Coordination',
     'team.m8.sp4': 'Volunteer Management',
+    'team.excel.specialty1': 'Program hosting',
+    'team.excel.specialty2': 'Radio ministry',
   },
   fr: {
     'team.hero.title': 'Notre équipe',
@@ -150,6 +152,8 @@ export const team: Record<Language, Record<string, string>> = {
     'team.m8.sp2': 'Partenariats d\'églises',
     'team.m8.sp3': 'Coordination d\'événements',
     'team.m8.sp4': 'Gestion des bénévoles',
+    'team.excel.specialty1': "Animation d'émission",
+    'team.excel.specialty2': 'Ministère radio',
   },
   mg: {
     'team.hero.title': 'Ireo mpiara-miasa',
@@ -225,5 +229,7 @@ export const team: Record<Language, Record<string, string>> = {
     'team.m8.sp2': 'Fiaraha-miasa fiangonana',
     'team.m8.sp3': 'Fanatanterahana hetsika',
     'team.m8.sp4': 'Fitantanana olona manampy',
+    'team.excel.specialty1': 'Fampiantranoana fandaharana',
+    'team.excel.specialty2': 'Fanompoana amin\'ny onjam-peo',
   },
 };
