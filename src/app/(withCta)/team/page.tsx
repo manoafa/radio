@@ -82,7 +82,7 @@ const TeamPage = () => {
           en: "A program centered on God's love and how to live it daily.",
         },
         experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
-        phone: '340767176',
+        phone: '+261 34 07 671 76',
       },
       {
         id: 'MF004',
@@ -95,7 +95,7 @@ const TeamPage = () => {
           en: 'A place where faith meets creativity through poetry.',
         },
         experience: { mg: '10 taona', fr: '10 ans', en: '10 years' },
-        phone: '343273183',
+        phone: '+261 34 32 731 83',
       },
       {
         id: 'MF006',
@@ -134,7 +134,7 @@ const TeamPage = () => {
           en: "Bringing God's Word into daily life with prayer support.",
         },
         experience: { mg: '30 taona', fr: '30 ans', en: '30 years' },
-        phone: '345175092',
+        phone: '+261 34 51 750 92',
       },
       {
         id: 'MF011',
@@ -147,7 +147,7 @@ const TeamPage = () => {
           en: 'Short and clear encouragement messages.',
         },
         experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
-        phone: '340933966',
+        phone: '+261 34 09 339 66',
       },
       {
         id: 'MF012',
@@ -160,7 +160,7 @@ const TeamPage = () => {
           en: 'A space for healing and restoration.',
         },
         experience: { mg: '30 taona', fr: '30 ans', en: '30 years' },
-        phone: '331185858',
+        phone: '+261 33 11 858 58',
       },
       {
         id: 'MF013',
@@ -173,7 +173,7 @@ const TeamPage = () => {
           en: 'Growing in both faith and knowledge.',
         },
         experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
-        phone: '340193372',
+        phone: '+261 34 01 933 72',
       },
       {
         id: 'MF015',
@@ -212,7 +212,7 @@ const TeamPage = () => {
           en: 'Jesus as the firm foundation of life.',
         },
         experience: { mg: 'Traikefa amin’ny fanompoana', fr: 'Expérience en ministère', en: 'Ministry experience' },
-        phone: '+261 348539145',
+        phone: '+261 34 85 391 45',
       },
       {
         id: 'MF023',
