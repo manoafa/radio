@@ -33,12 +33,311 @@ interface TeamMember {
   };
 }
 
+type LocalizedText = {
+  mg: string;
+  fr: string;
+  en: string;
+};
+
+interface ExcelTeamMember {
+  id: string;
+  name: string;
+  department: TeamMember['department'];
+  role: LocalizedText;
+  bio: LocalizedText;
+  experience: LocalizedText;
+  phone: string;
+}
+
 const TeamPage = () => {
   const { t, language } = useLanguage();
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [selectedDepartment, setSelectedDepartment] = useState('all');
 
   const departments = ['all', 'leadership', 'programming', 'technical', 'music', 'ministry'] as const;
+
+  const excelTeamMembers = useMemo<ExcelTeamMember[]>(
+    () => [
+      {
+        id: 'MF001',
+        name: 'Nirina RAKOTOMALALA',
+        department: 'programming',
+        role: { mg: "AFON'NY FANAHY", fr: "Feu de l'Esprit", en: 'Fire of the Spirit' },
+        bio: {
+          mg: "Ho an'izay maniry hiaina bebe kokoa amin'ny herin'ny Fanahy Masina sy hampirehitra ny finoany.",
+          fr: "Pour ceux qui désirent vivre davantage dans la puissance du Saint-Esprit et raviver leur foi.",
+          en: "For those hungry to live in the power of the Holy Spirit and rekindle their faith.",
+        },
+        experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
+        phone: '+261 34 864 62 46',
+      },
+      {
+        id: 'MF003',
+        name: 'Eddy RABESOELINA',
+        department: 'programming',
+        role: { mg: 'AGAPE VOICE', fr: "Voix d'Agapé", en: 'Agape Voice' },
+        bio: {
+          mg: "Mampahatsiahy ny fitiavan'Andriamanitra sy mampianatra ny hiaina izany isan'andro.",
+          fr: "Une émission centrée sur l'amour de Dieu pour apprendre à vivre cet amour au quotidien.",
+          en: "A program centered on God's love and how to live it daily.",
+        },
+        experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
+        phone: '340767176',
+      },
+      {
+        id: 'MF004',
+        name: 'RAHARIMANANA Lydia',
+        department: 'programming',
+        role: { mg: 'AMBOARAN-TONONKALO RMK', fr: 'Plateforme Poétique RMK', en: 'RMK Poetry Platform' },
+        bio: {
+          mg: "Sehatra hanehoana finoana sy fiainana amin'ny alalan'ny tononkalo.",
+          fr: 'Un espace où la foi rencontre la créativité à travers la poésie.',
+          en: 'A place where faith meets creativity through poetry.',
+        },
+        experience: { mg: '10 taona', fr: '10 ans', en: '10 years' },
+        phone: '343273183',
+      },
+      {
+        id: 'MF006',
+        name: 'FIDY BARINIAINA',
+        department: 'ministry',
+        role: { mg: 'ANTSOM-PAMONJENA', fr: 'Appel au Salut', en: 'Call to Salvation' },
+        bio: {
+          mg: "Antso ho amin'ny famonjena sy fahafantarana an'i Jesosy.",
+          fr: 'Une invitation claire à connaître Jésus.',
+          en: 'A clear invitation to know Jesus.',
+        },
+        experience: { mg: '20 taona', fr: '20 ans', en: '20 years' },
+        phone: '+261 34 49 642 01',
+      },
+      {
+        id: 'MF007',
+        name: 'Vonjy Lovasoa RAMILIARIMANANA',
+        department: 'ministry',
+        role: { mg: "ATAOVY MPIANATRA NY FIRENENA", fr: 'Faites des Nations des Disciples', en: 'Make Disciples of All Nations' },
+        bio: {
+          mg: "Ho an'izay te hitombo sy hizara ny finoany amin'ny hafa.",
+          fr: 'Grandir et impacter les autres dans la foi.',
+          en: 'Helping people grow and share their faith.',
+        },
+        experience: { mg: '40 taona', fr: '40 ans', en: '40 years' },
+        phone: '+261 33 03 074 83 | +261 34 20 158 40 | +261 32 41 241 13',
+      },
+      {
+        id: 'MF008',
+        name: 'Georges ANDRIATOKINIAINA',
+        department: 'ministry',
+        role: { mg: 'BAIBOLY AINA', fr: 'Vivre la Bible', en: 'Bible for Life' },
+        bio: {
+          mg: "Mampifandray ny Tenin'Andriamanitra amin'ny fiainana sy manolotra vavaka.",
+          fr: "Vivre la Parole de Dieu au quotidien avec soutien de prière.",
+          en: "Bringing God's Word into daily life with prayer support.",
+        },
+        experience: { mg: '30 taona', fr: '30 ans', en: '30 years' },
+        phone: '345175092',
+      },
+      {
+        id: 'MF011',
+        name: 'Johny RAKOTOARISON',
+        department: 'programming',
+        role: { mg: 'FANILO SY FANAZAVANA', fr: 'Lampe et Lumière', en: 'Lamp and Light' },
+        bio: {
+          mg: 'Fampaherezana fohy sy mazava.',
+          fr: "De courts messages d'encouragement.",
+          en: 'Short and clear encouragement messages.',
+        },
+        experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
+        phone: '340933966',
+      },
+      {
+        id: 'MF012',
+        name: 'André RAZANATSIFERANA',
+        department: 'ministry',
+        role: { mg: "FEON'NY FANASITRANANA", fr: 'Voix de Guérison', en: 'Voice of Healing' },
+        bio: {
+          mg: "Ho an'izay mitady fanasitranana sy fanarenana.",
+          fr: 'Un espace de guérison et de restauration.',
+          en: 'A space for healing and restoration.',
+        },
+        experience: { mg: '30 taona', fr: '30 ans', en: '30 years' },
+        phone: '331185858',
+      },
+      {
+        id: 'MF013',
+        name: 'Armandi Bithou KASOJA',
+        department: 'ministry',
+        role: { mg: 'FINOANA SY FAHALALANA', fr: 'Foi et Connaissance', en: 'Faith and Knowledge' },
+        bio: {
+          mg: 'Finoana sy fahalalana miara-mitombo.',
+          fr: 'Grandir dans la foi et la connaissance.',
+          en: 'Growing in both faith and knowledge.',
+        },
+        experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
+        phone: '340193372',
+      },
+      {
+        id: 'MF015',
+        name: 'SALOMON',
+        department: 'ministry',
+        role: { mg: 'FITSAHARANA', fr: 'Repos', en: 'Rest' },
+        bio: {
+          mg: "Fotoana hitsaharana sy hahazoana fiadanana amin'Andriamanitra.",
+          fr: 'Un moment de repos et de paix en Dieu.',
+          en: 'A moment of rest and peace in God.',
+        },
+        experience: { mg: '30 taona', fr: '30 ans', en: '30 years' },
+        phone: '+261 34 49 642 01',
+      },
+      {
+        id: 'MF018',
+        name: 'Zoky Aina & Idealy',
+        department: 'music',
+        role: { mg: 'ILAY TALENTAKO 13H35', fr: 'Mon Talent', en: 'My Talent' },
+        bio: {
+          mg: "Sehatra ho an'ny tanora sy ankizy haneho sy hampivelatra ny talentany.",
+          fr: 'Un espace pour les jeunes et les enfants afin de développer leurs talents.',
+          en: 'A space for youth and children to grow their talents.',
+        },
+        experience: { mg: '21 taona', fr: '21 ans', en: '21 years' },
+        phone: '346327663',
+      },
+      {
+        id: 'MF020',
+        name: 'Voahirana Emma RAOELINA',
+        department: 'ministry',
+        role: { mg: 'JESOSY VATOLAMPY FAMONJENA', fr: 'Jésus, le Rocher du Salut', en: 'Jesus, the Rock of Salvation' },
+        bio: {
+          mg: "Jesosy no vatofehizoron'ny finoana sy famonjena.",
+          fr: 'Jésus comme fondation solide de la vie.',
+          en: 'Jesus as the firm foundation of life.',
+        },
+        experience: { mg: 'Traikefa amin’ny fanompoana', fr: 'Expérience en ministère', en: 'Ministry experience' },
+        phone: '348539145',
+      },
+      {
+        id: 'MF023',
+        name: 'Lioka RANARISON Christophe',
+        department: 'programming',
+        role: { mg: 'MARAIM-BAOVAO', fr: 'Journal du Matin', en: 'Morning News' },
+        bio: {
+          mg: "Vaovao sy fanombohana tsara ny andro.",
+          fr: 'Actualités et bon départ pour la journée.',
+          en: 'News and a strong start for the day.',
+        },
+        experience: { mg: 'Traikefa amin’ny fanolorana vaovao', fr: 'Expérience en présentation', en: 'Broadcast presentation experience' },
+        phone: '345829321',
+      },
+      {
+        id: 'MF024',
+        name: 'Aimée RASOARINIVONIRIANA Rabearisoa',
+        department: 'ministry',
+        role: { mg: 'MIARA-MISANDRATRA', fr: "S'élever Ensemble", en: 'Rising Together' },
+        bio: {
+          mg: "Fanohanana ireo sahirana sy ankizy mila fanampiana.",
+          fr: 'Soutenir et élever les plus vulnérables.',
+          en: 'Supporting and uplifting people in need.',
+        },
+        experience: { mg: '19 taona', fr: '19 ans', en: '19 years' },
+        phone: '344643400',
+      },
+      {
+        id: 'MF029',
+        name: 'Jeannine Aimée RAKOTOARIMANANA',
+        department: 'ministry',
+        role: { mg: "RAPSODIAN'NY FAHAMARINANA", fr: 'Rhapsodie de la Justice', en: 'Rhapsody of Righteousness' },
+        bio: {
+          mg: 'Miaina amin’ny fahamarinana sy finoana.',
+          fr: 'Grandir dans la justice et la foi.',
+          en: 'Growing in righteousness and faith.',
+        },
+        experience: { mg: '5 taona', fr: '5 ans', en: '5 years' },
+        phone: '+261 34 49 642 01',
+      },
+      {
+        id: 'MF035',
+        name: 'Klarys RAMAROSON',
+        department: 'ministry',
+        role: { mg: 'TATM TOKAN-TRANO AHAZOANA TOKAN-TRANO MIADANA', fr: 'Construire un Foyer Paisible', en: 'Building a Peaceful Home' },
+        bio: {
+          mg: 'Fananganana tokantrano milamina sy matanjaka.',
+          fr: 'Construire un foyer paisible et solide.',
+          en: 'Building a strong and peaceful home.',
+        },
+        experience: { mg: '13 taona', fr: '13 ans', en: '13 years' },
+        phone: '0345009211/0338261565',
+      },
+      {
+        id: 'MF037',
+        name: 'Mina Iarinivo RASETARISOA',
+        department: 'ministry',
+        role: { mg: 'VATSIN-DALANA', fr: 'Provision pour la Route', en: 'Provision for the Journey' },
+        bio: {
+          mg: "Matoky ny famatsian'Andriamanitra amin'ny fiainana.",
+          fr: 'Faire confiance à la provision de Dieu.',
+          en: "Trusting God's provision in life.",
+        },
+        experience: { mg: '2 taona', fr: '2 ans', en: '2 years' },
+        phone: '344145529',
+      },
+      {
+        id: 'MF038',
+        name: 'Davida Henintsoa Daniel Rajaonimanana',
+        department: 'ministry',
+        role: { mg: "VAVAKA HO AN'NY FIRENENA", fr: 'Prière pour la Nation', en: 'Prayer for the Nation' },
+        bio: {
+          mg: "Vavaka ho an'ny firenena sy ny hoaviny.",
+          fr: "Prière pour l'avenir de la nation.",
+          en: "Prayer for the nation's future.",
+        },
+        experience: { mg: '23 taona', fr: '23 ans', en: '23 years' },
+        phone: '034 03 317 90',
+      },
+      {
+        id: 'MF039',
+        name: 'Fara ANDRIANARIVO',
+        department: 'ministry',
+        role: { mg: "VEHIVAVIN'NY ANJARA VOATENDRY", fr: 'Femme de Destinée', en: 'Woman of Purpose' },
+        bio: {
+          mg: 'Vehivavy miaina amin’ny tanjona sy finoana.',
+          fr: 'Femmes vivant avec foi et détermination.',
+          en: 'Women growing in purpose and faith.',
+        },
+        experience: { mg: '20 taona', fr: '20 ans', en: '20 years' },
+        phone: '+261 34 49 642 01',
+      },
+      {
+        id: 'T001',
+        name: 'RAHANITRINIAINA Sylvie Constance',
+        department: 'programming',
+        role: {
+          mg: 'SOMBIN-TANTARA / SERASERA AN-TAROBIA / TALENTA ANATY /',
+          fr: 'Chroniques / Échange Interactif / Talent Intérieur',
+          en: 'Story Segments / Interactive Talk / Inner Talent',
+        },
+        bio: {
+          mg: "Tantara, resaka ary talenta ho an'ny tanora sy ny ankizy.",
+          fr: 'Mélange de témoignages, discussions et talents pour les jeunes.',
+          en: 'A dynamic mix of stories, talks, and talents for young listeners.',
+        },
+        experience: { mg: '23 taona', fr: '23 ans', en: '23 years' },
+        phone: '034 19 577 41',
+      },
+      {
+        id: 'T004',
+        name: 'RAFANOMEZANTSOA Tahiry',
+        department: 'programming',
+        role: { mg: 'SERASERA AN-TAROBY RMK', fr: 'Échange Interactif RMK', en: 'RMK Interactive Talk' },
+        bio: {
+          mg: "Mampifandray ny mpihaino amin'ny resadresaka mivantana.",
+          fr: "Relie les auditeurs à travers des échanges interactifs.",
+          en: 'Connects listeners through interactive discussions.',
+        },
+        experience: { mg: '13 taona', fr: '13 ans', en: '13 years' },
+        phone: '380873433',
+      },
+    ],
+    [],
+  );
 
   const teamMembers: TeamMember[] = useMemo(
     () => [
@@ -78,68 +377,19 @@ const TeamPage = () => {
         specialties: [1, 2, 3, 4].map((s) => t(`team.m3.sp${s}`)),
         social: { facebook: 'rmk.madagascar' },
       },
-      {
-        id: '4',
-        name: 'Pastor Sarah Rasoanaivo',
-        role: t('team.m4.role'),
-        department: 'ministry',
-        bio: t('team.m4.bio'),
-        email: 'sarah@rmk.mg',
-        phone: '+261 34 12 345 70',
-        experience: t('team.m4.exp'),
-        specialties: [1, 2, 3, 4].map((s) => t(`team.m4.sp${s}`)),
-        social: { facebook: 'sarah.rasoanaivo' },
-      },
-      {
-        id: '5',
-        name: 'Brother Paul Rakotondrabe',
-        role: t('team.m5.role'),
-        department: 'technical',
-        bio: t('team.m5.bio'),
-        email: 'paul@rmk.mg',
-        phone: '+261 34 12 345 71',
-        experience: t('team.m5.exp'),
-        specialties: [1, 2, 3, 4].map((s) => t(`team.m5.sp${s}`)),
-        social: { facebook: 'paul.rakotondrabe' },
-      },
-      {
-        id: '6',
-        name: 'Sister Esther Ravelojaona',
-        role: t('team.m6.role'),
-        department: 'music',
-        bio: t('team.m6.bio'),
-        email: 'esther@rmk.mg',
-        phone: '+261 34 12 345 72',
-        experience: t('team.m6.exp'),
-        specialties: [1, 2, 3, 4].map((s) => t(`team.m6.sp${s}`)),
-        social: { facebook: 'esther.ravelojaona', instagram: '@esther_rmk' },
-      },
-      {
-        id: '7',
-        name: 'Brother Thomas Andriamanjato',
-        role: t('team.m7.role'),
-        department: 'ministry',
-        bio: t('team.m7.bio'),
-        email: 'thomas@rmk.mg',
-        phone: '+261 34 12 345 73',
-        experience: t('team.m7.exp'),
-        specialties: [1, 2, 3, 4].map((s) => t(`team.m7.sp${s}`)),
-        social: { facebook: 'thomas.andriamanjato' },
-      },
-      {
-        id: '8',
-        name: 'Sister Grace Ranaivo',
-        role: t('team.m8.role'),
-        department: 'programming',
-        bio: t('team.m8.bio'),
-        email: 'grace@rmk.mg',
-        phone: '+261 34 12 345 74',
-        experience: t('team.m8.exp'),
-        specialties: [1, 2, 3, 4].map((s) => t(`team.m8.sp${s}`)),
-        social: { facebook: 'grace.ranaivo', instagram: '@grace_rmk' },
-      },
+      ...excelTeamMembers.map((member) => ({
+        id: member.id,
+        name: member.name,
+        role: member.role[language],
+        department: member.department,
+        bio: member.bio[language],
+        email: 'contact@rmk.mg',
+        phone: member.phone || '+261 34 49 642 01',
+        experience: member.experience[language],
+        specialties: [t('team.excel.specialty1'), t('team.excel.specialty2')],
+      })),
     ],
-    [t],
+    [excelTeamMembers, language, t],
   );
 
   const filteredMembers = teamMembers.filter(member => 
