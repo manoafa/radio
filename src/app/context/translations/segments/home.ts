@@ -77,7 +77,7 @@ export const home: Record<Language, Record<string, string>> = {
     'home.preview.t1.name': 'Pastor Camille Ratsimbazafy',
     'home.preview.t1.role': 'General Director of RMK',
     'home.preview.t1.desc': 'Leading the station with wisdom, vision and faith.',
-    'home.preview.t2.name': 'Pastor Nathalie Razafindrakoto',
+    'home.preview.t2.name': 'Nathalie Razafindrakoto',
     'home.preview.t2.role': 'Administrative and Financial Director',
     'home.preview.t2.desc': 'Ensuring the smooth operation administrative and financial of the station.',
     'home.preview.t3.name': 'Manoa Fandresena',
