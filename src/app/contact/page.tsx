@@ -16,7 +16,7 @@ import { useLanguage } from '@/app/context/LanguageContext';
 
 const EMAIL = 'contact@rmk.mg';
 const PHONE_DISPLAY = '+261 34 49 642 01';
-const PHONE_TEL = '+261344964201';
+const PHONE_TEL = '+261 34 49 642 01';
 const MAPS_LINK =
   "https://www.google.com/maps/place/Radio+Madagasikara+ho+an'i+Kristy+(RMK)/@-18.9170228,47.5317639,17z/data=!3m1!4b1!4m6!3m5!1s0x21f0879aaaaaaa9f:0xc2f34a6de675b1f2!8m2!3d-18.9170228!4d47.5317639!16s%2Fg%2F11csp7m5r1";
 const MAPS_EMBED =
