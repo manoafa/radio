@@ -49,6 +49,30 @@ interface ExcelTeamMember {
   phone: string;
 }
 
+const teamImageIds = new Set([
+  'MF001',
+  'MF002',
+  'MF003',
+  'MF004',
+  'MF006',
+  'MF007',
+  'MF011',
+  'MF012',
+  'MF014',
+  'MF018',
+  'MF021',
+  'MF023',
+  'MF024',
+  'MF026',
+  'MF027',
+  'MF028',
+  'MF029',
+  'MF032',
+  'MF033',
+  'MF035',
+  'MF038',
+]);
+
 const TeamPage = () => {
   const { t, language } = useLanguage();
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -62,14 +86,27 @@ const TeamPage = () => {
         id: 'MF001',
         name: 'Nirina RAKOTOMALALA',
         department: 'programming',
-        role: { mg: "AFON'NY FANAHY", fr: "Feu de l'Esprit", en: 'Fire of the Spirit' },
+        role: { mg: "AFON\'NY FANAHY", fr: "Feu de l'Esprit", en: 'Fire of the Spirit' },
         bio: {
           mg: "Ho an'izay maniry hiaina bebe kokoa amin'ny herin'ny Fanahy Masina sy hampirehitra ny finoany.",
           fr: "Pour ceux qui désirent vivre davantage dans la puissance du Saint-Esprit et raviver leur foi.",
-          en: "For those hungry to live in the power of the Holy Spirit and rekindle their faith.",
+          en: "If you’re hungry for more of the Holy Spirit and want your faith to come alive, this space is for you.",
         },
         experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
         phone: '+261 34 864 62 46',
+      },
+      { 
+        id: 'MF002',
+        name: 'Jean Claude RANDRIAMBOLAMANANA',
+        department: 'programming',
+        role: { mg: 'AFON\'NY VONINAHITRA', fr: 'Feu de la Gloire', en: 'Fire of Glory' },
+        bio: {
+          mg: "Evanjelistra  sady manasitrana no manao vavaka fanafahana, fanabeazana ny tanora sy ny ankizy.",
+          fr: "Un espace pour expérimenter la présence de Dieu et vivre Sa gloire au quotidien.",
+          en: "A place to encounter God\’s presence and be reminded that His glory is not distant and is meant to be lived.",
+        },
+        experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
+        phone: '+261 34 55 257 77 | +261 32 02 135 67',
       },
       {
         id: 'MF003',
@@ -88,11 +125,11 @@ const TeamPage = () => {
         id: 'MF004',
         name: 'RAHARIMANANA Lydia',
         department: 'programming',
-        role: { mg: 'AMBOARAN-TONONKALO RMK', fr: 'Plateforme Poétique RMK', en: 'RMK Poetry Platform' },
+        role: { mg: 'AMBOARAN-TONONKALO RMK | FLASH INFO | HARENA MIAFINA', fr: 'Plateforme Poétique RMK | Flash Info RMK | Trésor Caché', en: 'RMK Poetry Platform | RMK News Flash | Hidden Treasure' },
         bio: {
-          mg: "Sehatra hanehoana finoana sy fiainana amin'ny alalan'ny tononkalo.",
+          mg: "Sehatra hanehoana finoana sy fiainana amin\'ny alalan\'ny tononkalo. Vaovao fohy sy manan-danja. Mitady sy mahita harena miafina ao amin\’ny Soratra Masina.",
           fr: 'Un espace où la foi rencontre la créativité à travers la poésie.',
-          en: 'A place where faith meets creativity through poetry.',
+          en: 'A place where faith meets creativity through poetry. Quick and essential updates on the latest news. Discover deeper truths in Scripture.',
         },
         experience: { mg: '10 taona', fr: '10 ans', en: '10 years' },
         phone: '+261 34 32 731 83',
@@ -136,15 +173,28 @@ const TeamPage = () => {
         experience: { mg: '30 taona', fr: '30 ans', en: '30 years' },
         phone: '+261 34 51 750 92',
       },
+      { 
+        id: 'MF009',
+        name: ' Dimy ANDRIANSON',
+        department: 'ministry',
+        role: { mg: 'BAIBOLY TENY VELONA', fr: 'La Bible: Parole Vivante', en: 'Living Word Bible' },
+        bio: {
+          mg: 'Manazava ny Baiboly amin\’ny fomba tsotra sy azo ampiharina',
+          fr: "Une explication simple et pratique de la Bible.",
+          en: 'Scripture made clear and practical.',
+        },
+        experience: { mg: 'xx taona', fr: 'xx ans', en: 'xx years' },
+        phone: '+261 xx xx xxx xx',
+      },
       {
         id: 'MF011',
         name: 'Johny RAKOTOARISON',
         department: 'programming',
-        role: { mg: 'FANILO SY FANAZAVANA', fr: 'Lampe et Lumière', en: 'Lamp and Light' },
+        role: { mg: 'FANILO SY FANAZAVANA | IZANY KA LEHILAHY', fr: 'Lampe et Lumière | Quel homme!', en: 'Lamp and Light | What a man' },
         bio: {
-          mg: 'Fampaherezana fohy sy mazava.',
-          fr: "De courts messages d'encouragement.",
-          en: 'Short and clear encouragement messages.',
+          mg: 'Fampaherezana fohy sy mazava ary Fampianarana ho an\’ny lehilahy amin\’ny toetra sy andraikitra',
+          fr: "De courts messages d'encouragement et Discussions sur le rôle et le caractère des hommes.",
+          en: 'Short and clear encouragement messages alongside Conversations on manhood and leadership',
         },
         experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
         phone: '+261 34 09 339 66',
@@ -192,7 +242,7 @@ const TeamPage = () => {
         id: 'MF018',
         name: 'Zoky Aina & Idealy',
         department: 'music',
-        role: { mg: 'ILAY TALENTAKO 13H35', fr: 'Mon Talent', en: 'My Talent' },
+        role: { mg: 'ILAY TALENTAKO', fr: 'Mon Talent', en: 'My Talent' },
         bio: {
           mg: "Sehatra ho an'ny tanora sy ankizy haneho sy hampivelatra ny talentany.",
           fr: 'Un espace pour les jeunes et les enfants afin de développer leurs talents.',
@@ -213,6 +263,19 @@ const TeamPage = () => {
         },
         experience: { mg: 'Traikefa amin’ny fanompoana', fr: 'Expérience en ministère', en: 'Ministry experience' },
         phone: '+261 34 85 391 45',
+      },
+      { 
+        id: 'MF021',
+        name: 'Camille RATSIMBAZAFY',
+        department: 'ministry',
+        role: { mg: 'MADAGASIKARA FANJAKANA HOAN\'I KRISTY | SAMBATRA IZAY NANTSOINA', fr: 'Madagascar, une Nation pour Christ | Heureux les Appelés', en: 'Madagascar, a Kingdom for Christ | Blessed Are the Called' },
+        bio: {
+          mg: "Fahitana firenena miova amin\’ny alalan\’i Kristy ary Fampahatsiahivana ny antso sy tanjona amin'ny maha-Kristiana.",
+          fr: 'Une vision pour une nation transformée mais aussi Un rappel de votre appel et de votre mission',
+          en: "A vision for a transformed nation with A reminder of your calling and purpose.",
+        },
+        experience: { mg: '25 taona', fr: '25 ans', en: '25 years' },
+        phone: '+261 34 01 965 90',
       },
       {
         id: 'MF023',
@@ -240,6 +303,32 @@ const TeamPage = () => {
         experience: { mg: '19 taona', fr: '19 ans', en: '19 years' },
         phone: '+261 34 46 434 00',
       },
+      { 
+        id: 'MF026',
+        name: 'Fitahiana RATSIMBAZAFY',
+        department: 'music',
+        role: { mg: 'Jiron\'ny alina', fr: 'Lumière de Nuit', en: 'Night Light' },
+        bio: {
+          mg: "Fisaintsainana sy fampaherezana amin’ny alina.",
+          fr: 'Réflexions et encouragements pour la nuit.',
+          en: "Evening reflections and encouragement.",
+        },
+        experience: { mg: '1 taona', fr: '1 ans', en: '1 years' },
+        phone: '+261 34 99 985 44',
+      },
+      { 
+        id: 'MF028',
+        name: 'Haja Andrianavalona RAZAFIARISON',
+        department: 'ministry',
+        role: { mg: 'RAKOFAN\'NY VONINAHITRA', fr: 'Couvert de Gloire', en: 'Covered in Glory' },
+        bio: {
+          mg: "Miaina eo ambanin\’ny fahasoavan\’Andriamanitra.",
+          fr: 'Vivre sous la grâce de Dieu.',
+          en: "Living under God\’s grace.",
+        },
+        experience: { mg: '35 taona', fr: '35 ans', en: '35 years' },
+        phone: '+261 34 41 615 35',
+      },
       {
         id: 'MF029',
         name: 'Jeannine Aimée RAKOTOARIMANANA',
@@ -252,6 +341,45 @@ const TeamPage = () => {
         },
         experience: { mg: '5 taona', fr: '5 ans', en: '5 years' },
         phone: '+261 34 49 642 01',
+      },
+      {
+        id: 'MF030',
+        name: 'RAKOTOARISOA Antonio',
+        department: 'programming',
+        role: { mg: 'SAHAM-PIARIAKO', fr: 'Mon champ de récolte', en: 'My Harvest Field' },
+        bio: {
+          mg: "Miasa sy manompo amin’ny fiainana andavanandro.",
+          fr: 'Servir et impacter au quotidien.',
+          en: "Serving and making a difference daily.",
+        },
+        experience: { mg: 'x taona', fr: 'x ans', en: 'x years' },
+        phone: '+261 xx xx xxx xx',
+      },
+      {
+        id: 'MF032',
+        name: 'RAFANOMEZANTSOA Tahiry',
+        department: 'programming',
+        role: { mg: 'SERASERA AN-TAROBY RMK', fr: 'Échange Live RMK', en: 'RMK Interactive Talk' },
+        bio: {
+          mg: "Resaka mivantana sy fifanakalozan-kevitra.",
+          fr: 'Discussions interactives et échanges.',
+          en: "Real conversations and engagement.",
+        },
+        experience: { mg: 'x taona', fr: 'x ans', en: 'x years' },
+        phone: '+261 xx xx xxx xx',
+      },
+      {
+        id: 'MF033',
+        name: 'RAHANITRINIANA Sylvie',
+        department: 'programming',
+        role: { mg: 'SOMBIN-TANTARA RMK | TALENTA ANATY', fr: 'Chroniques RMK | Talents intérieur', en: 'RMK Story Segments | Inner Talent' },
+        bio: {
+          mg: "Tantara sy fijoroana vavolombelona sy Fampivelarana ny talenta miafina.",
+          fr: 'Histoires et témoignages inspirants mais aussi découvrir et développer les talents.',
+          en: "Inspiring stories and testimonies as well as Discover and grow your inner talents. ",
+        },
+        experience: { mg: 'x taona', fr: 'x ans', en: 'x years' },
+        phone: '+261 xx xx xxx xx',
       },
       {
         id: 'MF035',
@@ -387,6 +515,7 @@ const TeamPage = () => {
         phone: member.phone || '+261 34 49 642 01',
         experience: member.experience[language],
         specialties: [t('team.excel.specialty1'), t('team.excel.specialty2')],
+        image: teamImageIds.has(member.id) ? `/team/${member.id}.jpg` : undefined,
       })),
     ],
     [excelTeamMembers, language, t],
@@ -478,7 +607,15 @@ const TeamPage = () => {
             >
               <div className="text-center mb-4">
                 <div className={`w-24 h-24 bg-gradient-to-br ${getDepartmentColor(member.department)} rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
-                  <Users className="w-12 h-12 text-gray-950 dark:text-white" />
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  ) : (
+                    <Users className="w-12 h-12 text-gray-950 dark:text-white" />
+                  )}
                 </div>
                 <h3 className="text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary-400 transition-colors mb-1">
                   {member.name}
@@ -534,7 +671,15 @@ const TeamPage = () => {
               >
                 <div className="text-center mb-6">
                   <div className={`w-32 h-32 bg-gradient-to-br ${getDepartmentColor(selectedMember.department)} rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg`}>
-                    <Users className="w-16 h-16 text-gray-950 dark:text-white" />
+                    {selectedMember.image ? (
+                      <img
+                        src={selectedMember.image}
+                        alt={selectedMember.name}
+                        className="w-full h-full object-cover rounded-full"
+                      />
+                    ) : (
+                      <Users className="w-16 h-16 text-gray-950 dark:text-white" />
+                    )}
                   </div>
                   <h3 className="text-3xl font-bold text-gray-950 dark:text-white mb-2">
                     {selectedMember.name}

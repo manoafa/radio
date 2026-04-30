@@ -39,23 +39,23 @@ export const aboutRmkPage: Record<Language, Record<string, string>> = {
       "From 15-minute shortwave broadcasts to digital platforms reaching listeners worldwide, RMK's journey is rooted in faith, partnership, and mission.",
     'aboutPage.ms1977.title': 'A Beginning Rooted in Faith',
     'aboutPage.ms1977.desc':
-      'RMK began in May 1977 through a partnership with TWR Radio from South Africa, broadcasting 15 minutes each morning from 6:00 to 6:15 AM on shortwave with a 10W transmitter. Though limited in reach, this marked the birth of a mission driven by faith, hope, and the desire to share the Gospel.',
+      'In May 1977, RMK began through a partnership with TWR Radio from South Africa. Broadcasts were simple: 15 minutes each morning on shortwave with a 10W transmitter.',
     'aboutPage.ms1987.title': 'Growing Through Collaboration',
     'aboutPage.ms1987.desc':
-      'In 1987, RMK strengthened its mission by partnering with FEBA Radio from Seychelles alongside TWR. Broadcasting continued daily for 15 minutes at noon, allowing the message to reach more listeners and reinforcing the station’s commitment to spiritual outreach.',
+      'In 1987, FEBA Radio from Seychelles joined alongside TWR. Daily broadcasts continued for 15 minutes at noon, reaching more listeners.',
     'aboutPage.ms1991.title': 'A New Voice on FM',
     'aboutPage.ms1991.desc':
-      'A new chapter unfolded in 1991 when Feon’ny Vahoaka Radio became RMK’s partner, replacing FEBA Radio. This transition introduced FM broadcasting on 105.0, offering clearer sound and bringing RMK closer to its audience.',
+      'In 1991, Feon\’ny Vahoaka Radio became RMK\’s new partner. Broadcasting moved to FM 105.0, offering clearer sound and wider access. audience.',
     'aboutPage.ms1992.title': 'The Birth of FM RMK',
     'aboutPage.ms1992.desc':
-      'In 1992, RMK officially launched as an FM radio station with a stronger 20W transmitter. This milestone marked an important step forward, expanding its presence and strengthening its ability to serve the community in Antananarivo.',
+      'In 1992, FM RMK officially launched. A 20W transmitter strengthened its presence across Antananarivo.',
     'aboutPage.ms1998.title': 'A Recognized Identity',
     'aboutPage.ms1998.desc':
-      'By 1998, RMK secured its official frequency, FM 102.4. This achievement established the station as a distinct and recognized voice in Madagascar’s radio landscape, continuing its mission of unity and faith.',
+      'In 1998, RMK secured its official frequency: FM 102.4. A defining step in establishing its identity in Madagascar.',
     'aboutPage.ms2003-Today.year': '2003 - Today',
     'aboutPage.ms2003-Today.title': 'Expansion and Digital Transformation',
     'aboutPage.ms2003-Today.desc':
-      'RMK continued to grow over the years. In 2003, upgraded equipment and a 250W transmitter significantly expanded its coverage. By 2014, broadcasts reached beyond Antananarivo, and the launch of a website allowed listeners from different regions to tune in online. Since 2018, RMK has embraced digital platforms, including web radio and social media, extending its reach across Madagascar and beyond, continuing to unite people through faith, hope, and love.',
+      'In 2003, equipment upgrades increased power to 250W, expanding coverage. By 2014, RMK reached beyond the capital and launched its website. Since 2018, web radio and social media have connected RMK to listeners everywhere.',
     'aboutPage.leadershipTitle': 'Our Leadership',
     'aboutPage.leadershipLead':
       "Meet the dedicated leaders who guide our ministry and ensure that every broadcast reflects our commitment to spreading God's love.",
@@ -121,23 +121,23 @@ export const aboutRmkPage: Record<Language, Record<string, string>> = {
       'Des diffusions courtes en ondes courtes aux plateformes numériques mondiales : le parcours de RMK est enraciné dans la foi, le partenariat et la mission.',
     'aboutPage.ms1977.title': 'Un commencement enraciné dans la foi',
     'aboutPage.ms1977.desc':
-      'RMK a commencé en mai 1977 grâce à un partenariat avec TWR Radio d\'Afrique du Sud. Les émissions étaient simples mais significatives : 15 minutes chaque matin de 6h00 à 6h15 en ondes courtes avec un émetteur de 10W. Malgré une portée limitée, ce fut la naissance d\'une mission portée par la foi, l\'espérance et le désir de partager l\'Évangile.',
+      'En Mai 1977, RMK voit le jour grâce à un partenariat avec TWR Radio d\’Afrique du Sud. Les émissions étaient simples : 15 minutes chaque matin en ondes courtes avec un émetteur de 10W.',
     'aboutPage.ms1987.title': 'Croissance par la collaboration',
     'aboutPage.ms1987.desc':
-      'En 1987, RMK a renforcé sa mission en s\'associant à FEBA Radio des Seychelles aux côtés de TWR. La diffusion quotidienne de 15 minutes à midi a permis d\'atteindre davantage d\'auditeurs et de consolider l\'engagement de la station pour l\'accompagnement spirituel.',
+      'En 1987, FEBA Radio des Seychelles rejoint TWR. Les émissions quotidiennes de 15 minutes continuent à midi, touchant davantage d\’auditeurs.',
     'aboutPage.ms1991.title': 'Une nouvelle voix sur FM',
     'aboutPage.ms1991.desc':
-      'Un nouveau chapitre s\'est ouvert en 1991 lorsque Feon\'ny Vahoaka Radio est devenu le partenaire de RMK, en remplacement de FEBA Radio. Cette transition a introduit la diffusion FM sur 105.0, offrant un son plus clair et rapprochant RMK de son audience.',
+      'En 1991, Feon\’ny Vahoaka Radio devient le nouveau partenaire de RMK. La diffusion passe en FM 105.0, offrant un son plus clair et un accès élargi.',
     'aboutPage.ms1992.title': 'La naissance de FM RMK',
     'aboutPage.ms1992.desc':
-      'En 1992, RMK a officiellement été lancée comme station FM avec un émetteur plus puissant de 20W. Cette étape majeure a élargi sa présence et renforcé sa capacité à servir la communauté d\'Antananarivo.',
+      'En 1992, FM RMK est officiellement lancée. Un émetteur de 20W renforce sa présence à Antananarivo.',
     'aboutPage.ms1998.title': 'Une identité reconnue',
     'aboutPage.ms1998.desc':
-      'En 1998, RMK a obtenu sa fréquence officielle, FM 102.4. Cette réussite a établi la station comme une voix distincte et reconnue dans le paysage radiophonique malgache, poursuivant sa mission d\'unité et de foi.',
+      'En 1998, RMK obtient sa fréquence officielle : FM 102.4. Une étape clé dans la reconnaissance de la radio à Madagascar.',
     'aboutPage.ms2003-Today.year': '2003 - Aujourd\'hui',
     'aboutPage.ms2003-Today.title': 'Expansion et transformation numérique',
     'aboutPage.ms2003-Today.desc':
-      'RMK a continué de grandir au fil des années. En 2003, la modernisation des équipements et un émetteur de 250W ont fortement élargi la couverture. Dès 2014, les émissions ont dépassé Antananarivo, et le lancement d\'un site web a permis une écoute en ligne depuis d\'autres régions. Depuis 2018, RMK a adopté les plateformes numériques, y compris la web radio et les réseaux sociaux, étendant sa portée à Madagascar et au-delà, tout en continuant à unir les gens par la foi, l\'espérance et l\'amour.',
+      'En 2003, des équipements modernisés portent la puissance à 250W, élargissant la couverture. En 2014, RMK dépasse Antananarivo et lance son site web. Depuis 2018, la web radio et les réseaux sociaux connectent RMK au monde entier.',
     'aboutPage.leadershipTitle': 'Notre direction',
     'aboutPage.leadershipLead':
       'Des leaders engagés qui guident notre ministère et veillent à ce que chaque diffusion reflète l\'amour de Dieu.',
@@ -203,23 +203,23 @@ export const aboutRmkPage: Record<Language, Record<string, string>> = {
       'Avy amin\'ny fandaharana fohy amin\'ny onjam-peo shortwave ka hatramin\'ny sehatra nomerika eran-tany, ny dian\'ny RMK dia miorina amin\'ny finoana, fiaraha-miasa ary iraka.',
     'aboutPage.ms1977.title': 'Fiandohana niorina tamin\'ny finoana',
     'aboutPage.ms1977.desc':
-      'Nanomboka tamin\'ny volana Mey 1977 ny dian\'ny RMK tamin\'ny fiaraha-miasa tamin\'ny TWR Radio avy any Afrika Atsimo. Tsotra nefa nisy lanjany ny fandaharana tamin\'izany: 15 minitra isan-maraina manomboka amin\'ny 6:00 ka hatramin\'ny 6:15 amin\'ny shortwave miaraka amin\'ny mpandefa 10W. Na dia voafetra aza ny faritra voarakotra, dia io no nahaterahan\'ny iraka tarihin\'ny finoana, fanantenana ary faniriana hizara ny Filazantsara.',
+      'Tamin\’ny volana Mey 1977 no nanomboka ny RMK niaraka tamin\’ny Radio TWR avy any Afrika Atsimo. Tsotra ny fandaharana: 15 minitra isa-maraina amin\’ny onja fohy miaraka amin\’ny émetteur 10W.',
     'aboutPage.ms1987.title': 'Fitomboana tamin\'ny fiaraha-miasa',
     'aboutPage.ms1987.desc':
-      'Tamin\'ny 1987, nanamafy ny iraka ny RMK tamin\'ny fiaraha-miasa tamin\'ny FEBA Radio avy any Seychelles niaraka tamin\'ny TWR. Nitohy isan\'andro nandritra ny 15 minitra amin\'ny atoandro ny fandaharana, ka nahatratra mpihaino maro kokoa ary nanamafy ny fanoloran-tenan\'ny onjam-peo amin\'ny fanohanana ara-panahy.',
+      'Tamin’ny 1987, niaraka nanompo tamin\’ny TWR ny radio FEBA avy any Seychelles. Nitohy ny fandaharana 15 minitra isan\’andro amin\’ny atoandro, nahatratra mpihaino maro kokoa.',
     'aboutPage.ms1991.title': 'Feo vaovao tamin\'ny FM',
     'aboutPage.ms1991.desc':
-      'Nisokatra pejy vaovao tamin\'ny 1991 rehefa lasa mpiara-miombon\'antoka amin\'ny RMK ny Feon\'ny Vahoaka Radio, nisolo ny FEBA Radio. Nampiditra ny fampielezana FM amin\'ny 105.0 io fiovana io, ka nahazo feo mazava kokoa ary nampanakaiky kokoa ny RMK amin\'ny mpihaino azy.',
+      'Tamin\’ny 1991, Feon\’ny Vahoaka Radio no lasa mpiara-miasa vaovao. Nifindra ho amin\’ny FM 105.0 ny fandefasana, mazava kokoa ny feo ary mora idirana.',
     'aboutPage.ms1992.title': 'Nahaterahan\'ny FM RMK',
     'aboutPage.ms1992.desc':
-      'Tamin\'ny 1992, natomboka tamin\'ny fomba ofisialy ho onjam-peo FM ny RMK miaraka amin\'ny mpandefa 20W mahery kokoa. Dingana lehibe izany, nanitatra ny fisiany ary nanamafy ny fahafahany manompo ny fiarahamonina ao Antananarivo.',
+      'Tamin\’ny 1992 no nanombohan\’ny FM RMK tamin\’ny fomba ofisialy. Nampitomboina ho 20W ny émetteur ka nanamafy ny fisiany tao Antananarivo.',
     'aboutPage.ms1998.title': 'Nahazoana anarana ofisialy',
     'aboutPage.ms1998.desc':
-      'Tamin\'ny 1998, nahazo ny fréquence ofisialiny ny RMK, FM 102.4. Ity zava-bita ity no nametraka ny onjam-peo ho feo miavaka sy ekena eo amin\'ny sehatry ny radio eto Madagasikara, mitohy amin\'ny iraky ny firaisankina sy ny finoana.',
+      'Tamin\’ny 1998, nahazo ny fréquence ofisialy FM 102.4 ny RMK. Dingana lehibe teo amin\’ny fahafantarana azy manerana an\’i Madagasikara.',
     'aboutPage.ms2003-Today.year': '2003 - Ankehitriny',
     'aboutPage.ms2003-Today.title': 'Fanitarana sy fiovàna nomerika',
     'aboutPage.ms2003-Today.desc':
-      'Nitohy nitombo ny RMK nandritra ny taona maro. Tamin\'ny 2003, ny fanavaozana fitaovana sy ny mpandefa 250W dia nanitatra be ny faritra voarakotra. Tamin\'ny 2014, nihoatra an\'Antananarivo ny fandaharana, ary ny fanokafana tranonkala dia nahafahan\'ny olona avy amin\'ny faritra samihafa nihaino an-tserasera. Hatramin\'ny 2018, nandray sehatra nomerika ny RMK, anisan\'izany ny web radio sy tambajotra sosialy, ka nanitatra ny tratrany manerana an\'i Madagasikara sy any ivelany, ary mbola manohy mampiray olona amin\'ny finoana, fanantenana ary fitiavana.',
+      'Tamin\’ny 2003, nohavaozina ny fitaovana ka nahatratra 250W ny heriny, nanitatra ny faritra tratra. Tamin\’ny 2014, nitatra ivelan\’Antananarivo ny fandefasana ary natomboka ny tranonkala. Nanomboka 2018, ny web radio sy ny tambajotra sosialy dia mampifandray ny RMK amin\’izao tontolo izao.',
     'aboutPage.leadershipTitle': 'Ny fitarihana',
     'aboutPage.leadershipLead':
       'Ireo mpitarika manolo-tena mitarika ny fanompoana ary manamora ny fifanandrify amin\'ny fielatra ny fitiavan\'Andriamanitra amin\'ny fandaharana rehetra.',
