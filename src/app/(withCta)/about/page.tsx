@@ -59,12 +59,16 @@ const AboutPage = () => {
 
   const milestones = useMemo(
     () => [
-      { year: '2010', titleKey: 'aboutPage.ms2010.title', descKey: 'aboutPage.ms2010.desc' },
-      { year: '2012', titleKey: 'aboutPage.ms2012.title', descKey: 'aboutPage.ms2012.desc' },
-      { year: '2015', titleKey: 'aboutPage.ms2015.title', descKey: 'aboutPage.ms2015.desc' },
-      { year: '2018', titleKey: 'aboutPage.ms2018.title', descKey: 'aboutPage.ms2018.desc' },
-      { year: '2020', titleKey: 'aboutPage.ms2020.title', descKey: 'aboutPage.ms2020.desc' },
-      { year: '2024', titleKey: 'aboutPage.ms2024.title', descKey: 'aboutPage.ms2024.desc' },
+      { year: '1977', titleKey: 'aboutPage.ms1977.title', descKey: 'aboutPage.ms1977.desc' },
+      { year: '1987', titleKey: 'aboutPage.ms1987.title', descKey: 'aboutPage.ms1987.desc' },
+      { year: '1991', titleKey: 'aboutPage.ms1991.title', descKey: 'aboutPage.ms1991.desc' },
+      { year: '1992', titleKey: 'aboutPage.ms1992.title', descKey: 'aboutPage.ms1992.desc' },
+      { year: '1998', titleKey: 'aboutPage.ms1998.title', descKey: 'aboutPage.ms1998.desc' },
+      {
+        yearKey: 'aboutPage.ms2003-Today.year',
+        titleKey: 'aboutPage.ms2003-Today.title',
+        descKey: 'aboutPage.ms2003-Today.desc',
+      },
     ],
     [],
   );
@@ -228,7 +232,9 @@ const AboutPage = () => {
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                     <div className="bg-gradient-to-br from-navy-500/10 to-primary-500/10 p-6 rounded-xl border border-navy-500/20">
                       <h3 className="text-2xl font-bold text-gray-950 dark:text-white mb-2">{t(milestone.titleKey)}</h3>
-                      <p className="text-primary-400 font-semibold text-lg mb-3">{milestone.year}</p>
+                      <p className="text-primary-400 font-semibold text-lg mb-3">
+                        {milestone.yearKey ? t(milestone.yearKey) : milestone.year}
+                      </p>
                       <p className="text-gray-700 dark:text-gray-300">{t(milestone.descKey)}</p>
                     </div>
                   </div>
