@@ -46,6 +46,8 @@ export const donate: Record<Language, Record<string, string>> = {
     'donate.other.airtel': 'Airtel Money: +261 34 12 345 67',
     'donate.other.orange': 'Orange Money: +261 34 12 345 68',
     'donate.other.mvola': 'MVola: +261 34 12 345 69',
+    'donate.other.showDetails': 'Show bank and mobile money details',
+    'donate.other.hideDetails': 'Hide details',
   },
   fr: {
     'donate.success.title': 'Merci !',
@@ -92,6 +94,8 @@ export const donate: Record<Language, Record<string, string>> = {
     'donate.other.airtel': 'Airtel Money : +261 34 12 345 67',
     'donate.other.orange': 'Orange Money : +261 34 12 345 68',
     'donate.other.mvola': 'MVola : +261 34 12 345 69',
+    'donate.other.showDetails': 'Afficher les coordonnées bancaires et mobile money',
+    'donate.other.hideDetails': 'Masquer les coordonnées',
   },
   mg: {
     'donate.success.title': 'Misaotra!',
@@ -138,5 +142,7 @@ export const donate: Record<Language, Record<string, string>> = {
     'donate.other.airtel': 'Airtel Money: +261 34 12 345 67',
     'donate.other.orange': 'Orange Money: +261 34 12 345 68',
     'donate.other.mvola': 'MVola: +261 34 12 345 69',
+    'donate.other.showDetails': 'Asehoy ny mombamomba banky sy vola amin\'ny finday',
+    'donate.other.hideDetails': 'Afeno',
   },
 };

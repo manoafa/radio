@@ -13,8 +13,12 @@ import {
   Users,
   Radio,
   Globe,
-  Target
+  Target,
+  Eye,
+  EyeOff,
 } from 'lucide-react';
+
+const MASKED_DETAIL = '••••••••••••';
 
 const DonatePage = () => {
   const { t, language } = useLanguage();
@@ -23,6 +27,7 @@ const DonatePage = () => {
   const [selectedMethod, setSelectedMethod] = useState('mobile');
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [paymentDetailsVisible, setPaymentDetailsVisible] = useState(false);
 
   const presetAmounts = [5000, 10000, 25000, 50000, 100000, 250000];
   const paymentMethods = useMemo(
@@ -320,14 +325,64 @@ const DonatePage = () => {
               <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-4">{t('donate.other.title')}</h3>
               <div className="space-y-3 text-gray-700 dark:text-gray-300">
                 <p><strong>{t('donate.other.bankHeading')}</strong></p>
-                <p>{t('donate.other.accountName')}</p>
-                <p>{t('donate.other.bankName')}</p>
-                <p>{t('donate.other.accountNumber')}</p>
+                {paymentDetailsVisible ? (
+                  <>
+                    <p>{t('donate.other.accountName')}</p>
+                    <p>{t('donate.other.bankName')}</p>
+                    <p>{t('donate.other.accountNumber')}</p>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-mono tracking-widest select-none text-gray-500 dark:text-gray-500" aria-hidden>
+                      {MASKED_DETAIL}
+                    </p>
+                    <p className="font-mono tracking-widest select-none text-gray-500 dark:text-gray-500" aria-hidden>
+                      {MASKED_DETAIL}
+                    </p>
+                    <p className="font-mono tracking-widest select-none text-gray-500 dark:text-gray-500" aria-hidden>
+                      {MASKED_DETAIL}
+                    </p>
+                  </>
+                )}
                 <p className="mt-4"><strong>{t('donate.other.mobileHeading')}</strong></p>
-                <p>{t('donate.other.airtel')}</p>
-                <p>{t('donate.other.orange')}</p>
-                <p>{t('donate.other.mvola')}</p>
+                {paymentDetailsVisible ? (
+                  <>
+                    <p>{t('donate.other.airtel')}</p>
+                    <p>{t('donate.other.orange')}</p>
+                    <p>{t('donate.other.mvola')}</p>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-mono tracking-widest select-none text-gray-500 dark:text-gray-500" aria-hidden>
+                      {MASKED_DETAIL}
+                    </p>
+                    <p className="font-mono tracking-widest select-none text-gray-500 dark:text-gray-500" aria-hidden>
+                      {MASKED_DETAIL}
+                    </p>
+                    <p className="font-mono tracking-widest select-none text-gray-500 dark:text-gray-500" aria-hidden>
+                      {MASKED_DETAIL}
+                    </p>
+                  </>
+                )}
               </div>
+              <button
+                type="button"
+                onClick={() => setPaymentDetailsVisible((v) => !v)}
+                aria-expanded={paymentDetailsVisible}
+                className="mt-5 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-dark-700 text-gray-950 dark:text-white font-semibold text-sm hover:border-primary-500/50 transition-all duration-300"
+              >
+                {paymentDetailsVisible ? (
+                  <>
+                    <EyeOff className="w-4 h-4 shrink-0" aria-hidden />
+                    {t('donate.other.hideDetails')}
+                  </>
+                ) : (
+                  <>
+                    <Eye className="w-4 h-4 shrink-0" aria-hidden />
+                    {t('donate.other.showDetails')}
+                  </>
+                )}
+              </button>
             </div>
           </motion.div>
         </div>
